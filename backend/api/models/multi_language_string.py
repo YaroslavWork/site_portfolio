@@ -6,8 +6,8 @@ class MultiLanguageString(models.Model):
     """
     title: str = models.CharField(max_length=255, verbose_name="Title")
     english: str = models.CharField(max_length=255, verbose_name="English")
-    polish: str = models.CharField(max_length=255, verbose_name="Polish")
-    ukrainian: str = models.CharField(max_length=255, verbose_name="Ukrainian")
+    polish: str = models.CharField(max_length=255, verbose_name="Polish", null=True, blank=True)
+    ukrainian: str = models.CharField(max_length=255, verbose_name="Ukrainian", null=True, blank=True)
 
     def __str__(self):
         return f"--- {self.title} ---\nEN: {self.english}\nPL: {self.polish}\nUA: {self.ukrainian}"
