@@ -14,8 +14,13 @@ class Book(models.Model):
         related_name='books',
         help_text="The translatable title of the book"
     )
+    progress: float = models.FloatField(
+        default=0.0,
+        verbose_name="Reading Progress",
+        help_text="Progress of reading the book (0-1)"
+    )
     publication_date = models.DateField(verbose_name="Publication Date", null=True, blank=True)
     
 
     def __str__(self):
-        return f"{self.title}: {self.content}"
+        return f"{self.title}: {self.author} (Progress: {self.progress * 100}%)"
