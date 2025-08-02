@@ -18,6 +18,13 @@ class Hobby(models.Model):
         related_name='hobbies_description',
         help_text="The translatable description of the hobby"
     )
+    icon_path: str = models.CharField(
+        max_length=255,
+        verbose_name="Icon Path",
+        help_text="Path to the icon representing the hobby",
+        blank=True,
+        null=True
+    )
 
     def __str__(self):
         return f"{self.name}: {self.description}"
