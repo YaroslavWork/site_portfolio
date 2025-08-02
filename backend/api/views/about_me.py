@@ -17,7 +17,7 @@ class AboutMeView(APIView):
     """
 
     def get(self, request):
-        language = request.query_params.get('language', 'ua')
+        language = request.query_params.get('language', 'en')
 
         if language not in LANGUAGE_SHORTS:
             return Response(
