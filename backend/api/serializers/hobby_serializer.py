@@ -1,6 +1,6 @@
 from rest_framework import serializers
-from ..models.hobby import Hobby
 
+from ..models.hobby import Hobby
 from ..serializers.multi_language_string_serializer import MultiLanguageStringSerializer
 
 class HobbySerializer(serializers.ModelSerializer):

@@ -1,6 +1,7 @@
 from django.db import models
 
 from .multi_language_string import MultiLanguageString
+from .technology_type import TechnologyType
 
 class Technology(models.Model):
     """
@@ -11,12 +12,12 @@ class Technology(models.Model):
         verbose_name="Name",
         help_text="The name of the technology"
     )
-    structure: str = models.ForeignKey(
-        MultiLanguageString,
+    technology_type: str = models.ForeignKey(
+        TechnologyType,
         on_delete=models.CASCADE,
-        related_name='technologies_structure',
-        help_text="The translatable structure of the technology"
+        related_name='Technologies',
+        help_text="The type of the technology, e.g., programming language, framework, etc."
     )
 
     def __str__(self):
-        return f"{self.name}: {self.structure}"
+        return f"{self.name}: {self.technology_type.title}"
