@@ -30,6 +30,13 @@ class Project(models.Model):
         related_name='projects_references',
         help_text="References related to the project"
     )
-    
+
+    # String representation of the project
+    image_paths: str = models.TextField(
+        blank=True,
+        null=True,
+        help_text="Paths to images related to the project. Separated by ';'."
+    )
+
     def __str__(self):
         return f"{self.name}: {', '.join(str(tech) for tech in self.technologies.all())} - {self.description}"

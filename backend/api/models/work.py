@@ -16,8 +16,9 @@ class Work(models.Model):
     place: str = models.CharField(max_length=255, verbose_name="Place")
     start_date = models.DateField(verbose_name="Start Date", null=True)
     end_date = models.DateField(verbose_name="End Date", null=True, blank=True)
-    skills: list[MultiLanguageString] = models.ManyToManyField(
+    skills: str = models.ForeignKey(
         MultiLanguageString,
+        on_delete=models.CASCADE,
         related_name='works_skills',
         help_text="The translatable skills used in the work"
     )

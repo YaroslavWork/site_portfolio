@@ -27,6 +27,9 @@ class SkillsView(APIView):
         # Fetch multi-language strings for the about me section
         skills_titles = [
             'spark_skills_string1',
+            'what_i_know_title',
+            'what_i_learn_title',
+            'what_i_plan_title'
         ]
 
         multi_language_strings = MultiLanguageString.objects.filter(title__in=skills_titles)

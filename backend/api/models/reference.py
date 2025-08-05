@@ -15,4 +15,4 @@ class Reference(models.Model):
     url = models.URLField(verbose_name="URL", help_text="The URL of the reference")
 
     def __str__(self):
-        return f"{self.title} ({self.host}) - {self.url}"
+        return f"{self.host} - {self.url}"
