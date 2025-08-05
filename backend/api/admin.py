@@ -1,9 +1,8 @@
 from django.contrib import admin
-from .models import MultiLanguageString, BasicString, Hobby, Technology, Skill, Project, Course, Reference, Education, Book, Work, TechnologyType, Host
+from .models import MultiLanguageString, Hobby, Technology, Skill, Project, Course, Reference, Education, Book, Work, TechnologyType, Host, Contact
 
 # Register your models here.
 admin.site.register(MultiLanguageString)
-admin.site.register(BasicString)
 admin.site.register(Hobby)
 admin.site.register(Technology)
 admin.site.register(TechnologyType)
@@ -15,3 +14,4 @@ admin.site.register(Education)
 admin.site.register(Book)
 admin.site.register(Work)
 admin.site.register(Host)
+admin.site.register(Contact)
