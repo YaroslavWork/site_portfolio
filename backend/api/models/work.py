@@ -27,3 +27,6 @@ class Work(models.Model):
         verbose_name="Is IT",
         help_text="Indicates if the work is in the IT field"
     )
+
+    def __str__(self):
+        return f"{self.title}: {self.company} - {self.place} ({self.start_date} to {self.end_date})"
