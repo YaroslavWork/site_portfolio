@@ -16,7 +16,9 @@ class Course(models.Model):
         MultiLanguageString,
         on_delete=models.CASCADE,
         related_name='courses_description',
-        help_text="The translatable description of the course"
+        help_text="The translatable description of the course",
+        null=True,
+        blank=True
     )
     company: str = models.CharField(
         max_length=255,

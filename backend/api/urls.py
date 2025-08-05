@@ -3,7 +3,8 @@ from .views.home import HomeView
 from .views.about_me import AboutMeView
 from .views.skills import SkillsView
 from .views.projects import ProjectsView
-from .views.work_experience import WorkExperienceView 
+from .views.work_experience import WorkExperienceView
+from .views.education import EducationView
 
 urlpatterns = [
     path('home/', HomeView.as_view(), name='home'),
@@ -11,4 +12,5 @@ urlpatterns = [
     path('skills/', SkillsView.as_view(), name='skills'),
     path('projects/', ProjectsView.as_view(), name='projects'),
     path('work_experience/', WorkExperienceView.as_view(), name='work_experience'),
+    path('education/', EducationView.as_view(), name='education'),
 ]

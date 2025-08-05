@@ -19,6 +19,13 @@ class Education(models.Model):
         help_text="The translatable degree obtained",
         null=True,
     )
+    field_of_study: str = models.ForeignKey(
+        MultiLanguageString,
+        on_delete=models.CASCADE,
+        related_name='educations_field_of_study',
+        help_text="The translatable field of study",
+        null=True,
+    )
     start_date: str = models.DateField(verbose_name="Start Date", help_text="The start date of the education")
     end_date: str = models.DateField(verbose_name="End Date", help_text="The end date of the education")
 
