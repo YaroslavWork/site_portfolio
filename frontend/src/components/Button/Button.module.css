@@ -1,0 +1,29 @@
+.button {
+    /* Layout */
+    display: flex;
+    justify-content: center; /* horizontal */
+    align-items: center;     /* vertical */
+
+    /* Box model */
+    max-width: 100%;
+    height: auto;
+    padding: var(--spacing-sm) var(--spacing-xl);
+
+    /* Typography */
+    font-size: var(--font-size-md);
+    color: var(--text);
+    text-transform: uppercase;
+
+    /* Visual */
+    background-color: var(--primary);
+    border-radius: var(--border-radius-md);
+    border: none;
+}
+
+.primary {
+    background-color: var(--primary);
+}
+
+.secondary {
+    background-color: var(--secondary);
+}
