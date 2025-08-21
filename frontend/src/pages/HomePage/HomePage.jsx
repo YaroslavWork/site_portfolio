@@ -1,3 +1,4 @@
+import SparkField from '../../components/SparkField/SparkField';
 import { useHomeData } from '../../features/hooks/index.hooks';
 import styles from './HomePage.module.css';
 
@@ -11,13 +12,16 @@ export const HomePage = () => {
     console.log(titles); // Debugging line to check titles
 
     return (
-        <div className={styles.homePage}>
-            <h1>Home Page</h1>
-            <ul>
-                {titles.map((titleObj, index) => (
-                    <li key={index}>{titleObj.title}: {titleObj.text}</li>
-                ))}
-            </ul>
-        </div>
+        <>
+            <SparkField text={titles.find(obj => obj.title === 'spark_main_page_string1').text} onSparkClick={() => console.log('Spark is clicked')}/>
+            <div className={styles.homePage}>
+                <h1>Home Page</h1>
+                <ul>
+                    {titles.map((titleObj, index) => (
+                        <li key={index}>{titleObj.title}: {titleObj.text}</li>
+                    ))}
+                </ul>
+            </div>
+        </>
     );
 }

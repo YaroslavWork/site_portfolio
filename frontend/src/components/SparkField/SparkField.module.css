@@ -1,0 +1,48 @@
+.sparkField {
+    /* Layout */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-md);
+    
+    /* Box model */
+    padding: var(--spacing-md);
+    margin: var(--spacing-sm);
+    border: 1px solid var(--primary);
+    border-radius: var(--border-radius-md);
+
+    /* Visuals */
+    box-shadow: 0px 0px 100px -25px var(--primary)
+}
+
+.sparkButton {
+    /* Layout */
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    /* Box model */
+    min-width: 2.8rem;
+    max-width: 3.5rem;
+    aspect-ratio: 1 / 1;
+    /* Visual */
+    background-color: var(--primary);
+    border: none;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+}
+
+.sparkButton:hover .sparkImage{
+    transform: translateY(3%) scale(1.4);
+}
+
+.sparkImage {
+    width: 100%;
+    object-fit: contain;
+    transform: translateY(5%) scale(1.35);
+    transition: transform 0.3s ease;
+}
+
+.sparkMonolog {
+    font-family: 'Poppins', sans-serif;
+}

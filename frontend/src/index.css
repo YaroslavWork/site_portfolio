@@ -1,3 +1,9 @@
+/* Separate CSS variables into categories for better organization */
+  /* Layout */
+  /* Box model */
+  /* Typography */
+  /* Visual */
+
 :root {
   /* Colors */
   --background-dark: #E0E3EB;
