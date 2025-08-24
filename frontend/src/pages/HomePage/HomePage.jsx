@@ -1,4 +1,6 @@
+import Button from '../../components/Button/Button';
 import CharacterField from '../../components/CharacterField/CharacterField';
+import DescriptionWithButtons from '../../components/DescriptionWithButtons/DescriptionWithButtons';
 import SparkField from '../../components/SparkField/SparkField';
 import Title from '../../components/Title/Title';
 import { useHomeData } from '../../features/hooks/index.hooks';
@@ -18,6 +20,13 @@ export const HomePage = () => {
             <SparkField text={find_text_by_tag(titles, 'spark_main_page_string1')} onSparkClick={() => console.log('Spark is clicked')}/>
             <CharacterField name={find_text_by_tag(titles, 'name')}/>
             <Title text={find_text_by_tag(titles, 'position')} isPrimary={true}/>
+            <DescriptionWithButtons 
+                text={find_text_by_tag(titles, 'short_description')}
+                buttons={[
+                    <Button text={find_text_by_tag(titles, 'about_me_button')}/>,
+                    <Button text={find_text_by_tag(titles, 'skills_button')}/>,
+                    <Button text={find_text_by_tag(titles, 'projects_button')}/>,
+                ]}/>
             <br></br>
             <br></br>
             <br></br>

@@ -10,6 +10,7 @@
   --background: #F0F3F9;
   --background-light: #FFFFFF;
   --text: #070A12;
+  --button-text: #F0F4FF;
   --text-muted: #434651;
   --highlight: #9A9FAC;
   --border: #7C818D;
@@ -58,6 +59,7 @@
   --background: #0A0B10;
   --background-light: #14151A;
   --text: #F0F4FF;
+  --button-text: #070A12;
   --text-muted: #ACB1BE;
   --highlight: #5E626E;
   --border: #434651;

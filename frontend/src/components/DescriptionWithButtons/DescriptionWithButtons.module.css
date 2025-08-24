@@ -1,0 +1,32 @@
+.DescriptionWithButtons {
+    /* Layout */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-md);
+    
+    /* Box model */
+    width: calc(65% - var(--spacing-sm) * 2);
+    padding: var(--spacing-md);
+    margin: var(--spacing-sm);
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius-md);
+
+    /* Visuals */
+    background-color: var(--background);
+}
+
+.textDescription {
+    font-size: var(--font-size-base);
+    font-family: 'Lato', sans-serif;
+    text-align: justify;
+    color: var(--text);
+}
+
+.buttonContainer {
+    display: flex;
+    flex-direction: row;
+    gap: var(--spacing-md);
+}
