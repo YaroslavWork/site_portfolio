@@ -16,6 +16,7 @@
   --border: #7C818D;
   --border-muted: #9A9FAC;
   --primary: #34447F;
+  --hover-primary: #5C71BC;
   --secondary: #423400;
   --danger: #7F5953;
   --warning: #6B6543;
@@ -65,6 +66,7 @@
   --border: #434651;
   --border-muted: #292D38;
   --primary: #98AEF1;
+  --hover-primary: #6B8BEB;
   --secondary: #CAAE63;
   --danger: #BB928B;
   --warning: #A6A17D;

@@ -34,7 +34,7 @@
 }
 
 .sparkButton:hover .sparkImage{
-    transform: translateY(3%) scale(1.4);
+    transform: translateY(3%) scale(1.15);
 }
 
 .sparkImage {
