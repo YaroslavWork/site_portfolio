@@ -1,5 +1,6 @@
 import CharacterField from '../../components/CharacterField/CharacterField';
 import SparkField from '../../components/SparkField/SparkField';
+import Title from '../../components/Title/Title';
 import { useHomeData } from '../../features/hooks/index.hooks';
 import styles from './HomePage.module.css';
 
@@ -14,8 +15,13 @@ export const HomePage = () => {
 
     return (
         <>
-            <SparkField text={titles.find(obj => obj.title === 'spark_main_page_string1').text} onSparkClick={() => console.log('Spark is clicked')}/>
-            <CharacterField name={titles.find(obj => obj.title === 'name').text}/>
+            <SparkField text={find_text_by_tag(titles, 'spark_main_page_string1')} onSparkClick={() => console.log('Spark is clicked')}/>
+            <CharacterField name={find_text_by_tag(titles, 'name')}/>
+            <Title text={find_text_by_tag(titles, 'position')} isPrimary={true}/>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
             <div className={styles.homePage}>
                 <h1>Home Page</h1>
                 <ul>
@@ -26,4 +32,8 @@ export const HomePage = () => {
             </div>
         </>
     );
+}
+
+function find_text_by_tag(data, tag) {
+    return data.find(obj => obj.title === tag).text
 }
