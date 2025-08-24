@@ -1,5 +1,6 @@
 import Button from '../../components/Button/Button';
 import CharacterField from '../../components/CharacterField/CharacterField';
+import CVCode from '../../components/CVCode/CVCode';
 import DescriptionWithButtons from '../../components/DescriptionWithButtons/DescriptionWithButtons';
 import SparkField from '../../components/SparkField/SparkField';
 import Title from '../../components/Title/Title';
@@ -27,6 +28,7 @@ export const HomePage = () => {
                     <Button text={find_text_by_tag(titles, 'skills_button')}/>,
                     <Button text={find_text_by_tag(titles, 'projects_button')}/>,
                 ]}/>
+            <CVCode prompt={find_text_by_tag(titles, 'personality_code_description')} code={'test1'}/>
             <br></br>
             <br></br>
             <br></br>
