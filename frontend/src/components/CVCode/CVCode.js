@@ -10,11 +10,14 @@ export default function CVCode( {prompt, code, codeLength=6} ) {
             <div className={styles.codeField}>
                 {Array(codeLength)
                     .fill(null)
-                    .map((_, index) => (
-                        <div key={index} className={styles.codeLetter}>
+                    .map((_, index) => {
+                        const isFill = code[index] ? styles.fill : '';
+                        return (
+                        <div key={index} className={`${styles.codeLetter} ${isFill}`}>
                             {code[index]}
                         </div>
-                    ))}
+                        )
+                    })}
             </div>
         </BorderContainer>
     )

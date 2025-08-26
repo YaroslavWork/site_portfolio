@@ -10,16 +10,21 @@
 }
 
 .codeLetter {
-    min-width: 4rem;
+    min-width: 4.1rem;
+    aspect-ratio: 1 / 1.55;
     padding: var(--spacing-lg) var(--spacing-md);
     margin: var(--spacing-sm);
     border: 1px solid var(--border);
     border-radius: var(--border-radius-md);
-    box-shadow: 0px 0px 10px -4px var(--primary);
+    
 
     text-transform: uppercase;
     text-align: center;
 
     font-size: var(--font-size-xxlarge);
     color: var(--primary)
+}
+
+.fill {
+    box-shadow: 0px 0px 10px -4px var(--primary);
 }
