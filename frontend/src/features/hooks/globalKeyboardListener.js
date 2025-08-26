@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import { useEffect, useContext } from 'react';
+import { GlobalStateContext } from './globalStateContext';
 
-function GlobalKeyboardListener() {
-  const [typedString, setTypedString] = useState('');
+export default function GlobalKeyboardListener() {
+  const { globalString, setGlobalString } = useContext(GlobalStateContext);
 
   useEffect(() => {
     const handleKeyDown = (event) => {
-      if (event.key.length === 1) {
-        setTypedString(prevString => prevString + event.key);
+      if (event.key === 'Backspace') {
+        setGlobalString(prevString => prevString.slice(0, -1));
+      } else if (globalString.length < 6 && /^[a-zA-Z0-9]$/.test(event.key)) {
+        setGlobalString(prevString => prevString + event.key);
       }
     };
 
@@ -15,8 +18,7 @@ function GlobalKeyboardListener() {
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, []);
+  }, [globalString, setGlobalString]);
 
+  return null;
 }
-
-export default GlobalKeyboardListener

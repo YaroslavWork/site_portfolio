@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+
 import Button from '../../components/Button/Button';
 import CharacterField from '../../components/CharacterField/CharacterField';
 import CVCode from '../../components/CVCode/CVCode';
@@ -7,18 +9,19 @@ import SparkField from '../../components/SparkField/SparkField';
 import Title from '../../components/Title/Title';
 import { useHomeData } from '../../features/hooks/index.hooks';
 import styles from './HomePage.module.css';
+import { GlobalStateContext } from '../../features/hooks/globalStateContext';
 
 import { FiGithub, FiLinkedin } from "react-icons/fi";
 
 
 export const HomePage = () => {
     const { data, isLoading, error } = useHomeData();
+    const { globalString } = useContext(GlobalStateContext);
 
     if (isLoading) return <div>Loading...</div>;
     if (error) return <div>Error loading home data</div>;
 
     const titles = data['data']['data']['titles'];
-    console.log(titles); // Debugging line to check titles
 
     return (
         <div className={styles.homePage}>
@@ -50,7 +53,7 @@ export const HomePage = () => {
                                 <Button text={find_text_by_tag(titles, 'projects_button')}/>,
                             ]}
                         />
-                        <CVCode prompt={find_text_by_tag(titles, 'personality_code_description')} code={'test1'}/>
+                        <CVCode prompt={find_text_by_tag(titles, 'personality_code_description')} code={globalString}/>
                     </div>
                 </div>
             </div>

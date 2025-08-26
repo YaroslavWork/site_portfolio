@@ -2,9 +2,11 @@ import React, { useEffect } from 'react';
 
 import './App.css';
 
-import { useEducationData } from './features/hooks/index.hooks';
 import { useSystemTheme } from './features/hooks/useSystemTheme.hooks';
 import { HomePage } from './pages/HomePage/HomePage';
+
+import { GlobalStateProvider } from './features/hooks/globalStateContext';
+import GlobalKeyboardListener from './features/hooks/globalKeyboardListener';
 
 function App() {
   const systemTheme = useSystemTheme();
@@ -17,7 +19,10 @@ function App() {
 
   return (
     <>
-    <HomePage />
+    <GlobalStateProvider>
+      <GlobalKeyboardListener />
+        <HomePage />
+    </GlobalStateProvider>
     </>
   );
 }
