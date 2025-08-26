@@ -25,3 +25,18 @@
 .bigColumn {
     max-width: 65%;
 }
+
+@media (max-width: 700px) {
+    .columns {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .smallColumn {
+        max-width: 100%;
+    }
+
+    .bigColumn {
+        max-width: 100%;
+    }
+}
