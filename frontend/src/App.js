@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 import './App.css';
 
@@ -18,12 +19,18 @@ function App() {
   }, [activeTheme]);
 
   return (
-    <>
-    <GlobalStateProvider>
-      <GlobalKeyboardListener />
-        <HomePage />
-    </GlobalStateProvider>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Navigate to="/home" />} />
+        <Route path="/home" element={
+          <GlobalStateProvider>
+            <GlobalKeyboardListener />
+              <HomePage />
+          </GlobalStateProvider>
+        }></Route>
+      </Routes>
+    
+    </BrowserRouter>
   );
 }
 
