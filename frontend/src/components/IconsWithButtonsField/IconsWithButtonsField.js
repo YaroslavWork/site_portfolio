@@ -1,9 +1,10 @@
 import React from 'react'
 import styles from './IconsWithButtonsField.module.css'
+import BorderContainer from '../BorderContainer/BorderContainer'
 
 export default function IconsWithButtonsField( {iconsWithLinks, buttons = []} ) {
     return (
-       <div className={styles.IconsWithButtonsField}>
+        <BorderContainer>
             <div className={styles.iconContainer}>
                 {iconsWithLinks.map((item, index) => (
                     <div key={index} className={styles.icon}>
@@ -26,6 +27,6 @@ export default function IconsWithButtonsField( {iconsWithLinks, buttons = []} ) 
                     </div>
                 ))}
             </div>
-       </div> 
+        </BorderContainer>
     )
 }

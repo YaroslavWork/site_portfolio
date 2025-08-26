@@ -1,17 +1,18 @@
 import React from 'react'
 import styles from './DescriptionWithButtons.module.css'
+import BorderContainer from '../BorderContainer/BorderContainer'
 
 export default function DescriptionWithButtons( {text, buttons = []} ) {
     return (
-       <div className={styles.DescriptionWithButtons}>
+        <BorderContainer>
             <p className={styles.textDescription}>{text}</p>
             <div className={styles.buttonContainer}>
                 {buttons.map((button, index) => (
-                    <React.Fragment key={index}>
+                    <div key={index} className={styles.buttonItem}>
                         {button}
-                    </React.Fragment>
+                    </div>
                 ))}
             </div>
-       </div> 
-    )
+        </BorderContainer>
+    );
 }

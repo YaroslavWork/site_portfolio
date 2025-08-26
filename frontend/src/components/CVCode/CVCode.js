@@ -1,9 +1,11 @@
 import React from 'react'
 import styles from './CVCode.module.css'
 
+import BorderContainer from '../BorderContainer/BorderContainer'
+
 export default function CVCode( {prompt, code, codeLength=6} ) {
     return (
-       <div className={styles.CVCode}>
+        <BorderContainer>
             <p className={styles.textPrompt}>{prompt}</p>
             <div className={styles.codeField}>
                 {Array(codeLength)
@@ -14,6 +16,6 @@ export default function CVCode( {prompt, code, codeLength=6} ) {
                         </div>
                     ))}
             </div>
-       </div> 
+        </BorderContainer>
     )
 }
