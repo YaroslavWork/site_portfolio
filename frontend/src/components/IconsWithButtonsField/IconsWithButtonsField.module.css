@@ -1,0 +1,47 @@
+.IconsWithButtonsField {
+    /* Layout */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-md);
+    
+    /* Box model */
+    width: calc(100% - var(--spacing-sm) * 2);
+    padding: var(--spacing-md);
+    margin: var(--spacing-sm);
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius-md);
+}
+
+.iconContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    gap: var(--spacing-sm);
+}
+
+.buttonContainer {
+    display: flex;
+    flex-direction: row;
+    gap: var(--spacing-md);
+}
+
+.iconLink {
+    min-width: 3rem;
+    font-size: var(--font-size-xxlarge);
+    color: var(--primary);
+    text-align: center;
+
+    transition: 0.3s ease;
+}
+
+.iconLink:hover {
+    transform: scale(1.03);
+    color: var(--hover-primary);
+    cursor: pointer;
+}

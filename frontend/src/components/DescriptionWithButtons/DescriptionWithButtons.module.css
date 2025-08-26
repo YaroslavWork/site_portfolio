@@ -8,7 +8,7 @@
     gap: var(--spacing-md);
     
     /* Box model */
-    width: calc(65% - var(--spacing-sm) * 2);
+    width: calc(100% - var(--spacing-sm) * 2);
     padding: var(--spacing-md);
     margin: var(--spacing-sm);
     border: 1px solid var(--border);

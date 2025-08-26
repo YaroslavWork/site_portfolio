@@ -1,0 +1,27 @@
+.homePage {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mainContent {
+    display: flex;
+    flex-direction: column;
+    max-width: 1080px;
+}
+
+.columns {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.smallColumn {
+    max-width: 35%;
+}
+
+.bigColumn {
+    max-width: 65%;
+}
