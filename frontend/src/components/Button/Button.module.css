@@ -23,9 +23,19 @@
     transition: 0.3s ease;
 }
 
-.button:hover {
+.smallPadding {
+    padding: var(--spacing-sm) var(--spacing-md);
+}
+
+.primary.button:hover {
     transform: scale(1.03);
     background-color: var(--hover-primary);
+    cursor: pointer;
+}
+
+.secondary.button:hover {
+    transform: scale(1.03);
+    background-color: var(--hover-secondary);
     cursor: pointer;
 }
 
