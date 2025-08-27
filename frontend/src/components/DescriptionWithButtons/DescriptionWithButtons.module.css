@@ -4,3 +4,7 @@
     text-align: justify;
     color: var(--text);
 }
+
+b {
+    color: var(--primary);
+}

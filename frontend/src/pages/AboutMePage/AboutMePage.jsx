@@ -1,3 +1,4 @@
+import Book from '../../components/Book/Book';
 import Button from '../../components/Button/Button';
 import CharacterField from '../../components/CharacterField/CharacterField';
 import DescriptionWithButtons from '../../components/DescriptionWithButtons/DescriptionWithButtons';
@@ -51,7 +52,7 @@ export const AboutMePage = () => {
                 </div>
             </div>
             <div className={styles.bottomContent}>
-
+                <Book author={'Some Foo'} title={"Be The Best"} progress={1.0}/>
             </div>
         </div>
 
