@@ -13,6 +13,8 @@ import { GlobalStateContext } from '../../features/hooks/globalStateContext';
 
 import { FiGithub, FiLinkedin } from "react-icons/fi";
 
+import { findTextByTag } from '../../utils/dataUtils';
+
 
 export const HomePage = () => {
     const { data, isLoading, error } = useHomeData();
@@ -26,31 +28,31 @@ export const HomePage = () => {
     return (
         <div className={styles.homePage}>
             <div className={styles.mainContent}>        
-                <SparkField text={find_text_by_tag(titles, 'spark_main_page_string1')} onSparkClick={() => console.log('Spark is clicked')}/>
+                <SparkField text={findTextByTag(titles, 'spark_main_page_string1')} onSparkClick={() => console.log('Spark is clicked')}/>
                 
 
                 <div className={styles.columns}>
                     <div className={styles.smallColumn}>
-                        <CharacterField name={find_text_by_tag(titles, 'name')}/>
+                        <CharacterField name={findTextByTag(titles, 'name')}/>
                         <IconsWithButtons 
                             iconsWithLinks={[
                                 { icon: <FiGithub/>, link: "https://github.com/YaroslavWork"},
                                 { icon: <FiLinkedin/>, link: "https://www.linkedin.com/"}
                             ]}
                             buttons={[
-                                <Button text={find_text_by_tag(titles, 'contact_button')}/>
+                                <Button text={findTextByTag(titles, 'contact_button')}/>
                             ]}
                         />
                     </div>
                     
                     <div className={styles.bigColumn}>
-                        <Title text={find_text_by_tag(titles, 'position')} isPrimary={true}/>
+                        <Title text={findTextByTag(titles, 'position')} isPrimary={true}/>
                         <DescriptionWithButtons 
-                            text={find_text_by_tag(titles, 'short_description')}
+                            text={findTextByTag(titles, 'short_description')}
                             buttons={[
-                                <Button text={find_text_by_tag(titles, 'about_me_button')}/>,
-                                <Button text={find_text_by_tag(titles, 'skills_button')}/>,
-                                <Button text={find_text_by_tag(titles, 'projects_button')}/>,
+                                <Button text={findTextByTag(titles, 'about_me_button')}/>,
+                                <Button text={findTextByTag(titles, 'skills_button')}/>,
+                                <Button text={findTextByTag(titles, 'projects_button')}/>,
                             ]}
                         />
                         <CVCode prompt={find_text_by_tag(titles, 'personality_code_description')} code={globalString}/>
@@ -59,8 +61,4 @@ export const HomePage = () => {
             </div>
         </div>
     );
-}
-
-function find_text_by_tag(data, tag) {
-    return data.find(obj => obj.title === tag).text
 }

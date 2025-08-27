@@ -8,6 +8,7 @@ import { HomePage } from './pages/HomePage/HomePage';
 
 import { GlobalStateProvider } from './features/hooks/globalStateContext';
 import GlobalKeyboardListener from './features/hooks/globalKeyboardListener';
+import { AboutMePage } from './pages/AboutMePage/AboutMePage';
 
 function App() {
   const systemTheme = useSystemTheme();
@@ -28,6 +29,7 @@ function App() {
               <HomePage />
           </GlobalStateProvider>
         }></Route>
+        <Route path="/about_me" element={<AboutMePage/>} />
       </Routes>
     
     </BrowserRouter>
