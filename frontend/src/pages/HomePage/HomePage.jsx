@@ -55,7 +55,7 @@ export const HomePage = () => {
                                 <Button text={findTextByTag(titles, 'projects_button')}/>,
                             ]}
                         />
-                        <CVCode prompt={find_text_by_tag(titles, 'personality_code_description')} code={globalString}/>
+                        <CVCode prompt={findTextByTag(titles, 'personality_code_description')} code={globalString}/>
                     </div>
                 </div>
             </div>
