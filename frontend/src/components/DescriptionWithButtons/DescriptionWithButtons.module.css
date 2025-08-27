@@ -4,9 +4,3 @@
     text-align: justify;
     color: var(--text);
 }
-
-.buttonContainer {
-    display: flex;
-    flex-direction: row;
-    gap: var(--spacing-md);
-}

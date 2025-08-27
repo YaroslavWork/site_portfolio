@@ -7,18 +7,6 @@
     gap: var(--spacing-sm);
 }
 
-.buttonContainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: var(--spacing-md);
-    
-}
-
-.buttonContainer .button {
-    flex-grow: 1;
-}
-
 .iconLink {
     min-width: 3rem;
     font-size: var(--font-size-xxlarge);
