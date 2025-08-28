@@ -71,7 +71,8 @@ class AboutMeView(APIView):
             "hobbies": [
                 {
                     'name': hobby['name'][language_key],
-                    'description': hobby['description'][language_key]
+                    'description': hobby['description'][language_key],
+                    'icon_path': hobby['icon_path']
                 }
                 for hobby in hobby_serializer.data
             ]

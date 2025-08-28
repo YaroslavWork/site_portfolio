@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import Button from '../../components/Button/Button';
 import CharacterField from '../../components/CharacterField/CharacterField';
@@ -17,6 +18,8 @@ import { findTextByTag } from '../../utils/dataUtils';
 
 
 export const HomePage = () => {
+    const navigate = useNavigate()
+
     const { data, isLoading, error } = useHomeData();
     const { globalString } = useContext(GlobalStateContext);
 
@@ -28,7 +31,7 @@ export const HomePage = () => {
     return (
         <div className={styles.homePage}>
             <div className={styles.mainContent}>        
-                <SparkField text={findTextByTag(titles, 'spark_main_page_string1')} onSparkClick={() => console.log('Spark is clicked')}/>
+                <SparkField text={findTextByTag(titles, 'spark_main_page_string1')} onSparkClick={() => navigate('/home')}/>
                 
 
                 <div className={styles.columns}>
@@ -50,7 +53,7 @@ export const HomePage = () => {
                         <DescriptionWithButtons 
                             text={findTextByTag(titles, 'short_description')}
                             buttons={[
-                                <Button text={findTextByTag(titles, 'about_me_button')}/>,
+                                <Button text={findTextByTag(titles, 'about_me_button')} onButtonClick={() => navigate('/about_me')}/>,
                                 <Button text={findTextByTag(titles, 'skills_button')}/>,
                                 <Button text={findTextByTag(titles, 'projects_button')}/>,
                             ]}

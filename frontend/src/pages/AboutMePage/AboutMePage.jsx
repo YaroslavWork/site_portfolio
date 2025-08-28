@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom';
+
 import Book from '../../components/Book/Book';
 import Button from '../../components/Button/Button';
 import CharacterField from '../../components/CharacterField/CharacterField';
@@ -7,8 +9,13 @@ import TitleWithButtons from '../../components/TitleWithButtons/TitleWithButtons
 import { useAboutMeData } from '../../features/hooks/index.hooks';
 import { findTextByTag } from '../../utils/dataUtils';
 import styles from './AboutMePage.module.css';
+import BooksField from '../../components/BooksField/BooksField';
+import Hobby from '../../components/Hobby/Hobby';
+import HobbiesField from '../../components/HobbiesField/HobbiesField';
 
 export const AboutMePage = () => {
+    const navigate = useNavigate()
+
     const { data, isLoading, error } = useAboutMeData();
 
     if (isLoading) return <div>Loading...</div>;
@@ -21,7 +28,7 @@ export const AboutMePage = () => {
     return (
         <div className={styles.aboutMePage}>
             <div className={styles.mainContent}>
-            <SparkField text={findTextByTag(titles, 'spark_about_me_string1')} onSparkClick={() => console.log('Spark is clicked')}/>
+            <SparkField text={findTextByTag(titles, 'spark_about_me_string1')} onSparkClick={() => navigate('/home')}/>
             <div className={styles.columns}>
                 <div className={styles.smallColumn}>
                     <CharacterField name={findTextByTag(titles, 'name')}/>
@@ -51,8 +58,30 @@ export const AboutMePage = () => {
                     />
                 </div>
             </div>
+            
             <div className={styles.bottomContent}>
-                <Book author={'Some Foo'} title={"Be The Best"} progress={1.0}/>
+                <BooksField books={[
+                    books.map((data, index) => (
+                        <Book 
+                            key={index}
+                            author={data.author}
+                            title={data.title}
+                            progress={data.progress}
+                        />
+                    ))
+                ]}
+                />
+                <HobbiesField hobbies={[
+                    hobbies.map((data, index) => (
+                        <Hobby 
+                            key={index}
+                            title={data.name}
+                            description={data.description}
+                            icon_path={data.icon_path}
+                        />
+                    ))
+                ]}
+                />
             </div>
         </div>
 

@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './Book.module.css'
 
 export default function Book({ author, title, progress}) {
-  const isFull = progress == 1 ? true : false;
+  const isFull = progress === 1 ? true : false;
   const colorType = isFull ? styles.primary : styles.secondary
 
   return (
