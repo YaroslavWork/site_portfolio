@@ -9,6 +9,7 @@ import { HomePage } from './pages/HomePage/HomePage';
 import { GlobalStateProvider } from './features/hooks/globalStateContext';
 import GlobalKeyboardListener from './features/hooks/globalKeyboardListener';
 import { AboutMePage } from './pages/AboutMePage/AboutMePage';
+import { SkillsPage } from './pages/SkillsPage/SkillsPage';
 
 function App() {
   const systemTheme = useSystemTheme();
@@ -30,6 +31,7 @@ function App() {
           </GlobalStateProvider>
         }></Route>
         <Route path="/about_me" element={<AboutMePage/>} />
+        <Route path="/skills" element={<SkillsPage/>} />
       </Routes>
     
     </BrowserRouter>

@@ -54,7 +54,7 @@ export const HomePage = () => {
                             text={findTextByTag(titles, 'short_description')}
                             buttons={[
                                 <Button text={findTextByTag(titles, 'about_me_button')} onButtonClick={() => navigate('/about_me')}/>,
-                                <Button text={findTextByTag(titles, 'skills_button')}/>,
+                                <Button text={findTextByTag(titles, 'skills_button')} onButtonClick={() => navigate('/skills')}/>,
                                 <Button text={findTextByTag(titles, 'projects_button')}/>,
                             ]}
                         />

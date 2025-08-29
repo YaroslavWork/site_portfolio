@@ -19,7 +19,7 @@ export const AboutMePage = () => {
     const { data, isLoading, error } = useAboutMeData();
 
     if (isLoading) return <div>Loading...</div>;
-    if (error) return <div>Error loading home data</div>;
+    if (error) return <div>Error loading about me data</div>;
 
     const titles = data['data']['data']['titles'];
     const books = data['data']['data']['books'];
@@ -52,7 +52,7 @@ export const AboutMePage = () => {
                         text={findTextByTag(titles, 'description')}
                         buttons={[
                             <Button text={findTextByTag(titles, 'contact_button')}/>,
-                            <Button text={findTextByTag(titles, 'skills_button')}/>,
+                            <Button text={findTextByTag(titles, 'skills_button')} onButtonClick={() => navigate('/skills')}/>,
                             <Button text={findTextByTag(titles, 'projects_button')}/>,
                         ]}
                     />
