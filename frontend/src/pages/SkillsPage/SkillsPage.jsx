@@ -4,6 +4,9 @@ import { useSkillsData } from "../../features/hooks/index.hooks";
 import styles from './SkillsPage.module.css';
 import SparkField from "../../components/SparkField/SparkField";
 import { findTextByTag } from "../../utils/dataUtils";
+import SearchBar from "../../components/SearchBar/SearchBar";
+
+
 
 export const SkillsPage = () => {
     const navigate = useNavigate()
@@ -21,9 +24,10 @@ export const SkillsPage = () => {
             <div className={styles.mainContent}>
                 <div className={styles.topContainer}>
                     <SparkField 
-                        name={findTextByTag(titles, 'spark_skills_string1')}
+                        text={findTextByTag(titles, 'spark_skills_string1')}
                         onSparkClick={() => navigate('/home')}
                     />
+                    <SearchBar onSearchClick={() => console.log("Searching...")}/>
                 </div>
                 <div className={styles.searchedSkills}>
 
@@ -32,6 +36,14 @@ export const SkillsPage = () => {
 
                 </div>
             </div>
+        <h3>Titles</h3>
+        {titles.map((data, index) => (
+            <p key={index}>{data.title}: {data.text}</p>
+        ))}
+        <h3>Skills</h3>
+        {skills.map((data, index) => (
+            <p key={index}>{data.title} - {data.type}: {data.stuff_i_know}; {data.stuff_i_learn}; {data.stuff_i_plan}</p>
+        ))}
         </div>  
     )
 }

@@ -83,22 +83,7 @@ export const AboutMePage = () => {
                 ]}
                 />
             </div>
-        </div>
-
-
-
-            <h3>Titles</h3>
-            {titles.map((data, index) => (
-                <p key={index}>{data.title}: {data.text}</p>
-            ))}
-            <h3>Books</h3>
-            {books.map((data, index) => (
-                <p key={index}>{data.author}; {data.title}: {data.progress}</p>
-            ))}
-            <h3>Hobbies</h3>
-            {hobbies.map((data, index) => (
-                <p key={index}>{data.name}: {data.description}</p>
-            ))}
+            </div>
         </div>
     );
 }
