@@ -18,3 +18,32 @@
     flex-direction: row;
     align-items: flex-start;
 }
+
+.skills {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: var(--spacing-xxs);
+}
+
+.leftSkills {
+    flex: 1;
+}
+
+.rightSkills {
+    flex: 1;
+}
+
+@media (max-width: 700px) {
+    .topContainer {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .skills {
+        display: flex;
+        flex-direction: column;
+    }
+}

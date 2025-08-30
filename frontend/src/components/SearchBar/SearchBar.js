@@ -20,9 +20,9 @@ export default function SearchBar({ onSearchClick }) {
               onChange={handleInputChange}
             />
         </div>
-        <button className={styles.searchButton} onClick={onSearchClick}>
+        {/* <button className={styles.searchButton} onClick={onSearchClick}>
           <FiSend className={`${styles.icon} ${styles.smallIcon}`}/>
-        </button>
+        </button> */}
     </div>
   )
 }

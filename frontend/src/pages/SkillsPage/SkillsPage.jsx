@@ -4,9 +4,10 @@ import { useSkillsData } from "../../features/hooks/index.hooks";
 import styles from './SkillsPage.module.css';
 import SparkField from "../../components/SparkField/SparkField";
 import { findTextByTag } from "../../utils/dataUtils";
-import SearchBar from "../../components/SearchBar/SearchBar";
 import SkillSearch from "../../components/SkillSearch/SkillSearch";
 import TechnologyPreview from "../../components/TechnologyPreview/TechnologyPreview";
+import SkillSubComponent from "../../components/SkillSubComponent/SkillSubComponent";
+import SkillField from "../../components/SkillField/SkillField";
 
 
 
@@ -39,11 +40,39 @@ export const SkillsPage = () => {
                         ]}
                     />
                 </div>
-                <div className={styles.searchedSkills}>
-
-                </div>
-                <div className={styles.otherSkills}>
-
+                <div className={styles.skills}>
+                    <div className={styles.leftSkills}>
+                        {skills.map((data, index) => {
+                            if (index % 2 == 0) return (
+                            <SkillField
+                                technologyName={data.title}
+                                technologyType={data.type}
+                                whatIKnowTitle={findTextByTag(titles, 'what_i_know_title')}
+                                whatIKnowText={data.stuff_i_know}
+                                whatImLearningTitle={findTextByTag(titles, 'what_i_learn_title')}
+                                whatImLearningText={data.stuff_i_learn}
+                                whatIPlanTitle={findTextByTag(titles, 'what_i_plan_title')}
+                                whatIPlanText={data.stuff_i_plan}
+                                key={index}
+                            />)
+                        })}
+                    </div>
+                    <div className={styles.rightSkills}>
+                        {skills.map((data, index) => {
+                            if (index % 2 == 1) return (
+                            <SkillField
+                                technologyName={data.title}
+                                technologyType={data.type}
+                                whatIKnowTitle={findTextByTag(titles, 'what_i_know_title')}
+                                whatIKnowText={data.stuff_i_know}
+                                whatImLearningTitle={findTextByTag(titles, 'what_i_learn_title')}
+                                whatImLearningText={data.stuff_i_learn}
+                                whatIPlanTitle={findTextByTag(titles, 'what_i_plan_title')}
+                                whatIPlanText={data.stuff_i_plan}
+                                key={index}
+                            />)
+                        })}
+                    </div>
                 </div>
             </div>
         <h3>Titles</h3>
