@@ -75,14 +75,6 @@ export const SkillsPage = () => {
                     </div>
                 </div>
             </div>
-        <h3>Titles</h3>
-        {titles.map((data, index) => (
-            <p key={index}>{data.title}: {data.text}</p>
-        ))}
-        <h3>Skills</h3>
-        {skills.map((data, index) => (
-            <p key={index}>{data.title} - {data.type}: {data.stuff_i_know}; {data.stuff_i_learn}; {data.stuff_i_plan}</p>
-        ))}
         </div>  
     )
 }
