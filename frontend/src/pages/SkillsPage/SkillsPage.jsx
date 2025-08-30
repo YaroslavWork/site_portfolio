@@ -5,6 +5,8 @@ import styles from './SkillsPage.module.css';
 import SparkField from "../../components/SparkField/SparkField";
 import { findTextByTag } from "../../utils/dataUtils";
 import SearchBar from "../../components/SearchBar/SearchBar";
+import SkillSearch from "../../components/SkillSearch/SkillSearch";
+import TechnologyPreview from "../../components/TechnologyPreview/TechnologyPreview";
 
 
 
@@ -27,7 +29,15 @@ export const SkillsPage = () => {
                         text={findTextByTag(titles, 'spark_skills_string1')}
                         onSparkClick={() => navigate('/home')}
                     />
-                    <SearchBar onSearchClick={() => console.log("Searching...")}/>
+                    <SkillSearch 
+                        onSearchClick={() => console.log("Search")}
+                        searchedTechnologies={[
+                            <TechnologyPreview colorHex={"79CD79"} name={"Django"} type={"framework"}/>,
+                            <TechnologyPreview colorHex={"CD8F79"} name={"Docker"} type={"devOps"}/>,
+                            <TechnologyPreview colorHex={"799BCD"} name={"Python"} type={"programming language"}/>,
+                            <TechnologyPreview colorHex={"799BCD"} name={"JavaScript"} type={"programming language"}/>,
+                        ]}
+                    />
                 </div>
                 <div className={styles.searchedSkills}>
 
