@@ -1,0 +1,29 @@
+.linkContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--spacing-xs);
+    color: var(--text);
+    text-decoration: none;
+
+    border: 1px solid var(--primary);
+    border-radius: var(--border-radius-md);
+    background-color: var(--background-light);
+    cursor: pointer;
+}
+
+.linkTitle {
+    flex: 2;
+    text-align: left;
+    font-size: var(--font-size-large);
+    padding: 0 var(--spacing-md);
+    color: var(--secondary);
+}
+
+.linkUrl {
+    flex: 3;
+    text-align: right;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    padding: 0 var(--spacing-md);
+}

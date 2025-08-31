@@ -55,7 +55,7 @@ export const HomePage = () => {
                             buttons={[
                                 <Button text={findTextByTag(titles, 'about_me_button')} onButtonClick={() => navigate('/about_me')}/>,
                                 <Button text={findTextByTag(titles, 'skills_button')} onButtonClick={() => navigate('/skills')}/>,
-                                <Button text={findTextByTag(titles, 'projects_button')}/>,
+                                <Button text={findTextByTag(titles, 'projects_button')} onButtonClick={() => navigate('/projects')}/>,
                             ]}
                         />
                         <CVCode prompt={findTextByTag(titles, 'personality_code_description')} code={globalString}/>

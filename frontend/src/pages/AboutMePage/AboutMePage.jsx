@@ -53,7 +53,7 @@ export const AboutMePage = () => {
                         buttons={[
                             <Button text={findTextByTag(titles, 'contact_button')}/>,
                             <Button text={findTextByTag(titles, 'skills_button')} onButtonClick={() => navigate('/skills')}/>,
-                            <Button text={findTextByTag(titles, 'projects_button')}/>,
+                            <Button text={findTextByTag(titles, 'projects_button')} onButtonClick={() => navigate('/projects')}/>,
                         ]}
                     />
                 </div>
