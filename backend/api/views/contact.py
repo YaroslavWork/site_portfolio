@@ -54,4 +54,7 @@ class ContactView(APIView):
             ]
         }
 
-        return Response(filtered_data, status=status.HTTP_200_OK)
+        return Response({
+            "language": language,
+            "data": filtered_data
+        }, status=status.HTTP_200_OK)
