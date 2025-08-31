@@ -6,6 +6,8 @@ import { findTextByTag } from '../../utils/dataUtils';
 
 import styles from './ProjectsPage.module.css'
 import LinkPreview from '../../components/LinkPreview/LinkPreview';
+import ProjectField from '../../components/ProjectField/ProjectField';
+import TechnologyPreview from '../../components/TechnologyPreview/TechnologyPreview';
 
 export const ProjectsPage = () => {
     const navigate = useNavigate()
@@ -26,7 +28,32 @@ export const ProjectsPage = () => {
             onSparkClick={() => navigate('/home')}
           />
           <div className={styles.projectsContent}>
-            <LinkPreview name={'Github'} url={'https://github.com/YaroslavWork/RareHashesWebsite'}/>
+            {projects.map((data, index) => (
+              <ProjectField
+                key={index}
+                name={data.name}
+                technologies={[data.technologies.map((technology, indexA) => (
+                  <TechnologyPreview
+                    key={indexA}
+                    colorHex={'2f5f6f'}
+                    name={technology.name}
+                    type={technology.type}
+                  />
+                ))]}
+                description={data.description}
+                references={[data.references.map((references, indexB) => (
+                  <LinkPreview 
+                    key={indexB}
+                    name={references.name}
+                    url={references.url}
+                  />
+                ))]}
+                images_path={data.image_paths}
+                technologiesTitle={findTextByTag(titles, 'technologies_title')}
+                descriptionTitle={findTextByTag(titles, 'description_title')}
+                linksTitle={findTextByTag(titles, 'links_title')}
+              />
+            ))}
           </div>
         </div>
       </div>

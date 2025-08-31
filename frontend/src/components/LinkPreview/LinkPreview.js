@@ -2,7 +2,7 @@ import React from 'react'
 
 import styles from './LinkPreview.module.css'
 
-export default function LinkPreview({ onLinkClick, name, url }) {
+export default function LinkPreview({ name, url }) {
   return (
     <a
         className={styles.linkContainer}
