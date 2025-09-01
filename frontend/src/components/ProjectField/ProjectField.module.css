@@ -32,6 +32,7 @@
     flex-direction: row;
     gap: var(--spacing-sm);
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .referenceContent {
@@ -63,4 +64,28 @@
     width: 100%;
     border-radius: var(--border-radius-md);
     object-fit: cover;
+}
+
+@media (max-width: 850px) {
+    .projectField {
+        flex-direction: column;
+    }
+
+    .projectImages {
+        flex-direction: row;
+        flex-wrap: wrap;
+        overflow-x: auto;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .image {
+        width: 15rem;
+        object-fit: cover;
+    }
+
+    .technologiesContent {
+        justify-content: flex-start;
+    }
+
 }

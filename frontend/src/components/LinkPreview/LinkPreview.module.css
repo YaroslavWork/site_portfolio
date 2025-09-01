@@ -28,3 +28,9 @@
     color: var(--text-muted);
     padding: 0 var(--spacing-md);
 }
+
+@media (max-width: 850px) {
+    .linkContainer {
+        width: calc(100% - var(--spacing-sm));
+    }
+}
