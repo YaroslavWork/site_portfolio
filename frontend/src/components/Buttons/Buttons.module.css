@@ -1,11 +1,13 @@
 .buttonContainer {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
     gap: var(--spacing-md);
     
 }
 
-.buttonContainer .button {
-    flex-grow: 1;
+.buttonContainer {
+    display: flex;
+    align-items: center;
 }

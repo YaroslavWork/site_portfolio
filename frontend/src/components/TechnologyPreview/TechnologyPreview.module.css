@@ -41,4 +41,8 @@
     .technologyType {
         display: none;
     }
+
+    .technologyName {
+        padding-right: var(--spacing-md);
+    }
 }

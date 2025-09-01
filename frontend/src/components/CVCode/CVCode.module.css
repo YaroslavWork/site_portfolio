@@ -44,3 +44,9 @@
         font-size: 7vw;
     }
 }
+
+@media (max-width: 370px) {
+    .codeLetter {
+        font-size: 3.5vw;
+    }
+}
