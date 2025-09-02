@@ -3,6 +3,9 @@ import SparkField from "../../components/SparkField/SparkField";
 import { useWorkExperienceData } from "../../features/hooks/index.hooks";
 import styles from './WorkExperiencePage.module.css'
 import { findTextByTag } from "../../utils/dataUtils";
+import Job from "../../components/Job/Job";
+import JobsContainer from "../../components/JobsContainer/JobsContainer";
+import Button from "../../components/Button/Button";
 
 export const WorkExperiencePage = () => {
     const navigate = useNavigate()
@@ -17,9 +20,26 @@ export const WorkExperiencePage = () => {
     const other_jobs = data['data']['data']['other_jobs'];
 
     return (
-      <div className={styles.homePage}>
+      <div className={styles.workExperiencePage}>
         <div className={styles.mainContent}>
             <SparkField text={findTextByTag(titles, 'spark_work_experience_string1')} onSparkClick={() => navigate('/home')}/>
+            <JobsContainer 
+                title={findTextByTag(titles, 'it_jobs_title')}
+                noWorkDescription={findTextByTag(titles, 'it_job_none_description')}
+                nowText={findTextByTag(titles, 'you_are_here_title')}
+                jobs={it_jobs}
+                ContactButton={<Button
+                    text={findTextByTag(titles, 'contact_button')}
+                />}
+                yearInPx={200}
+            />
+            <JobsContainer
+                title={findTextByTag(titles, 'other_jobs_title')}
+                noWorkDescription={findTextByTag(titles, 'it_job_none_description')}
+                nowText={findTextByTag(titles, 'you_are_here_title')}
+                jobs={other_jobs}
+                yearInPx={200}
+            />
         </div>
       </div>
     )

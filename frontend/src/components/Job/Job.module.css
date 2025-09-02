@@ -1,0 +1,51 @@
+.jobContainer {
+    display: flex;
+    flex-direction: row;
+
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+}
+
+.jobContent {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.jobTopContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    /* On the other sides */
+    align-items: center;
+    justify-content: space-between;
+}
+
+.jobProgress {
+    background-color: var(--primary);
+    width: 10px;
+}
+
+.onlyBottomCorners {
+    border-bottom-left-radius: var(--border-radius-lg);
+    border-bottom-right-radius: var(--border-radius-lg);
+}
+
+.allCorners {
+    border-radius: var(--border-radius-lg);
+}
+
+.jobTitle {
+    font-size: var(--font-size-xlarge);
+}
+
+.jobNameandPlace {
+    color: var(--text-muted);
+    font-size: var(--font-size-medium);
+}
+
+.jobDescription {
+    padding: var(--spacing-md) 0;
+    font-size: var(--font-size-small);
+    color: var(--text-muted);
+}

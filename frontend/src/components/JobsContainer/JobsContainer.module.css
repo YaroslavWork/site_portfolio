@@ -1,0 +1,105 @@
+.contentContainer {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    gap: var(--spacing-lg);
+    width: 100%;
+}
+
+.topContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.yearBlock {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: var(--spacing-sm);
+    align-items: center;
+}
+
+.yearsCounter {
+    position: relative;
+}
+
+.yearTimeline {
+    position: absolute;
+    width: 3px;
+    top: 29px;
+    left: calc(45px + 30px / 2 + var(--spacing-sm));
+    background-color: var(--secondary);
+    transform: translateX(-50%);
+    border-bottom-left-radius: var(--border-radius-lg);
+    border-bottom-right-radius: var(--border-radius-lg);
+    z-index: 0;
+}
+
+.workBlocks {
+    position: relative;
+    width: 100%;
+}
+
+.circle {
+    width: 30px;
+    
+    aspect-ratio: 1 / 1;
+    background-color: var(--secondary);
+    border: 1px solid var(--secondary);
+    border-radius: var(--border-radius-full);
+}
+
+.jobTitle {
+    font-size: var(--font-size-xlarge);
+    font-weight: 400;
+    color: var(--primary);
+    text-transform: uppercase;
+}
+
+/* .yearBlock:first-child .circle {
+    background-color: transparent;
+} */
+
+
+.yearCount {
+    font-size: var(--font-size-large);
+    font-weight: 400;
+    color: var(--secondary);
+    width: 45px;
+}
+
+.jobBlock {
+    position: absolute;
+    width: 100%;
+}
+
+.nowBlock {
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+}
+
+.nowText {
+    height: 20px;
+    width: fit-content;
+    font-size: 0.6rem;
+    color: var(--text-muted);
+}
+
+.nowLine {
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background-color: var(--border);
+    z-index: 0;
+}
+
+.noWork {
+    width: 100%;
+    font-size: var(--font-size-small);
+    color: var(--text-muted);
+    text-align: center;
+}
