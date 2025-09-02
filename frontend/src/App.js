@@ -11,6 +11,7 @@ import GlobalKeyboardListener from './features/hooks/globalKeyboardListener';
 import { AboutMePage } from './pages/AboutMePage/AboutMePage';
 import { SkillsPage } from './pages/SkillsPage/SkillsPage';
 import { ProjectsPage } from './pages/ProjectsPage/ProjectsPage';
+import { WorkExperiencePage } from './pages/WorkExperiencePage/WorkExperiencePage';
 
 function App() {
   const systemTheme = useSystemTheme();
@@ -34,6 +35,7 @@ function App() {
         <Route path="/about_me" element={<AboutMePage/>} />
         <Route path="/skills" element={<SkillsPage/>} />
         <Route path="/projects" element={<ProjectsPage/>} />
+        <Route path="/work_experience" element={<WorkExperiencePage/>} />
       </Routes>
     
     </BrowserRouter>
