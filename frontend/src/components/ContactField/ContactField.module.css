@@ -1,0 +1,5 @@
+.contactIdentification {
+    font-size: var(--font-size-xlarge);
+    font-weight: 400;
+    color: var(--primary);
+}

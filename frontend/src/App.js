@@ -13,6 +13,7 @@ import { SkillsPage } from './pages/SkillsPage/SkillsPage';
 import { ProjectsPage } from './pages/ProjectsPage/ProjectsPage';
 import { WorkExperiencePage } from './pages/WorkExperiencePage/WorkExperiencePage';
 import { EducationPage } from './pages/EducationPage/EducationPage';
+import { ContactPage } from './pages/ContactPage/ContactPage';
 
 function App() {
   const systemTheme = useSystemTheme();
@@ -38,6 +39,7 @@ function App() {
         <Route path="/projects" element={<ProjectsPage/>} />
         <Route path="/work_experience" element={<WorkExperiencePage/>} />
         <Route path="/education" element={<EducationPage/>} />
+        <Route path="/contact" element={<ContactPage/>} />
       </Routes>
     
     </BrowserRouter>
