@@ -1,0 +1,13 @@
+.educationPage {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mainContent {
+    display: flex;
+    flex-direction: column;
+    max-width: 1080px;
+}

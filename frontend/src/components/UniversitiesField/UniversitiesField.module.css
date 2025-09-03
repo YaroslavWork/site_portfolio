@@ -1,0 +1,39 @@
+.universitiesTitle {
+    font-size: var(--font-size-xlarge);
+    text-transform: uppercase;
+    color: var(--primary);
+    font-weight: 400;
+}
+
+.universityBlock {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--spacing-md) 0;
+
+}
+
+.universityInstitution {
+    font-size: var(--font-size-large);
+    font-weight: 700;
+    color: var(--secondary);
+    text-align: center;
+}
+
+.universityDate {
+    width: 100%;
+    text-align: right;
+    font-size: var(--font-size-small);
+    color: var(--text-muted);
+}
+
+.universityDegree {
+    font-size: var(--font-size-large);
+    font-weight: 400;
+}
+
+.universityFieldOfStudy {
+    font-size: var(--font-size-medium);
+    color: var(--text-muted);
+}

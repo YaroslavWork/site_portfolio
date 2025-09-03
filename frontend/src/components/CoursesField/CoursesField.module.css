@@ -1,0 +1,40 @@
+.coursesTitle {
+    font-size: var(--font-size-xlarge);
+    text-transform: uppercase;
+    color: var(--primary);
+    font-weight: 400;
+}
+
+.courseTitle {
+    font-size: var(--font-size-large);
+    font-weight: 700;
+    color: var(--secondary);
+}
+
+.courseBlock {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md) 0;
+}
+
+.courseTopContainer {
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    gap: var(--spacing-md);
+    justify-content: space-between;
+    align-items: center;
+}
+
+.courseCompany {
+    font-size: var(--font-size-large);
+    font-weight: 400;
+}
+
+.courseDescription {
+    font-size: var(--font-size-medium);
+    color: var(--text-muted);
+}
