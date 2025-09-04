@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import MultiLanguageString, Hobby, Technology, Skill, Project, Course, Reference, Education, Book, Work, TechnologyType, Host, Contact
+from .models import MultiLanguageString, Hobby, Technology, Skill, Project, Course, Reference, Education, Book, Work, TechnologyType, Host, Contact, Company
 
 # Register your models here.
 admin.site.register(MultiLanguageString)
@@ -15,3 +15,4 @@ admin.site.register(Book)
 admin.site.register(Work)
 admin.site.register(Host)
 admin.site.register(Contact)
+admin.site.register(Company)

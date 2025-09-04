@@ -11,3 +11,4 @@ from .course import Course
 from .technology_type import TechnologyType
 from .host import Host
 from .contact import Contact
+from .company import Company
