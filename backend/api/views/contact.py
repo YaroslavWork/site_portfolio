@@ -25,11 +25,11 @@ class ContactView(APIView):
             )
         
         # Fetch multi-language strings for the about me section
-        skills_titles = [
+        contacts_titles = [
             'spark_contact_string1',
         ]
 
-        multi_language_strings = MultiLanguageString.objects.filter(title__in=skills_titles)
+        multi_language_strings = MultiLanguageString.objects.filter(title__in=contacts_titles)
         serializer = MultiLanguageStringSerializer(multi_language_strings, many=True)
         
         # Contacts

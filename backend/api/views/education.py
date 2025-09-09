@@ -27,13 +27,13 @@ class EducationView(APIView):
             )
         
         # Fetch multi-language strings for the about me section
-        skills_titles = [
+        educations_titles = [
             'spark_education_string1',
             'courses_title',
             'education_title',
         ]
 
-        multi_language_strings = MultiLanguageString.objects.filter(title__in=skills_titles)
+        multi_language_strings = MultiLanguageString.objects.filter(title__in=educations_titles)
         serializer = MultiLanguageStringSerializer(multi_language_strings, many=True)
 
         # Education

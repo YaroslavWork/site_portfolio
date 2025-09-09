@@ -44,3 +44,7 @@ class Company(models.Model):
         verbose_name="Skills",
         help_text="The skills associated with the company"
     )
+
+
+    def __str__(self) -> str:
+        return f"\"{self.name}\" - {self.code} (#{self.company_color})"

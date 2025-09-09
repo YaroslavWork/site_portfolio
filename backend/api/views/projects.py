@@ -12,7 +12,7 @@ from ..constans.language import LANGUAGE_SHORTS
 
 class ProjectsView(APIView):
     """
-    View to handle skills related requests.
+    View to handle projects related requests.
     """
     
     def get(self, request):
@@ -25,14 +25,14 @@ class ProjectsView(APIView):
             )
         
         # Fetch multi-language strings for the about me section
-        skills_titles = [
+        projects_titles = [
             'spark_projects_string1',
             'technologies_title',
             'description_title',
             'links_title',
         ]
 
-        multi_language_strings = MultiLanguageString.objects.filter(title__in=skills_titles)
+        multi_language_strings = MultiLanguageString.objects.filter(title__in=projects_titles)
         serializer = MultiLanguageStringSerializer(multi_language_strings, many=True)
 
         # Skills
