@@ -30,3 +30,8 @@ export const useContactData = () => useQuery({
   queryKey: ['contact'],
   queryFn: api.getContactData,
 });
+export const useCompanyData = (companyCode) => useQuery({
+  queryKey: ['company', companyCode],
+  queryFn: () => api.getCompanyData(companyCode),
+  enabled: !!companyCode
+})
