@@ -12,7 +12,7 @@
     font-size: var(--font-size-large);
     text-transform: uppercase;
     font-weight: 700;
-    color: var(--secondary);
+    color: var(--company-bold-color);
     padding: var(--spacing-xs) 0;
 }
 
@@ -25,5 +25,5 @@
 }
 
 ul li::marker {
-    color: var(--secondary);
+    color: var(--company-bold-color);
 }

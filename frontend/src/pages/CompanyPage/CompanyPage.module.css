@@ -1,0 +1,41 @@
+.companyPage {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mainContent {
+    display: flex;
+    flex-direction: column;
+    max-width: 1080px;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+}
+
+.mainPanel {
+    flex: 1;
+}
+
+.showcase {
+    flex: 2;
+}
+
+@media (max-width: 700px) {
+    .columns {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .smallColumn {
+        max-width: 100%;
+    }
+
+    .bigColumn {
+        max-width: 100%;
+    }
+}

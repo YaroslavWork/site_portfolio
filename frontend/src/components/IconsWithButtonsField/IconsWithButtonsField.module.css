@@ -10,7 +10,7 @@
 .iconLink {
     min-width: 3rem;
     font-size: var(--font-size-xxlarge);
-    color: var(--primary);
+    color: var(--company-bold-color);
     text-align: center;
 
     transition: 0.3s ease;

@@ -7,8 +7,10 @@ export default function IconsWithButtonsField( {iconsWithLinks, buttons = []} ) 
     return (
         <BorderContainer>
             <div className={styles.iconContainer}>
-                {iconsWithLinks.map((item, index) => (
-                    <div key={index} className={styles.icon}>
+                {iconsWithLinks.map((item, index) => {
+                    const styleVar = item.color ? { '--company-bold-color': `#${item.color}` } : {};
+                    return (
+                    <div style={styleVar} key={index} className={styles.icon}>
                         <a
                             key={index} 
                             href={item.link} 
@@ -19,7 +21,8 @@ export default function IconsWithButtonsField( {iconsWithLinks, buttons = []} ) 
                         {item.icon}
                         </a>
                     </div>
-                ))}
+                    )
+                })}
             </div>
         <Buttons buttons={buttons}/>
         </BorderContainer>

@@ -7,8 +7,10 @@ export default function SkillField({
     technologyName, technologyType, hexColor,
     whatIKnowTitle, whatIKnowText,
     whatImLearningTitle, whatImLearningText,
-    whatIPlanTitle, whatIPlanText
+    whatIPlanTitle, whatIPlanText,
+    color=null
 }) {
+
   return (
     <BorderContainer>
         <div className={skills.technologyTop}>
@@ -16,9 +18,9 @@ export default function SkillField({
             <p className={skills.technologyType}>{technologyType}</p>
         </div>
         <div className={skills.whatField}>
-            <SkillSubComponent whatType={whatIKnowTitle} text={whatIKnowText} />
-            <SkillSubComponent whatType={whatImLearningTitle} text={whatImLearningText} />
-            <SkillSubComponent whatType={whatIPlanTitle} text={whatIPlanText} />
+            <SkillSubComponent whatType={whatIKnowTitle} text={whatIKnowText} color={color}/>
+            <SkillSubComponent whatType={whatImLearningTitle} text={whatImLearningText} color={color}/>
+            <SkillSubComponent whatType={whatIPlanTitle} text={whatIPlanText} color={color}/>
         </div>
     </BorderContainer>
   )

@@ -16,7 +16,7 @@
     font-family: 'Lato', sans-serif;
 
     /* Visual */
-    background-color: var(--primary);
+    background-color: var(--company-bold-color);
     border-radius: var(--border-radius-md);
     border: none;
 
@@ -40,7 +40,7 @@
 }
 
 .primary {
-    background-color: var(--primary);
+    background-color: var(--company-bold-color);
 }
 
 .secondary {

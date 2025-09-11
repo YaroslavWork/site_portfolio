@@ -23,6 +23,7 @@
   --warning: #6B6543;
   --success: #4A6D5A;
   --info: #526380;
+  --company-bold-color: #34447F;
 
   /* Font sizes */
   --font-size-small: 0.875rem; /* 14px */
@@ -74,6 +75,7 @@
   --warning: #A6A17D;
   --success: #85A894;
   --info: #8DA0BF;
+  --company-bold-color: #98AEF1;
 }
 
 *, *::before, *::after {

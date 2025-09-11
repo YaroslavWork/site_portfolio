@@ -5,6 +5,11 @@
     color: var(--secondary);
 }
 
+.titleText b {
+    color: var(--company-bold-color);
+}
+
+
 .primary {
     color: var(--primary);
 }

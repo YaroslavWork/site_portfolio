@@ -28,3 +28,7 @@
 .sparkMonolog {
     font-family: 'Poppins', sans-serif;
 }
+
+.sparkMonolog b {
+    color: var(--company-bold-color);
+}
