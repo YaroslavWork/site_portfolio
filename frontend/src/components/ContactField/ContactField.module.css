@@ -3,3 +3,9 @@
     font-weight: 400;
     color: var(--primary);
 }
+
+@media (max-width: 430px) {
+    .contactIdentification {
+        font-size: var(--font-size-base);
+    }
+}
