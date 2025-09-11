@@ -51,7 +51,7 @@ export const AboutMePage = () => {
                     <DescriptionWithButtons
                         text={findTextByTag(titles, 'description')}
                         buttons={[
-                            <Button text={findTextByTag(titles, 'contact_button')}/>,
+                            <Button text={findTextByTag(titles, 'contact_button')} onButtonClick={() => navigate('/contact')}/>,
                             <Button text={findTextByTag(titles, 'skills_button')} onButtonClick={() => navigate('/skills')}/>,
                             <Button text={findTextByTag(titles, 'projects_button')} onButtonClick={() => navigate('/projects')}/>,
                             <Button text={findTextByTag(titles, 'education_button')} onButtonClick={() => navigate('/education')}/>,
