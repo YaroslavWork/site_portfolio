@@ -20,7 +20,7 @@ export const ContactPage = () => {
     return (
         <div className={styles.contactPage}>
             <div className={styles.mainContent}>
-                <SparkField text={findTextByTag(titles, 'spark_contact_string1')}/>
+                <SparkField text={findTextByTag(titles, 'spark_contact_string1')} onSparkClick={() => navigate('/home')}/>
                 <div className={styles.contactContent}>
                     {contacts.map((data, index) => (
                         <ContactField key={index} identification={data.identification} />

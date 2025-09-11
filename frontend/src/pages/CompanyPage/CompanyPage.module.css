@@ -26,16 +26,16 @@
 }
 
 @media (max-width: 700px) {
-    .columns {
+    .content {
         display: flex;
         flex-direction: column;
     }
 
-    .smallColumn {
+    .mainPanel {
         max-width: 100%;
     }
 
-    .bigColumn {
+    .showcase {
         max-width: 100%;
     }
 }

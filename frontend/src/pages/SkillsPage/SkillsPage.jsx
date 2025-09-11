@@ -6,7 +6,6 @@ import SparkField from "../../components/SparkField/SparkField";
 import { findTextByTag } from "../../utils/dataUtils";
 import SkillSearch from "../../components/SkillSearch/SkillSearch";
 import TechnologyPreview from "../../components/TechnologyPreview/TechnologyPreview";
-import SkillSubComponent from "../../components/SkillSubComponent/SkillSubComponent";
 import SkillField from "../../components/SkillField/SkillField";
 
 
@@ -43,7 +42,7 @@ export const SkillsPage = () => {
                 <div className={styles.skills}>
                     <div className={styles.leftSkills}>
                         {skills.map((data, index) => {
-                            if (index % 2 == 0) return (
+                            if (index % 2 === 0) return (
                             <SkillField
                                 technologyName={data.title}
                                 technologyType={data.type}
@@ -59,7 +58,7 @@ export const SkillsPage = () => {
                     </div>
                     <div className={styles.rightSkills}>
                         {skills.map((data, index) => {
-                            if (index % 2 == 1) return (
+                            if (index % 2 === 1) return (
                             <SkillField
                                 technologyName={data.title}
                                 technologyType={data.type}
