@@ -36,6 +36,7 @@ class AboutMeView(APIView):
             'contact_button',
             'skills_button',
             'projects_button',
+            'education_button',
             'spark_about_me_string1',
         ]
         multi_language_strings = MultiLanguageString.objects.filter(title__in=about_me_titles)
