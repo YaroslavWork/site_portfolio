@@ -46,6 +46,10 @@ class CompanyView(APIView):
                 'projects_button',
                 'home_title',
                 'home_button',
+                'contact_button',
+                'what_i_know_title',
+                'what_i_learn_title',
+                'what_i_plan_title',
             ]
             multi_language_strings = MultiLanguageString.objects.filter(title__in=companies_titles)
             serializer = MultiLanguageStringSerializer(multi_language_strings, many=True)
@@ -68,7 +72,7 @@ class CompanyView(APIView):
             for title_obj in unfiltered_titles:
                 if title_obj['title'] in ['company_description_title', 'spark_company_string1', 'company_main_title', 'company_skills_title']:
                     # Replace the placeholder with the company name
-                    title_obj['text'] = title_obj['text'].replace('${company_name}', company.name)
+                    title_obj['text'] = title_obj['text'].replace('${company_name}', f'<b>{company.name}</b>')
 
             filtered_data = {
                 "titles": unfiltered_titles,
@@ -82,6 +86,10 @@ class CompanyView(APIView):
                     }
                     for skill in skills_serializer.data
                 ],
+                "other_data":{
+                    'company_name': company_serializer.data['name'],
+                    'color': company_serializer.data['company_color'],
+                }
             }
             
 
