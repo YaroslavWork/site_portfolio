@@ -1,0 +1,25 @@
+.titleField {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.title {
+    width: 100%;
+    text-align: center;
+    font: 'Lato', sans-serif;
+    font-size: var(--font-size-large);
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--company-bold-color);
+    padding: var(--spacing-xs) 0;
+}
+
+.projectContent{
+    display: flex;
+    flex-direction: row;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+    justify-content: center;
+}

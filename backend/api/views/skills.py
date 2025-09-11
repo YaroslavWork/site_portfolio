@@ -7,6 +7,8 @@ from ..serializers.skill_serializer import SkillSerializer
 
 from ..models.multi_language_string import MultiLanguageString
 from ..models.skill import Skill
+from ..models.project import Project
+
 
 from ..constans.language import LANGUAGE_SHORTS
 
@@ -29,7 +31,9 @@ class SkillsView(APIView):
             'spark_skills_string1',
             'what_i_know_title',
             'what_i_learn_title',
-            'what_i_plan_title'
+            'what_i_plan_title',
+            'used_in_projects_title',
+            'projects_button'
         ]
 
         multi_language_strings = MultiLanguageString.objects.filter(title__in=skills_titles)
@@ -39,8 +43,20 @@ class SkillsView(APIView):
         skills = Skill.objects.all()
         skill_serializer = SkillSerializer(skills, many=True)
 
-        # Add all data into one response
         language_key = LANGUAGE_SHORTS[language]
+
+        # Find this skill in projects
+        projects = Project.objects.all()
+        for skill in skill_serializer.data:
+            for skill in skill_serializer.data:
+                skill['used_in_projects'] = [
+                    getattr(project.name, language_key)
+                    for project in projects
+                        if skill['title']['name'] in [tech.name for tech in project.technologies.all()]
+                ]
+
+        # Add all data into one response
+        
         filtered_data = {
             "titles": [
                 {
@@ -52,6 +68,7 @@ class SkillsView(APIView):
                 {
                     "title": skill['title']['name'],
                     "type": skill['title']['technology_type']['name'][language_key],
+                    "used_in_projects": skill['used_in_projects'],
                     "stuff_i_know": skill['stuff_i_know'][language_key],
                     "stuff_i_learn": skill['stuff_i_learn'][language_key],
                     "stuff_i_plan": skill['stuff_i_plan'][language_key],

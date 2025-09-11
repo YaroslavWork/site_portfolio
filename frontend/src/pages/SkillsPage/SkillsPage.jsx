@@ -11,7 +11,23 @@ import SkillField from "../../components/SkillField/SkillField";
 import { useState } from "react";
 import Button from "../../components/Button/Button";
 
-
+const renderSkillField = (data, index, titles) => {
+    return (
+        <SkillField
+            technologyName={data.title}
+            technologyType={data.type}
+            usedInProjects = {data.used_in_projects}
+            usedInProjectsTitle = {findTextByTag(titles, 'used_in_projects_title')}
+            whatIKnowTitle={findTextByTag(titles, 'what_i_know_title')}
+            whatIKnowText={data.stuff_i_know}
+            whatImLearningTitle={findTextByTag(titles, 'what_i_learn_title')}
+            whatImLearningText={data.stuff_i_learn}
+            whatIPlanTitle={findTextByTag(titles, 'what_i_plan_title')}
+            whatIPlanText={data.stuff_i_plan}
+            key={index}
+        />
+    )
+}
 
 export const SkillsPage = () => {
     const navigate = useNavigate()
@@ -39,11 +55,14 @@ export const SkillsPage = () => {
         <div className={`${isShaking ? anim.shake : ''} ${styles.SkillsPage}`} onAnimationEnd={() => setIsShaking(false)}>
             <div className={styles.mainContent}>
                 <div className={styles.topContainer}>
-                    <SparkField 
-                        text={findTextByTag(titles, 'spark_skills_string1')}
-                        onSparkClick={() => navigate('/home')}
-                        onSparkEnergyClick={() => startShakeAnimation()}
-                    />
+                    <div className={styles.topLeftContainer}>
+                        <SparkField 
+                            text={findTextByTag(titles, 'spark_skills_string1')}
+                            onSparkClick={() => navigate('/home')}
+                            onSparkEnergyClick={() => startShakeAnimation()}
+                        />
+                        <Button text={findTextByTag(titles, 'projects_button')} onButtonClick={() => navigate('/projects')}/>
+                    </div>
                     <SkillSearch 
                         onSearchClick={() => console.log("Search")}
                         searchedTechnologies={[
@@ -57,34 +76,12 @@ export const SkillsPage = () => {
                 <div className={styles.skills}>
                     <div className={styles.leftSkills}>
                         {skills.map((data, index) => {
-                            if (index % 2 === 0) return (
-                            <SkillField
-                                technologyName={data.title}
-                                technologyType={data.type}
-                                whatIKnowTitle={findTextByTag(titles, 'what_i_know_title')}
-                                whatIKnowText={data.stuff_i_know}
-                                whatImLearningTitle={findTextByTag(titles, 'what_i_learn_title')}
-                                whatImLearningText={data.stuff_i_learn}
-                                whatIPlanTitle={findTextByTag(titles, 'what_i_plan_title')}
-                                whatIPlanText={data.stuff_i_plan}
-                                key={index}
-                            />)
+                            if (index % 2 === 0) return renderSkillField(data, index, titles)
                         })}
                     </div>
                     <div className={styles.rightSkills}>
                         {skills.map((data, index) => {
-                            if (index % 2 === 1) return (
-                            <SkillField
-                                technologyName={data.title}
-                                technologyType={data.type}
-                                whatIKnowTitle={findTextByTag(titles, 'what_i_know_title')}
-                                whatIKnowText={data.stuff_i_know}
-                                whatImLearningTitle={findTextByTag(titles, 'what_i_learn_title')}
-                                whatImLearningText={data.stuff_i_learn}
-                                whatIPlanTitle={findTextByTag(titles, 'what_i_plan_title')}
-                                whatIPlanText={data.stuff_i_plan}
-                                key={index}
-                            />)
+                            if (index % 2 === 1) return renderSkillField(data, index, titles)
                         })}
                     </div>
                 </div>

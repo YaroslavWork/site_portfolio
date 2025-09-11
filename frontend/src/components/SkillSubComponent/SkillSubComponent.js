@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './SkillSubComponent.module.css'
 
 export default function SkillSubComponent({ whatType, text, color=null }) {
-  const styleVar = color ? { '--company-bold-color': `#${color}` } : {};
+  const styleVar = color ? { '--company-bold-color': `#${color}` } : {'--company-bold-color': 'var(--secondary)'};
 
   return (
     <div className={styles.whatField}>
