@@ -40,7 +40,7 @@ export const HomePage = () => {
                         <IconsWithButtons 
                             iconsWithLinks={[
                                 { icon: <FiGithub/>, link: "https://github.com/YaroslavWork"},
-                                { icon: <FiLinkedin/>, link: "https://www.linkedin.com/"}
+                                { icon: <FiLinkedin/>, link: "https://www.linkedin.com/in/yaroslav-zahorodnyi"}
                             ]}
                             buttons={[
                                 <Button text={findTextByTag(titles, 'contact_button')}/>

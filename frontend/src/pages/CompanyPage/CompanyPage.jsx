@@ -46,7 +46,7 @@ export const CompanyPage = () => {
                         <IconsWithButtonsField 
                             iconsWithLinks={[
                                 { icon: <FiGithub/>, link: "https://github.com/YaroslavWork", color: diffInfo['color']},
-                                { icon: <FiLinkedin/>, link: "https://www.linkedin.com/", color: diffInfo['color']}
+                                { icon: <FiLinkedin/>, link: "https://www.linkedin.com/in/yaroslav-zahorodnyi", color: diffInfo['color']}
                             ]}
                             buttons={[
                                 <Button text={findTextByTag(titles, 'contact_button')} color={diffInfo['color']}/>
