@@ -49,7 +49,7 @@ export const CompanyPage = () => {
                                 { icon: <FiLinkedin/>, link: "https://www.linkedin.com/in/yaroslav-zahorodnyi", color: diffInfo['color']}
                             ]}
                             buttons={[
-                                <Button text={findTextByTag(titles, 'contact_button')} color={diffInfo['color']}/>
+                                <Button text={findTextByTag(titles, 'contact_button')} color={diffInfo['color']} onButtonClick={() => navigate('/contact')}/>
                             ]}
                         />
                         <TitleWithButtons
@@ -67,19 +67,19 @@ export const CompanyPage = () => {
                         <TitleWithButtons
                             title={findTextByTag(titles, 'other_skills_title')}
                             buttons={[
-                                <Button text={findTextByTag(titles, 'skills_button')}/>,
+                                <Button text={findTextByTag(titles, 'skills_button')} onButtonClick={() => navigate('/skills')}/>,
                             ]}
                         />
                         <TitleWithButtons
                             title={findTextByTag(titles, 'projects_title')}
                             buttons={[
-                                <Button text={findTextByTag(titles, 'projects_button')}/>,
+                                <Button text={findTextByTag(titles, 'projects_button')} onButtonClick={() => navigate('/projects')}/>,
                             ]}
                         />
                         <TitleWithButtons
                             title={findTextByTag(titles, 'home_title')}
                             buttons={[
-                                <Button text={findTextByTag(titles, 'home_button')} isPrimary={false}/>,
+                                <Button text={findTextByTag(titles, 'home_button')} isPrimary={false} onButtonClick={() => navigate('/home')}/>,
                             ]}
                         />
                     </div>
@@ -106,7 +106,7 @@ export const CompanyPage = () => {
                                 { icon: <FiLinkedin/>, link: "https://www.linkedin.com/in/yaroslav-zahorodnyi", color: diffInfo['color']}
                             ]}
                             buttons={[
-                                <Button text={findTextByTag(titles, 'contact_button')} color={diffInfo['color']}/>
+                                <Button text={findTextByTag(titles, 'contact_button')} color={diffInfo['color']} onButtonClick={() => navigate('/contact')}/>
                             ]}
                         />
                         <TitleWithButtons
@@ -128,19 +128,19 @@ export const CompanyPage = () => {
                         <TitleWithButtons
                             title={findTextByTag(titles, 'other_skills_title')}
                             buttons={[
-                                <Button text={findTextByTag(titles, 'skills_button')}/>,
+                                <Button text={findTextByTag(titles, 'skills_button')} onButtonClick={() => navigate('/skills')}/>,
                             ]}
                         />
                         <TitleWithButtons
                             title={findTextByTag(titles, 'projects_title')}
                             buttons={[
-                                <Button text={findTextByTag(titles, 'projects_button')}/>,
+                                <Button text={findTextByTag(titles, 'projects_button')} onButtonClick={() => navigate('/projects')}/>,
                             ]}
                         />
                         <TitleWithButtons
                             title={findTextByTag(titles, 'home_title')}
                             buttons={[
-                                <Button text={findTextByTag(titles, 'home_button')} isPrimary={false}/>,
+                                <Button text={findTextByTag(titles, 'home_button')} isPrimary={false} onButtonClick={() => navigate('/home')}/>,
                             ]}
                         />
                 </div>
