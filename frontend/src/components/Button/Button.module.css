@@ -29,7 +29,7 @@
 
 .primary.button:hover {
     transform: scale(1.03);
-    background-color: var(--hover-primary);
+    background-color: var(--company-color-hover);
     cursor: pointer;
 }
 

@@ -24,6 +24,7 @@
   --success: hsl(147 19% 36%);
   --info: hsl(217 22% 41%);
   --company-bold-color: var(--primary);
+  --company-color-hover: var(--hover-primary);
 
   /* Font sizes */
   --font-size-small: 0.875rem; /* 14px */
@@ -76,6 +77,7 @@
   --success: hsl(146 17% 59%);
   --info: hsl(217 28% 65%);
   --company-bold-color: var(--primary);
+  --company-color-hover: var(--hover-primary);
 }
 
 *, *::before, *::after {
