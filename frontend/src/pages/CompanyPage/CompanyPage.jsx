@@ -94,6 +94,56 @@ export const CompanyPage = () => {
                         ))}
                     </div>
                 </div>
+
+                <div className={styles.contentForSmallerScreen}>
+                        <DescriptionWithButtons
+                                text={findTextByTag(titles, 'company_description_title')}
+                                color={diffInfo['color']}
+                            />
+                        <IconsWithButtonsField 
+                            iconsWithLinks={[
+                                { icon: <FiGithub/>, link: "https://github.com/YaroslavWork", color: diffInfo['color']},
+                                { icon: <FiLinkedin/>, link: "https://www.linkedin.com/in/yaroslav-zahorodnyi", color: diffInfo['color']}
+                            ]}
+                            buttons={[
+                                <Button text={findTextByTag(titles, 'contact_button')} color={diffInfo['color']}/>
+                            ]}
+                        />
+                        <TitleWithButtons
+                            title={findTextByTag(titles, 'cv_title')}
+                            buttons={[
+                                <Button text={findTextByTag(titles, 'download_pdf_button')} color={diffInfo['color']}/>,
+                            ]}
+                        />
+                        <TitleWithButtons
+                            title={findTextByTag(titles, 'cover_letter_title')}
+                            buttons={[
+                                <Button text={findTextByTag(titles, 'download_pdf_button')} color={diffInfo['color']}/>,
+                            ]}
+                        />
+                        <Title text={findTextByTag(titles, 'company_skills_title')} isPrimary={true} allowHTML={true} color={diffInfo['color']}/>
+                        {skills.map((data, index) => (
+                            renderSkillField(data, index, titles)
+                        ))}
+                        <TitleWithButtons
+                            title={findTextByTag(titles, 'other_skills_title')}
+                            buttons={[
+                                <Button text={findTextByTag(titles, 'skills_button')}/>,
+                            ]}
+                        />
+                        <TitleWithButtons
+                            title={findTextByTag(titles, 'projects_title')}
+                            buttons={[
+                                <Button text={findTextByTag(titles, 'projects_button')}/>,
+                            ]}
+                        />
+                        <TitleWithButtons
+                            title={findTextByTag(titles, 'home_title')}
+                            buttons={[
+                                <Button text={findTextByTag(titles, 'home_button')} isPrimary={false}/>,
+                            ]}
+                        />
+                </div>
             </div>
         </div>
     )
