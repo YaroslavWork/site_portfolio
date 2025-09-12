@@ -11,7 +11,7 @@ import SkillField from "../../components/SkillField/SkillField";
 import { useState } from "react";
 import Button from "../../components/Button/Button";
 
-const renderSkillField = (data, index, titles) => {
+export const renderSkillField = (data, index, titles) => {
     return (
         <SkillField
             technologyName={data.title}

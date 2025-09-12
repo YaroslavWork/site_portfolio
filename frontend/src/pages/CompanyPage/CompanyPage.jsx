@@ -9,7 +9,7 @@ import Button from "../../components/Button/Button";
 import TitleWithButtons from "../../components/TitleWithButtons/TitleWithButtons";
 import Title from "../../components/Title/Title";
 import DescriptionWithButtons from "../../components/DescriptionWithButtons/DescriptionWithButtons";
-import SkillField from "../../components/SkillField/SkillField";
+import { renderSkillField } from '../SkillsPage/SkillsPage';
 
 export const CompanyPage = () => {
     const navigate = useNavigate()
@@ -90,18 +90,7 @@ export const CompanyPage = () => {
                         />
                         <Title text={findTextByTag(titles, 'company_skills_title')} isPrimary={true} allowHTML={true} color={diffInfo['color']}/>
                         {skills.map((data, index) => (
-                            <SkillField
-                                technologyName={data.title}
-                                technologyType={data.type}
-                                whatIKnowTitle={findTextByTag(titles, 'what_i_know_title')}
-                                whatIKnowText={data.stuff_i_know}
-                                whatImLearningTitle={findTextByTag(titles, 'what_i_learn_title')}
-                                whatImLearningText={data.stuff_i_learn}
-                                whatIPlanTitle={findTextByTag(titles, 'what_i_plan_title')}
-                                whatIPlanText={data.stuff_i_plan}
-                                key={index}
-                                color={diffInfo['color']}
-                            />
+                            renderSkillField(data, index, titles)
                         ))}
                     </div>
                 </div>
