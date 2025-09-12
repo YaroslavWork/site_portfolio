@@ -61,6 +61,29 @@ export const HomePage = () => {
                         <CVCode prompt={findTextByTag(titles, 'personality_code_description')} code={globalString}/>
                     </div>
                 </div>
+
+                <div className={styles.columnsForSmallerScreen}>
+                    <CharacterField name={findTextByTag(titles, 'name')}/>
+                    <Title text={findTextByTag(titles, 'position')} isPrimary={true}/>
+                    <DescriptionWithButtons 
+                        text={findTextByTag(titles, 'short_description')}
+                        buttons={[
+                            <Button text={findTextByTag(titles, 'about_me_button')} onButtonClick={() => navigate('/about_me')}/>,
+                            <Button text={findTextByTag(titles, 'skills_button')} onButtonClick={() => navigate('/skills')}/>,
+                            <Button text={findTextByTag(titles, 'projects_button')} onButtonClick={() => navigate('/projects')}/>,
+                        ]}
+                    />
+                    <CVCode prompt={findTextByTag(titles, 'personality_code_description')} code={globalString}/>
+                    <IconsWithButtons 
+                        iconsWithLinks={[
+                            { icon: <FiGithub/>, link: "https://github.com/YaroslavWork"},
+                            { icon: <FiLinkedin/>, link: "https://www.linkedin.com/in/yaroslav-zahorodnyi"}
+                        ]}
+                        buttons={[
+                            <Button text={findTextByTag(titles, 'contact_button')}/>
+                        ]}
+                    />
+                </div>
             </div>
         </div>
     );
