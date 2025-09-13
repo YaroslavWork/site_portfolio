@@ -49,7 +49,7 @@ class ContactView(APIView):
             "contacts": [
                 {
                     'identification': contact['identification'],
-                    'icon_path': contact['icon_path'],
+                    'icon_name': contact['icon_name'],
                 } for contact in contact_serializer.data
             ]
         }

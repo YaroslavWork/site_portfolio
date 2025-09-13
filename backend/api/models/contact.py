@@ -10,13 +10,13 @@ class Contact(models.Model):
         verbose_name="Identification",
         help_text="The identification of the contact"
     )
-    icon_path: str = models.CharField(
+    icon_name: str = models.CharField(
         max_length=255,
         blank=True,
         null=True,
-        verbose_name="Icon Path",
-        help_text="The path to the icon representing the contact"
+        verbose_name="Icon Name",
+        help_text="The icon name in react-icons library"
     )
 
     def __str__(self):
-        return f"{self.identification} ({self.icon_path})"
+        return f"{self.identification} ({self.icon_name})"

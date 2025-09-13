@@ -9,4 +9,4 @@ class ContactSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Contact
-        fields = ['identification', 'icon_path']
+        fields = ['identification', 'icon_name']

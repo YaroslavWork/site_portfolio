@@ -1,0 +1,7 @@
+.isPrimary {
+    color: var(--primary);
+}
+
+.error {
+    color: var(--danger);
+}
