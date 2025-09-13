@@ -30,7 +30,9 @@ class HomeView(APIView):
             'projects_button',
             'personality_code_description',
             'contact_button',
-            'spark_main_page_string1'
+            'spark_main_page_string1',
+            'github_path',
+            'linkedin_path'
         ]
 
         

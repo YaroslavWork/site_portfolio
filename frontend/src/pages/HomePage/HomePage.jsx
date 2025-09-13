@@ -39,8 +39,8 @@ export const HomePage = () => {
                         <CharacterField name={findTextByTag(titles, 'name')}/>
                         <IconsWithButtons 
                             iconsWithLinks={[
-                                { icon: <FiGithub/>, link: "https://github.com/YaroslavWork"},
-                                { icon: <FiLinkedin/>, link: "https://www.linkedin.com/in/yaroslav-zahorodnyi"}
+                                { icon: <FiGithub/>, link: findTextByTag(titles, 'github_path')},
+                                { icon: <FiLinkedin/>, link: findTextByTag(titles, 'linkedin_path')}
                             ]}
                             buttons={[
                                 <Button text={findTextByTag(titles, 'contact_button')}/>
@@ -76,8 +76,8 @@ export const HomePage = () => {
                     <CVCode prompt={findTextByTag(titles, 'personality_code_description')} code={globalString}/>
                     <IconsWithButtons 
                         iconsWithLinks={[
-                            { icon: <FiGithub/>, link: "https://github.com/YaroslavWork"},
-                            { icon: <FiLinkedin/>, link: "https://www.linkedin.com/in/yaroslav-zahorodnyi"}
+                            { icon: <FiGithub/>, link: findTextByTag(titles, 'github_path')},
+                            { icon: <FiLinkedin/>, link: findTextByTag(titles, 'linkedin_path')}
                         ]}
                         buttons={[
                             <Button text={findTextByTag(titles, 'contact_button')}/>

@@ -45,8 +45,8 @@ export const CompanyPage = () => {
                     <div className={styles.mainPanel}>
                         <IconsWithButtonsField 
                             iconsWithLinks={[
-                                { icon: <FiGithub/>, link: "https://github.com/YaroslavWork", color: diffInfo['color']},
-                                { icon: <FiLinkedin/>, link: "https://www.linkedin.com/in/yaroslav-zahorodnyi", color: diffInfo['color']}
+                                { icon: <FiGithub/>, link: findTextByTag(titles, 'github_path'), color: diffInfo['color']},
+                                { icon: <FiLinkedin/>, link: findTextByTag(titles, 'linkedin_path'), color: diffInfo['color']}
                             ]}
                             buttons={[
                                 <Button text={findTextByTag(titles, 'contact_button')} color={diffInfo['color']} onButtonClick={() => navigate('/contact')}/>
@@ -102,8 +102,8 @@ export const CompanyPage = () => {
                             />
                         <IconsWithButtonsField 
                             iconsWithLinks={[
-                                { icon: <FiGithub/>, link: "https://github.com/YaroslavWork", color: diffInfo['color']},
-                                { icon: <FiLinkedin/>, link: "https://www.linkedin.com/in/yaroslav-zahorodnyi", color: diffInfo['color']}
+                                { icon: <FiGithub/>, link: findTextByTag(titles, 'github_path'), color: diffInfo['color']},
+                                { icon: <FiLinkedin/>, link: findTextByTag(titles, 'linkedin_path'), color: diffInfo['color']}
                             ]}
                             buttons={[
                                 <Button text={findTextByTag(titles, 'contact_button')} color={diffInfo['color']} onButtonClick={() => navigate('/contact')}/>

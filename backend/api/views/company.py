@@ -52,7 +52,9 @@ class CompanyView(APIView):
                 'what_i_know_title',
                 'what_i_learn_title',
                 'what_i_plan_title',
-                'used_in_projects_title'
+                'used_in_projects_title',
+                'github_path',
+                'linkedin_path'
             ]
             multi_language_strings = MultiLanguageString.objects.filter(title__in=companies_titles)
             serializer = MultiLanguageStringSerializer(multi_language_strings, many=True)
