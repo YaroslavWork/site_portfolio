@@ -52,7 +52,7 @@ export const SkillsPage = () => {
     
     return (
         // Class shake and styles.SkillsPage
-        <div className={`${isShaking ? anim.shake : ''} ${styles.SkillsPage}`} onAnimationEnd={() => setIsShaking(false)}>
+        <div className={`${isShaking ? anim.shake : ''} ${styles.skillsPage}`} onAnimationEnd={() => setIsShaking(false)}>
             <div className={styles.mainContent}>
                 <div className={styles.topContainer}>
                     <div className={styles.topLeftContainer}>

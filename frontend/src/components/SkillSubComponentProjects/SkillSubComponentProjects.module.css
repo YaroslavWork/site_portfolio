@@ -21,5 +21,4 @@
     flex-direction: row;
     gap: var(--spacing-sm);
     flex-wrap: wrap;
-    justify-content: center;
 }
