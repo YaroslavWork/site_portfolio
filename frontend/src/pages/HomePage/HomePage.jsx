@@ -43,7 +43,7 @@ export const HomePage = () => {
                                 { icon: <FiLinkedin/>, link: findTextByTag(titles, 'linkedin_path')}
                             ]}
                             buttons={[
-                                <Button text={findTextByTag(titles, 'contact_button')}/>
+                                <Button text={findTextByTag(titles, 'contact_button')} onButtonClick={() => navigate('/contact')}/>
                             ]}
                         />
                     </div>
@@ -90,7 +90,7 @@ export const HomePage = () => {
                             { icon: <FiLinkedin/>, link: findTextByTag(titles, 'linkedin_path')}
                         ]}
                         buttons={[
-                            <Button text={findTextByTag(titles, 'contact_button')}/>
+                            <Button text={findTextByTag(titles, 'contact_button')} onButtonClick={() => navigate('/contact')}/>
                         ]}
                     />
                 </div>
