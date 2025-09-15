@@ -42,7 +42,12 @@ function App() {
         <Route path="/work_experience" element={<WorkExperiencePage/>} />
         <Route path="/education" element={<EducationPage/>} />
         <Route path="/contact" element={<ContactPage/>} />
-        <Route path='/company/:companyCode' element={<CompanyPage/>} />
+        <Route path='/company/:companyCode' element={
+          <GlobalStateProvider>
+            <GlobalKeyboardListener />
+              <CompanyPage />
+          </GlobalStateProvider>
+        } />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     

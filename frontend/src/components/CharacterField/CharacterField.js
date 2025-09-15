@@ -7,7 +7,7 @@ export default function CharacterField({name}) {
 
     return (
         <BorderContainer>
-            <img className={styles.characterImage} src={image_path}></img>
+            <img className={styles.characterImage} src={image_path} alt={'Character'}></img>
             <h1 className={styles.characterName}>{name}</h1>
         </BorderContainer>
     )

@@ -10,17 +10,35 @@ import TitleWithButtons from "../../components/TitleWithButtons/TitleWithButtons
 import Title from "../../components/Title/Title";
 import DescriptionWithButtons from "../../components/DescriptionWithButtons/DescriptionWithButtons";
 import { renderSkillField } from '../SkillsPage/SkillsPage';
+import CVCode from "../../components/CVCode/CVCode";
+import { GlobalStateContext } from "../../features/hooks/globalStateContext";
+import { useContext } from "react";
 
 export const CompanyPage = () => {
     const navigate = useNavigate()
     const { companyCode } = useParams()
+    const { globalString } = useContext(GlobalStateContext);
 
     const { data, isLoading, isError, error } = useCompanyData(companyCode);
 
     if (isLoading) return <div>Loading...</div>;
     if (isError) {
         if (error.response && error.response.status === 404) {
-            return <div>Company with code '{companyCode}' not found.</div>;
+            const titles = error.response.data.data.titles
+            return (
+                <div className={styles.companyNotFoundPage}>
+                    <SparkField
+                        text={findTextByTag(titles, 'spark_company_not_found_string1')}
+                        onSparkClick={() => navigate('/home')}
+                    />
+                    <CVCode
+                        prompt={null}
+                        code={globalString}
+                        checkCompanyCodeText={findTextByTag(titles, 'check_company_code_button')}
+                        navigate={navigate}
+                    />
+                </div>
+            )
         }
         return <div>An unexpected error occurred.</div>;
     }

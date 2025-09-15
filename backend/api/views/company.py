@@ -117,4 +117,26 @@ class CompanyView(APIView):
             status=status.HTTP_200_OK)
 
         except Company.DoesNotExist:
-            return Response({"error": "Company not found"}, status=404)
+            not_found_titles = [
+                'spark_company_not_found_string1',
+                'check_company_code_button'
+            ]
+
+            multi_language_strings = MultiLanguageString.objects.filter(title__in=not_found_titles)
+            serializer = MultiLanguageStringSerializer(multi_language_strings, many=True)
+            language_key = LANGUAGE_SHORTS[language]
+            filtered_data = {
+            "titles": [
+                {
+                    'title': item['title'],
+                    'text': item[language_key]
+                }
+                for item in serializer.data
+            ],
+            }
+
+            return Response({
+                "error": "Company not found",
+                "data": filtered_data
+            }
+            , status=404)
