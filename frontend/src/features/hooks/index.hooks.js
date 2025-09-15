@@ -1,6 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
 import * as api from '../api/index.api';
-import { use } from 'react';
 
 export const useHomeData = () => useQuery({
   queryKey: ['home'],

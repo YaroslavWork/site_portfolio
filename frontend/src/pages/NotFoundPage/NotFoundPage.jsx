@@ -3,7 +3,6 @@ import styles from './NotFoundPage.module.css'
 import SparkField from "../../components/SparkField/SparkField"
 import { useNotFoundData } from "../../features/hooks/index.hooks"
 import { findTextByTag } from "../../utils/dataUtils"
-import Title from "../../components/Title/Title"
 
 
 export const NotFoundPage = () => {
