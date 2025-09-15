@@ -8,6 +8,7 @@ import styles from './ProjectsPage.module.css'
 import LinkPreview from '../../components/LinkPreview/LinkPreview';
 import ProjectField from '../../components/ProjectField/ProjectField';
 import TechnologyPreview from '../../components/TechnologyPreview/TechnologyPreview';
+import { ServerNotRespondPage } from '../ServerNotRespondPage/ServerNotRespondPage';
 
 export const ProjectsPage = () => {
     const navigate = useNavigate()
@@ -15,7 +16,7 @@ export const ProjectsPage = () => {
     const { data, isLoading, error } = useProjectsData();
 
     if (isLoading) return <div>Loading...</div>;
-    if (error) return <div>Error loading skills data</div>;
+    if (error) return <ServerNotRespondPage/>;
 
     const titles = data['data']['data']['titles'];
     const projects = data['data']['data']['projects'];

@@ -5,6 +5,7 @@ import { findTextByTag } from "../../utils/dataUtils";
 import styles from './EducationPage.module.css'; 
 import CoursesField from "../../components/CoursesField/CoursesField";
 import UniversitiesField from "../../components/UniversitiesField/UniversitesField";
+import { ServerNotRespondPage } from "../ServerNotRespondPage/ServerNotRespondPage";
 
 export const EducationPage = () => {
     const navigate = useNavigate()
@@ -12,7 +13,7 @@ export const EducationPage = () => {
     const { data, isLoading, error } = useEducationData();
 
     if (isLoading) return <div>Loading...</div>;
-    if (error) return <div>Error loading skills data</div>;
+    if (error) return <ServerNotRespondPage/>;
 
     const titles = data['data']['data']['titles'];
     const courses = data['data']['data']['courses'];

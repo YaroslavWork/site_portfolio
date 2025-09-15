@@ -3,6 +3,7 @@ import styles from './NotFoundPage.module.css'
 import SparkField from "../../components/SparkField/SparkField"
 import { useNotFoundData } from "../../features/hooks/index.hooks"
 import { findTextByTag } from "../../utils/dataUtils"
+import { ServerNotRespondPage } from "../ServerNotRespondPage/ServerNotRespondPage"
 
 
 export const NotFoundPage = () => {
@@ -11,7 +12,7 @@ export const NotFoundPage = () => {
     const { data, isLoading, error } = useNotFoundData();
     
     if (isLoading) return <div>Loading...</div>;
-    if (error) return <div>Error loading not found data</div>;
+    if (error) return <ServerNotRespondPage/>;
 
     const titles = data['data']['data']['titles'];
 

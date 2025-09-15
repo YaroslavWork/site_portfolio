@@ -15,6 +15,7 @@ import { GlobalStateContext } from '../../features/hooks/globalStateContext';
 import { FiGithub, FiLinkedin } from "react-icons/fi";
 
 import { findTextByTag } from '../../utils/dataUtils';
+import { ServerNotRespondPage } from '../ServerNotRespondPage/ServerNotRespondPage';
 
 
 export const HomePage = () => {
@@ -24,7 +25,7 @@ export const HomePage = () => {
     const { globalString } = useContext(GlobalStateContext);
 
     if (isLoading) return <div>Loading...</div>;
-    if (error) return <div>Error loading home data</div>;
+    if (error) return <ServerNotRespondPage/>;
 
     const titles = data['data']['data']['titles'];
 

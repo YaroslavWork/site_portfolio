@@ -12,6 +12,7 @@ import styles from './AboutMePage.module.css';
 import BooksField from '../../components/BooksField/BooksField';
 import Hobby from '../../components/Hobby/Hobby';
 import HobbiesField from '../../components/HobbiesField/HobbiesField';
+import { ServerNotRespondPage } from '../ServerNotRespondPage/ServerNotRespondPage';
 
 const downloadFile = (fileUrl, fileName) => {
     const link = document.createElement('a');
@@ -28,7 +29,7 @@ export const AboutMePage = () => {
     const { data, isLoading, error } = useAboutMeData();
 
     if (isLoading) return <div>Loading...</div>;
-    if (error) return <div>Error loading about me data</div>;
+    if (error) return <ServerNotRespondPage/>;
 
     const titles = data['data']['data']['titles'];
     const books = data['data']['data']['books'];

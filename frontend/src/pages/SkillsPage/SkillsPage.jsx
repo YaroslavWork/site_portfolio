@@ -10,6 +10,7 @@ import TechnologyPreview from "../../components/TechnologyPreview/TechnologyPrev
 import SkillField from "../../components/SkillField/SkillField";
 import { useState } from "react";
 import Button from "../../components/Button/Button";
+import { ServerNotRespondPage } from "../ServerNotRespondPage/ServerNotRespondPage";
 
 export const renderSkillField = (data, index, titles) => {
     return (
@@ -45,7 +46,7 @@ export const SkillsPage = () => {
     };
 
     if (isLoading) return <div>Loading...</div>;
-    if (error) return <div>Error loading skills data</div>;
+    if (error) return <ServerNotRespondPage/>;
 
     const titles = data['data']['data']['titles'];
     const skills = data['data']['data']['skills'];

@@ -6,6 +6,7 @@ import { findTextByTag } from "../../utils/dataUtils";
 import Job from "../../components/Job/Job";
 import JobsContainer from "../../components/JobsContainer/JobsContainer";
 import Button from "../../components/Button/Button";
+import { ServerNotRespondPage } from "../ServerNotRespondPage/ServerNotRespondPage";
 
 export const WorkExperiencePage = () => {
     const navigate = useNavigate()
@@ -13,7 +14,7 @@ export const WorkExperiencePage = () => {
     const { data, isLoading, error } = useWorkExperienceData();
 
     if (isLoading) return <div>Loading...</div>;
-    if (error) return <div>Error loading home data</div>;
+    if (error) return <ServerNotRespondPage/>;
 
     const titles = data['data']['data']['titles'];
     const it_jobs = data['data']['data']['it_jobs'];

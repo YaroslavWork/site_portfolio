@@ -5,6 +5,7 @@ import { findTextByTag } from "../../utils/dataUtils";
 
 import styles from './ContactPage.module.css';
 import ContactField from "../../components/ContactField/ContactField";
+import { ServerNotRespondPage } from "../ServerNotRespondPage/ServerNotRespondPage";
 
 export const ContactPage = () => {
     const navigate = useNavigate()
@@ -12,7 +13,7 @@ export const ContactPage = () => {
     const { data, isLoading, error } = useContactData();
 
     if (isLoading) return <div>Loading...</div>;
-    if (error) return <div>Error loading skills data</div>;
+    if (error) return <ServerNotRespondPage/>;
 
     const titles = data['data']['data']['titles'];
     const contacts = data['data']['data']['contacts'];

@@ -13,6 +13,7 @@ import { renderSkillField } from '../SkillsPage/SkillsPage';
 import CVCode from "../../components/CVCode/CVCode";
 import { GlobalStateContext } from "../../features/hooks/globalStateContext";
 import { useContext } from "react";
+import { ServerNotRespondPage } from "../ServerNotRespondPage/ServerNotRespondPage";
 
 export const CompanyPage = () => {
     const navigate = useNavigate()
@@ -40,7 +41,7 @@ export const CompanyPage = () => {
                 </div>
             )
         }
-        return <div>An unexpected error occurred.</div>;
+        return <ServerNotRespondPage/>;
     }
 
     const titles = data['data']['titles'];
