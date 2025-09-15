@@ -11,3 +11,4 @@ export const getCompanyData = async (companyCode) => {
     const { data } = await axios.get(`/company/${companyCode}`);
     return data
 }
+export const getNotFoundData = () => axios.get('/404')

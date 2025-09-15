@@ -35,3 +35,7 @@ export const useCompanyData = (companyCode) => useQuery({
   queryFn: () => api.getCompanyData(companyCode),
   enabled: !!companyCode
 })
+export const useNotFoundData = () => useQuery({
+  queryKey: ['notFound'],
+  queryFn: () => api.getNotFoundData(),
+})

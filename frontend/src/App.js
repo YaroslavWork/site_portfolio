@@ -15,6 +15,7 @@ import { WorkExperiencePage } from './pages/WorkExperiencePage/WorkExperiencePag
 import { EducationPage } from './pages/EducationPage/EducationPage';
 import { ContactPage } from './pages/ContactPage/ContactPage';
 import { CompanyPage } from './pages/CompanyPage/CompanyPage';
+import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
 
 function App() {
   const systemTheme = useSystemTheme();
@@ -42,6 +43,7 @@ function App() {
         <Route path="/education" element={<EducationPage/>} />
         <Route path="/contact" element={<ContactPage/>} />
         <Route path='/company/:companyCode' element={<CompanyPage/>} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     
     </BrowserRouter>
