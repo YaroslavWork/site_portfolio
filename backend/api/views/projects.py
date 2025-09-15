@@ -55,7 +55,8 @@ class ProjectsView(APIView):
                     'technologies': [
                         {
                             'name': tech['name'],
-                            'type': tech['technology_type']['name'][language_key]
+                            'type': tech['technology_type']['name'][language_key],
+                            'hue_color': tech['technology_type']['hue_color']
                         }
                         for tech in project['technologies']
                     ],

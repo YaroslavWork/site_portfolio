@@ -35,9 +35,9 @@ export const ProjectsPage = () => {
                 technologies={[data.technologies.map((technology, indexA) => (
                   <TechnologyPreview
                     key={indexA}
-                    colorHex={'2f5f6f'}
                     name={technology.name}
                     type={technology.type}
+                    hueColor={technology.hue_color}
                   />
                 ))]}
                 description={data.description}

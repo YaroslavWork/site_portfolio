@@ -6,6 +6,8 @@
 
 :root {
   /* Colors */
+  --primary-saturation: 49%;
+  --primary-lightness: 33%;
   --background-dark: hsl(220 59% 91%);
   --background: hsl(220 100% 97%);
   --background-light: hsl(220 100% 100%);
@@ -59,6 +61,8 @@
 }
 
 [data-theme='dark'] {
+  --primary-saturation: 78%;
+  --primary-lightness: 76%;
   --background-dark: hsl(228 79% 2%);
   --background: hsl(222 55% 5%);
   --background-light: hsl(220 35% 10%);

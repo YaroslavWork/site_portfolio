@@ -18,6 +18,11 @@ class TechnologyType(models.Model):
         related_name='technology_types',
         help_text="The translatable name of the technology type"
     )
+    hue_color: str = models.CharField(
+        max_length=255,
+        verbose_name="Hue Color",
+        help_text="The color from HSL palette. Must be between 0 and 360"
+    )
 
     def __str__(self):
-        return f"{self.title}"
+        return f"{self.title} {self.name} ({self.hue_color})"

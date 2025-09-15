@@ -11,4 +11,4 @@ class TechnologyTypeSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = TechnologyType
-        fields = ['title', 'name']
+        fields = ['title', 'name', 'hue_color']
