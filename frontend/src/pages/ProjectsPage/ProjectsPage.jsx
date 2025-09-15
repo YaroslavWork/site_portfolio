@@ -10,13 +10,13 @@ import ProjectField from '../../components/ProjectField/ProjectField';
 import TechnologyPreview from '../../components/TechnologyPreview/TechnologyPreview';
 import { ServerNotRespondPage } from '../ServerNotRespondPage/ServerNotRespondPage';
 
-export const ProjectsPage = () => {
+export const ProjectsPage = ({language='en'}) => {
     const navigate = useNavigate()
 
-    const { data, isLoading, error } = useProjectsData();
+    const { data, isLoading, error } = useProjectsData(language);
 
     if (isLoading) return <div>Loading...</div>;
-    if (error) return <ServerNotRespondPage/>;
+    if (error) return <ServerNotRespondPage language={language}/>;
 
     const titles = data['data']['data']['titles'];
     const projects = data['data']['data']['projects'];

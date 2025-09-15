@@ -7,13 +7,13 @@ import styles from './ContactPage.module.css';
 import ContactField from "../../components/ContactField/ContactField";
 import { ServerNotRespondPage } from "../ServerNotRespondPage/ServerNotRespondPage";
 
-export const ContactPage = () => {
+export const ContactPage = ({language='en'}) => {
     const navigate = useNavigate()
 
-    const { data, isLoading, error } = useContactData();
+    const { data, isLoading, error } = useContactData(language);
 
     if (isLoading) return <div>Loading...</div>;
-    if (error) return <ServerNotRespondPage/>;
+    if (error) return <ServerNotRespondPage language={language}/>;
 
     const titles = data['data']['data']['titles'];
     const contacts = data['data']['data']['contacts'];

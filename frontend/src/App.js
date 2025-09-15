@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 import './App.css';
@@ -20,6 +20,12 @@ import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
 function App() {
   const systemTheme = useSystemTheme();
 
+  const [language, setLanguage] = useState('en');
+
+  function changeLanguage(language) {
+    setLanguage(language);
+  }
+
   const activeTheme = systemTheme;
 
   useEffect(() => {
@@ -33,22 +39,22 @@ function App() {
         <Route path="/home" element={
           <GlobalStateProvider>
             <GlobalKeyboardListener />
-              <HomePage />
+              <HomePage language={language} />
           </GlobalStateProvider>
         }></Route>
-        <Route path="/about_me" element={<AboutMePage/>} />
-        <Route path="/skills" element={<SkillsPage/>} />
-        <Route path="/projects" element={<ProjectsPage/>} />
-        <Route path="/work_experience" element={<WorkExperiencePage/>} />
-        <Route path="/education" element={<EducationPage/>} />
-        <Route path="/contact" element={<ContactPage/>} />
+        <Route path="/about_me" element={<AboutMePage language={language}/>} />
+        <Route path="/skills" element={<SkillsPage language={language}/>} />
+        <Route path="/projects" element={<ProjectsPage language={language}/>} />
+        <Route path="/work_experience" element={<WorkExperiencePage language={language}/>} />
+        <Route path="/education" element={<EducationPage language={language}/>} />
+        <Route path="/contact" element={<ContactPage language={language}/>} />
         <Route path='/company/:companyCode' element={
           <GlobalStateProvider>
             <GlobalKeyboardListener />
-              <CompanyPage />
+              <CompanyPage language={language}/>
           </GlobalStateProvider>
         } />
-        <Route path="*" element={<NotFoundPage />} />
+        <Route path="*" element={<NotFoundPage language={language}/>} />
       </Routes>
     
     </BrowserRouter>

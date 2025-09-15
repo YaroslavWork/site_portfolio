@@ -30,10 +30,10 @@ export const renderSkillField = (data, index, titles) => {
     )
 }
 
-export const SkillsPage = () => {
+export const SkillsPage = ({language='en'}) => {
     const navigate = useNavigate()
 
-    const { data, isLoading, error } = useSkillsData();
+    const { data, isLoading, error } = useSkillsData(language);
 
     const [isShaking, setIsShaking] = useState(false);
 
@@ -46,7 +46,7 @@ export const SkillsPage = () => {
     };
 
     if (isLoading) return <div>Loading...</div>;
-    if (error) return <ServerNotRespondPage/>;
+    if (error) return <ServerNotRespondPage language={language}/>;
 
     const titles = data['data']['data']['titles'];
     const skills = data['data']['data']['skills'];

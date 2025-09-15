@@ -7,13 +7,13 @@ import CoursesField from "../../components/CoursesField/CoursesField";
 import UniversitiesField from "../../components/UniversitiesField/UniversitesField";
 import { ServerNotRespondPage } from "../ServerNotRespondPage/ServerNotRespondPage";
 
-export const EducationPage = () => {
+export const EducationPage = ({language='en'}) => {
     const navigate = useNavigate()
 
-    const { data, isLoading, error } = useEducationData();
+    const { data, isLoading, error } = useEducationData(language);
 
     if (isLoading) return <div>Loading...</div>;
-    if (error) return <ServerNotRespondPage/>;
+    if (error) return <ServerNotRespondPage language={language}/>;
 
     const titles = data['data']['data']['titles'];
     const courses = data['data']['data']['courses'];

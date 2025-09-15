@@ -15,12 +15,12 @@ import { GlobalStateContext } from "../../features/hooks/globalStateContext";
 import { useContext } from "react";
 import { ServerNotRespondPage } from "../ServerNotRespondPage/ServerNotRespondPage";
 
-export const CompanyPage = () => {
+export const CompanyPage = ({language='en'}) => {
     const navigate = useNavigate()
     const { companyCode } = useParams()
     const { globalString } = useContext(GlobalStateContext);
 
-    const { data, isLoading, isError, error } = useCompanyData(companyCode);
+    const { data, isLoading, isError, error } = useCompanyData(companyCode, language);
 
     if (isLoading) return <div>Loading...</div>;
     if (isError) {
@@ -41,7 +41,7 @@ export const CompanyPage = () => {
                 </div>
             )
         }
-        return <ServerNotRespondPage/>;
+        return <ServerNotRespondPage language={language}/>;
     }
 
     const titles = data['data']['titles'];

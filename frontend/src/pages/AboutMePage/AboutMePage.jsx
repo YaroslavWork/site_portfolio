@@ -23,13 +23,13 @@ const downloadFile = (fileUrl, fileName) => {
     document.body.removeChild(link);
 };
 
-export const AboutMePage = () => {
+export const AboutMePage = ({language='en'}) => {
     const navigate = useNavigate()
 
-    const { data, isLoading, error } = useAboutMeData();
+    const { data, isLoading, error } = useAboutMeData(language);
 
     if (isLoading) return <div>Loading...</div>;
-    if (error) return <ServerNotRespondPage/>;
+    if (error) return <ServerNotRespondPage language={language}/>;
 
     const titles = data['data']['data']['titles'];
     const books = data['data']['data']['books'];

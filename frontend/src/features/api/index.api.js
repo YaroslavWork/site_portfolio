@@ -1,14 +1,14 @@
 import { axios } from '../../lib/axios';
 
-export const getHomeData = () => axios.get('/home');
-export const getAboutMeData = () => axios.get('/about_me');
-export const getSkillsData = () => axios.get('/skills');
-export const getProjectsData = () => axios.get('/projects');
-export const getWorkExperienceData = () => axios.get('/work_experience');
-export const getEducationData = () => axios.get('/education');
-export const getContactData = () => axios.get('/contact');
-export const getCompanyData = async (companyCode) => {
-    const { data } = await axios.get(`/company/${companyCode}`);
+export const getHomeData = (language) => axios.get(`/home/?language=${language}`);
+export const getAboutMeData = (language='en') => axios.get(`/about_me/?language=${language}`);
+export const getSkillsData = (language='en') => axios.get(`/skills/?language=${language}`);
+export const getProjectsData = (language='en') => axios.get(`/projects/?language=${language}`);
+export const getWorkExperienceData = (language='en') => axios.get(`/work_experience/?language=${language}`);
+export const getEducationData = (language='en') => axios.get(`/education/?language=${language}`);
+export const getContactData = (language='en') => axios.get(`/contact/?language=${language}`);
+export const getCompanyData = async (companyCode, language='en') => {
+    const { data } = await axios.get(`/company/${companyCode}/?language=${language}`);
     return data
 }
-export const getNotFoundData = () => axios.get('/404')
+export const getNotFoundData = (language='en') => axios.get(`/404/?language=${language}`)

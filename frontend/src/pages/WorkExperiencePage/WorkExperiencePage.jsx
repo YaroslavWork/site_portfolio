@@ -3,18 +3,17 @@ import SparkField from "../../components/SparkField/SparkField";
 import { useWorkExperienceData } from "../../features/hooks/index.hooks";
 import styles from './WorkExperiencePage.module.css'
 import { findTextByTag } from "../../utils/dataUtils";
-import Job from "../../components/Job/Job";
 import JobsContainer from "../../components/JobsContainer/JobsContainer";
 import Button from "../../components/Button/Button";
 import { ServerNotRespondPage } from "../ServerNotRespondPage/ServerNotRespondPage";
 
-export const WorkExperiencePage = () => {
+export const WorkExperiencePage = ({language='en'}) => {
     const navigate = useNavigate()
 
-    const { data, isLoading, error } = useWorkExperienceData();
+    const { data, isLoading, error } = useWorkExperienceData(language);
 
     if (isLoading) return <div>Loading...</div>;
-    if (error) return <ServerNotRespondPage/>;
+    if (error) return <ServerNotRespondPage language={language}/>;
 
     const titles = data['data']['data']['titles'];
     const it_jobs = data['data']['data']['it_jobs'];

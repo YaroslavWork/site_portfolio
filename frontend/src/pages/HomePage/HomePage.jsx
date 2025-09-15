@@ -18,14 +18,14 @@ import { findTextByTag } from '../../utils/dataUtils';
 import { ServerNotRespondPage } from '../ServerNotRespondPage/ServerNotRespondPage';
 
 
-export const HomePage = () => {
+export const HomePage = ({language}) => {
     const navigate = useNavigate()
 
-    const { data, isLoading, error } = useHomeData();
+    const { data, isLoading, error } = useHomeData(language);
     const { globalString } = useContext(GlobalStateContext);
 
     if (isLoading) return <div>Loading...</div>;
-    if (error) return <ServerNotRespondPage/>;
+    if (error) return <ServerNotRespondPage language={language}/>;
 
     const titles = data['data']['data']['titles'];
 

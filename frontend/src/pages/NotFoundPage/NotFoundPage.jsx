@@ -6,13 +6,13 @@ import { findTextByTag } from "../../utils/dataUtils"
 import { ServerNotRespondPage } from "../ServerNotRespondPage/ServerNotRespondPage"
 
 
-export const NotFoundPage = () => {
+export const NotFoundPage = ({language='en'}) => {
     const navigate = useNavigate()
 
-    const { data, isLoading, error } = useNotFoundData();
+    const { data, isLoading, error } = useNotFoundData(language);
     
     if (isLoading) return <div>Loading...</div>;
-    if (error) return <ServerNotRespondPage/>;
+    if (error) return <ServerNotRespondPage language={language}/>;
 
     const titles = data['data']['data']['titles'];
 

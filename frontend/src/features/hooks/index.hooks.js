@@ -1,40 +1,66 @@
 import { useQuery } from '@tanstack/react-query';
 import * as api from '../api/index.api';
 
-export const useHomeData = () => useQuery({
-  queryKey: ['home'],
-  queryFn: api.getHomeData,
-});
-export const useAboutMeData = () => useQuery({
-  queryKey: ['aboutMe'],
-  queryFn: api.getAboutMeData,
-});
-export const useSkillsData = () => useQuery({
-  queryKey: ['skills'],
-  queryFn: api.getSkillsData,
-});
-export const useProjectsData = () => useQuery({
-  queryKey: ['projects'],
-  queryFn: api.getProjectsData,
-});
-export const useWorkExperienceData = () => useQuery({
-  queryKey: ['workExperience'],
-  queryFn: api.getWorkExperienceData,
-});
-export const useEducationData = () => useQuery({
-  queryKey: ['education'],
-  queryFn: api.getEducationData,
-});
-export const useContactData = () => useQuery({
-  queryKey: ['contact'],
-  queryFn: api.getContactData,
-});
-export const useCompanyData = (companyCode) => useQuery({
-  queryKey: ['company', companyCode],
-  queryFn: () => api.getCompanyData(companyCode),
-  enabled: !!companyCode
-})
-export const useNotFoundData = () => useQuery({
-  queryKey: ['notFound'],
-  queryFn: () => api.getNotFoundData(),
-})
+export const useHomeData = (language) => {
+  return useQuery({
+    queryKey: ['home', language],
+    queryFn: () => api.getHomeData(language),
+  });
+};
+
+export const useAboutMeData = (language) => {
+  return useQuery({
+    queryKey: ['about_me', language],
+    queryFn: () => api.getAboutMeData(language),
+  });
+};
+
+export const useSkillsData = (language) => {
+  return useQuery({
+    queryKey: ['skills', language],
+    queryFn: () => api.getSkillsData(language),
+  });
+};
+
+export const useProjectsData = (language) => {
+  return useQuery({
+    queryKey: ['projects', language],
+    queryFn: () => api.getProjectsData(language),
+  });
+};
+
+export const useWorkExperienceData = (language) => {
+  return useQuery({
+    queryKey: ['work_experience', language],
+    queryFn: () => api.getWorkExperienceData(language),
+  });
+};
+
+export const useEducationData = (language) => {
+  return useQuery({
+    queryKey: ['education', language],
+    queryFn: () => api.getEducationData(language),
+  });
+};
+
+export const useContactData = (language) => {
+  return useQuery({
+    queryKey: ['contact', language],
+    queryFn: () => api.getContactData(language),
+  });
+};
+
+export const useCompanyData  = (companyCode, language) => {
+  return useQuery({
+    queryKey: ['company', companyCode, language],
+    queryFn: () => api.getCompanyData(companyCode, language),
+    enabled: !!companyCode,
+  });
+};
+
+export const useNotFoundData = (language) => {
+  return useQuery({
+    queryKey: ['not_found', language],
+    queryFn: () => api.getNotFoundData(language),
+  });
+};
