@@ -2,8 +2,11 @@ import React from 'react'
 import styles from './CVCode.module.css'
 
 import BorderContainer from '../BorderContainer/BorderContainer'
+import Button from '../Button/Button';
 
-export default function CVCode( {prompt, code, codeLength=6} ) {
+export default function CVCode( {prompt, code, codeLength=6, checkCompanyCodeText, navigate} ) {
+    const codeProvided = code.length === codeLength ? true : false;
+
     return (
         <BorderContainer>
             <p className={styles.textPrompt}>{prompt}</p>
@@ -19,6 +22,9 @@ export default function CVCode( {prompt, code, codeLength=6} ) {
                         )
                     })}
             </div>
+            {codeProvided ?
+                <Button text={checkCompanyCodeText} onButtonClick={() => navigate(`/company/${code}`)}/> : null
+            }
         </BorderContainer>
     )
 }

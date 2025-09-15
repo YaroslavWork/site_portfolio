@@ -32,7 +32,8 @@ class HomeView(APIView):
             'contact_button',
             'spark_main_page_string1',
             'github_path',
-            'linkedin_path'
+            'linkedin_path',
+            'check_company_code_button',
         ]
 
         

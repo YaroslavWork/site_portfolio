@@ -58,7 +58,12 @@ export const HomePage = () => {
                                 <Button text={findTextByTag(titles, 'projects_button')} onButtonClick={() => navigate('/projects')}/>,
                             ]}
                         />
-                        <CVCode prompt={findTextByTag(titles, 'personality_code_description')} code={globalString}/>
+                        <CVCode 
+                            prompt={findTextByTag(titles, 'personality_code_description')}
+                            code={globalString}
+                            checkCompanyCodeText={findTextByTag(titles, 'check_company_code_button')}
+                            navigate={navigate}
+                        />
                     </div>
                 </div>
 
@@ -73,7 +78,12 @@ export const HomePage = () => {
                             <Button text={findTextByTag(titles, 'projects_button')} onButtonClick={() => navigate('/projects')}/>,
                         ]}
                     />
-                    <CVCode prompt={findTextByTag(titles, 'personality_code_description')} code={globalString}/>
+                    <CVCode 
+                        prompt={findTextByTag(titles, 'personality_code_description')}
+                        code={globalString}
+                        checkCompanyCodeText={findTextByTag(titles, 'check_company_code_button')}
+                        navigate={navigate}
+                    />
                     <IconsWithButtons 
                         iconsWithLinks={[
                             { icon: <FiGithub/>, link: findTextByTag(titles, 'github_path')},
