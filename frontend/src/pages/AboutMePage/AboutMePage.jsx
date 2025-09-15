@@ -13,6 +13,15 @@ import BooksField from '../../components/BooksField/BooksField';
 import Hobby from '../../components/Hobby/Hobby';
 import HobbiesField from '../../components/HobbiesField/HobbiesField';
 
+const downloadFile = (fileUrl, fileName) => {
+    const link = document.createElement('a');
+    link.href = fileUrl;
+    link.download = fileName;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+};
+
 export const AboutMePage = () => {
     const navigate = useNavigate()
 
@@ -25,6 +34,10 @@ export const AboutMePage = () => {
     const books = data['data']['data']['books'];
     const hobbies = data['data']['data']['hobbies'];
 
+    const handleDownloadClick = (url, name) => {
+        downloadFile(url, name);
+    };
+
     return (
         <div className={styles.aboutMePage}>
             <div className={styles.mainContent}>
@@ -35,15 +48,33 @@ export const AboutMePage = () => {
                     <TitleWithButtons
                         title={findTextByTag(titles, 'cv_title')}
                         buttons={[
-                            <Button text={findTextByTag(titles, 'download_pdf_button')} isSmallPadding={true}/>,
-                            <Button text={findTextByTag(titles, 'download_png_button')} isPrimary={false} isSmallPadding={true}/>,
+                            <Button 
+                                text={findTextByTag(titles, 'download_pdf_button')}
+                                onButtonClick={() => handleDownloadClick('/documents/cv.pdf', `${findTextByTag(titles, 'name')} CV`)}
+                                isSmallPadding={true}
+                            />,
+                            <Button
+                                text={findTextByTag(titles, 'download_png_button')}
+                                onButtonClick={() => handleDownloadClick('/documents/cv.png', `${findTextByTag(titles, 'name')} CV`)}
+                                isPrimary={false}
+                                isSmallPadding={true}
+                            />,
                         ]}
                     />
                     <TitleWithButtons
                         title={findTextByTag(titles, 'cover_letter_title')}
                         buttons={[
-                            <Button text={findTextByTag(titles, 'download_pdf_button')} isSmallPadding={true}/>,
-                            <Button text={findTextByTag(titles, 'download_png_button')} isPrimary={false} isSmallPadding={true}/>,
+                            <Button 
+                                text={findTextByTag(titles, 'download_pdf_button')}
+                                onButtonClick={() => handleDownloadClick('/documents/cover_letter.pdf', `${findTextByTag(titles, 'name')} Cover Letter`)}
+                                isSmallPadding={true}
+                            />,
+                            <Button
+                                text={findTextByTag(titles, 'download_png_button')}
+                                onButtonClick={() => handleDownloadClick('/documents/cover_letter.png', `${findTextByTag(titles, 'name')} Cover Letter`)}
+                                isPrimary={false}
+                                isSmallPadding={true}
+                            />,
                         ]}
                     />
                 </div>
