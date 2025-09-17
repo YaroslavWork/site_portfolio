@@ -3,10 +3,10 @@ import styles from './SkillSearch.module.css'
 import BorderContainer from '../BorderContainer/BorderContainer'
 import SearchBar from '../SearchBar/SearchBar'
 
-export default function SkillSearch({ onSearchClick, searchedTechnologies }) {
+export default function SkillSearch({ value, onSearchClick, searchedTechnologies }) {
   return (
     <BorderContainer>
-        <SearchBar onSearchClick={onSearchClick} />
+        <SearchBar prevValue={value} onSearchClick={onSearchClick} />
         <div className={styles.searchedTechnologies}>
             {searchedTechnologies}
         </div>

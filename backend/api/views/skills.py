@@ -9,6 +9,7 @@ from ..models.multi_language_string import MultiLanguageString
 from ..models.skill import Skill
 from ..models.project import Project
 
+from ..utils.search import find_similar_match
 
 from ..constans.language import LANGUAGE_SHORTS
 
@@ -19,6 +20,7 @@ class SkillsView(APIView):
     
     def get(self, request):
         language = request.query_params.get('language', 'en')
+        search = request.query_params.get('search', '')
 
         if language not in LANGUAGE_SHORTS:
             return Response(
@@ -55,8 +57,12 @@ class SkillsView(APIView):
                         if skill['title']['name'] in [tech.name for tech in project.technologies.all()]
                 ]
 
+        # Check if search args is used
+        searched_skills_name = []
+        if search:
+            searched_skills_name = find_similar_match(search, [skill['title']['name'] for skill in skill_serializer.data], amount_of_return_candidate=4)
+
         # Add all data into one response
-        
         filtered_data = {
             "titles": [
                 {
@@ -64,17 +70,33 @@ class SkillsView(APIView):
                     'text': item[language_key]
                 } for item in serializer.data
             ],
-            "skills": [
+            "searched_skills": [
                 {
                     "title": skill['title']['name'],
                     "type": skill['title']['technology_type']['name'][language_key],
+                    "hue_color": skill['title']['technology_type']['hue_color'],
                     "used_in_projects": skill['used_in_projects'],
                     "stuff_i_know": skill['stuff_i_know'][language_key],
                     "stuff_i_learn": skill['stuff_i_learn'][language_key],
                     "stuff_i_plan": skill['stuff_i_plan'][language_key],
-                } for skill in skill_serializer.data
+                } for skill in skill_serializer.data if skill['title']['name'] in searched_skills_name
+            ],
+            "skills": [
+                {
+                    "title": skill['title']['name'],
+                    "type": skill['title']['technology_type']['name'][language_key],
+                    "hue_color": skill['title']['technology_type']['hue_color'],
+                    "used_in_projects": skill['used_in_projects'],
+                    "stuff_i_know": skill['stuff_i_know'][language_key],
+                    "stuff_i_learn": skill['stuff_i_learn'][language_key],
+                    "stuff_i_plan": skill['stuff_i_plan'][language_key],
+                } for skill in skill_serializer.data if skill['title']['name'] not in searched_skills_name
             ]
         }
+
+        # Sort searched_name by it's order
+        order_map = {name: i for i, name in enumerate(searched_skills_name)}
+        filtered_data['searched_skills'].sort(key=lambda skill: order_map[skill['title']])
 
         return Response({
             "language": language,

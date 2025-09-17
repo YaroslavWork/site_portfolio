@@ -46,6 +46,10 @@
     flex: 1;
 }
 
+.smallScreenSkills {
+    display: none;
+}
+
 @media (max-width: 700px) {
     .topContainer {
         width: 100%;
@@ -55,7 +59,10 @@
     }
 
     .skills {
-        display: flex;
-        flex-direction: column;
+        display: none;
+    }
+    
+    .smallScreenSkills {
+        display: block;
     }
 }

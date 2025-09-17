@@ -8,7 +8,7 @@ import { findTextByTag } from "../../utils/dataUtils";
 import SkillSearch from "../../components/SkillSearch/SkillSearch";
 import TechnologyPreview from "../../components/TechnologyPreview/TechnologyPreview";
 import SkillField from "../../components/SkillField/SkillField";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "../../components/Button/Button";
 import { ServerNotRespondPage } from "../ServerNotRespondPage/ServerNotRespondPage";
 
@@ -33,10 +33,11 @@ export const renderSkillField = (data, index, titles) => {
 export const SkillsPage = ({language='en'}) => {
     const navigate = useNavigate()
 
-    const { data, isLoading, error } = useSkillsData(language);
+    const [searchText, setSearchText] = useState('');
 
+    const { data, isLoading, error } = useSkillsData(language, searchText);
+    
     const [isShaking, setIsShaking] = useState(false);
-
     const startShakeAnimation = () => {
         setIsShaking(true);
 
@@ -45,14 +46,22 @@ export const SkillsPage = ({language='en'}) => {
         }, 1000);
     };
 
+    const handleSearchChange = (text) => {
+        setSearchText(text);
+        
+    };
+
     if (isLoading) return <div>Loading...</div>;
     if (error) return <ServerNotRespondPage language={language}/>;
 
     const titles = data['data']['data']['titles'];
-    const skills = data['data']['data']['skills'];
+    const searched_skills = data['data']['data']['searched_skills'];
+    const other_skills = data['data']['data']['skills'];
+    
+
+    const all_skills = [...searched_skills, ...other_skills];
     
     return (
-        // Class shake and styles.SkillsPage
         <div className={`${isShaking ? anim.shake : ''} ${styles.skillsPage}`} onAnimationEnd={() => setIsShaking(false)}>
             <div className={styles.mainContent}>
                 <div className={styles.topContainer}>
@@ -64,25 +73,37 @@ export const SkillsPage = ({language='en'}) => {
                         />
                         <Button text={findTextByTag(titles, 'projects_button')} onButtonClick={() => navigate('/projects')}/>
                     </div>
-                    <SkillSearch 
-                        onSearchClick={() => console.log("Search")}
-                        searchedTechnologies={[
-                            <TechnologyPreview key={0} colorHex={"79CD79"} name={"Django"} type={"framework"}/>,
-                            <TechnologyPreview key={1} colorHex={"CD8F79"} name={"Docker"} type={"devOps"}/>,
-                            <TechnologyPreview key={2} colorHex={"799BCD"} name={"Python"} type={"programming language"}/>,
-                            <TechnologyPreview key={3} colorHex={"799BCD"} name={"JavaScript"} type={"programming language"}/>,
-                        ]}
+                    <SkillSearch
+                        value={searchText}
+                        onSearchClick={handleSearchChange}
+                        searchedTechnologies={
+                            searched_skills.map((data, index) => (
+                                <TechnologyPreview
+                                    key={index}
+                                    name={data.title}
+                                    type={data.type}
+                                    hueColor={data.hue_color}
+                                />
+                            ))
+                        }
                     />
                 </div>
                 <div className={styles.skills}>
                     <div className={styles.leftSkills}>
-                        {skills.map((data, index) => {
+                        {all_skills.map((data, index) => {
                             if (index % 2 === 0) return renderSkillField(data, index, titles)
                         })}
                     </div>
                     <div className={styles.rightSkills}>
-                        {skills.map((data, index) => {
+                        {all_skills.map((data, index) => {
                             if (index % 2 === 1) return renderSkillField(data, index, titles)
+                        })}
+                    </div>
+                </div>
+                <div className={styles.smallScreenSkills}>
+                    <div className={styles.leftSkills}>
+                        {all_skills.map((data, index) => {
+                            return renderSkillField(data, index, titles)
                         })}
                     </div>
                 </div>

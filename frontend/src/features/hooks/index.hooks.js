@@ -15,10 +15,10 @@ export const useAboutMeData = (language) => {
   });
 };
 
-export const useSkillsData = (language) => {
+export const useSkillsData = (language, search) => {
   return useQuery({
-    queryKey: ['skills', language],
-    queryFn: () => api.getSkillsData(language),
+    queryKey: ['skills', language, search],
+    queryFn: () => api.getSkillsData(language, search),
   });
 };
 

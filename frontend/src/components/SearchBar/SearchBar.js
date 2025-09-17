@@ -2,12 +2,16 @@ import React, { useState } from 'react'
 import styles from './SearchBar.module.css'
 import { FiSearch, FiSend } from "react-icons/fi";
 
-export default function SearchBar({ onSearchClick }) {
-  const [query, setQuery] = useState('');
+export default function SearchBar({ prevValue, onSearchClick }) {
+  const [value, setValue] = useState(prevValue || "");
 
-  const handleInputChange = (event) => {
-    setQuery(event.target.value);
-  };
+  const changeValue = (event) => {
+    setValue(event.target.value);
+  }
+
+  const buttonClick = () => {
+    onSearchClick(value);
+  }
 
   return (
     <div className={styles.searchBarContainer}>
@@ -16,13 +20,13 @@ export default function SearchBar({ onSearchClick }) {
             <input 
               className={styles.searchInput}
               type="text"
-              value={query}
-              onChange={handleInputChange}
+              value={value}
+              onChange={changeValue}
             />
         </div>
-        {/* <button className={styles.searchButton} onClick={onSearchClick}>
+        <button className={styles.searchButton} onClick={buttonClick}>
           <FiSend className={`${styles.icon} ${styles.smallIcon}`}/>
-        </button> */}
+        </button>
     </div>
   )
 }
