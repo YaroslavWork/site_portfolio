@@ -100,27 +100,31 @@ export const AboutMePage = ({language='en', onChangeLanguage, onChangeTheme}) =>
             </div>
             
             <div className={styles.bottomContent}>
-                <BooksField books={[
-                    books.map((data, index) => (
-                        <Book 
-                            key={index}
-                            author={data.author}
-                            title={data.title}
-                            progress={data.progress}
-                        />
-                    ))
-                ]}
+                <BooksField 
+                    title={findTextByTag(titles, 'books_title')}
+                    books={[
+                        books.map((data, index) => (
+                            <Book 
+                                key={index}
+                                author={data.author}
+                                title={data.title}
+                                progress={data.progress}
+                            />
+                        ))
+                    ]}
                 />
-                <HobbiesField hobbies={[
-                    hobbies.map((data, index) => (
-                        <Hobby 
-                            key={index}
-                            title={data.name}
-                            description={data.description}
-                            icon_path={data.icon_path}
-                        />
-                    ))
-                ]}
+                <HobbiesField 
+                    title={findTextByTag(titles, 'hobbies_title')}
+                    hobbies={[
+                        hobbies.map((data, index) => (
+                            <Hobby 
+                                key={index}
+                                title={data.name}
+                                description={data.description}
+                                icon_path={data.icon_path}
+                            />
+                        ))
+                    ]}
                 />
             </div>
             </div>

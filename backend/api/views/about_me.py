@@ -38,6 +38,8 @@ class AboutMeView(APIView):
             'projects_button',
             'education_button',
             'spark_about_me_string1',
+            'books_title',
+            'hobbies_title'
         ]
         multi_language_strings = MultiLanguageString.objects.filter(title__in=about_me_titles)
         serializer = MultiLanguageStringSerializer(multi_language_strings, many=True)

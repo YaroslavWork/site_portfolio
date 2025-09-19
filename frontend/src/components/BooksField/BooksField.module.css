@@ -6,3 +6,12 @@
     text-align: center;
     justify-content: center;
 }
+
+.booksMainTitle {
+    font-size: var(--font-size-xlarge);
+    text-transform: uppercase;
+    color: var(--primary);
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+}
