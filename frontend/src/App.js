@@ -16,21 +16,83 @@ import { EducationPage } from './pages/EducationPage/EducationPage';
 import { ContactPage } from './pages/ContactPage/ContactPage';
 import { CompanyPage } from './pages/CompanyPage/CompanyPage';
 import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
+import { useSystemLanguage } from './features/hooks/useSystemLanguage';
+
+function choosePossibleLanguages(language) {
+  if (language === 'uk' | language === 'ua') {
+      return 'ua';
+    } else if (language === 'pl') {
+      return 'pl';
+    } else {
+      return 'en';
+    }
+}
 
 function App() {
   const systemTheme = useSystemTheme();
+  const systemLanguage = useSystemLanguage();
 
-  const [language, setLanguage] = useState('en');
+  const [theme, setTheme] = useState(systemTheme);
+  const [language, setLanguage] = useState(systemLanguage);
+  const [isThemeSetManually, setIsThemeSetManually] = useState(false);
+  const [isLanguageSetManually, setIsLanguageSetManually] = useState(false);
 
-  function changeLanguage(language) {
-    setLanguage(language);
-  }
-
-  const activeTheme = systemTheme;
+  // Use useEffect to sync local state with system values
+  useEffect(() => {
+    changeTheme(systemTheme);
+  }, [systemTheme]);
 
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', activeTheme);
-  }, [activeTheme]);
+    changeLanguage(systemLanguage);
+  }, [systemLanguage]);
+
+  console.log(`Theme: ${theme}`);
+  console.log(`Language: ${language}`);
+
+  function changeTheme(newTheme, isUserAction=false) {
+    if (!isUserAction && isLanguageSetManually) return;
+    if (isUserAction) {
+      if (newTheme === 'default') {
+        setTheme(systemTheme);
+        setIsThemeSetManually(false);
+        return;
+      } else {
+        setTheme(newTheme);
+        setIsThemeSetManually(true);
+      }
+    }
+    setTheme(newTheme);
+  }
+
+  function changeLanguage(newLanguage, isUserAction=false) {
+    if (!isUserAction && isLanguageSetManually) return;
+    if (isUserAction) {
+      if (newLanguage === 'default') {
+        setLanguage(choosePossibleLanguages(systemLanguage));
+        setIsLanguageSetManually(false);
+        return;
+      } else {
+        setLanguage(choosePossibleLanguages(newLanguage));
+        setIsLanguageSetManually(true);
+      }
+    }
+    setLanguage(choosePossibleLanguages(newLanguage));
+  }
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
+
+  // Use a separate useEffect for the language attribute
+  useEffect(() => {
+    if (language) {
+      document.documentElement.setAttribute('lang', language);
+    }
+  }, [language]);
+
+  if (language === null) {
+    return <div>Loading language...</div>;
+  } 
 
   return (
     <BrowserRouter>
@@ -39,22 +101,22 @@ function App() {
         <Route path="/home" element={
           <GlobalStateProvider>
             <GlobalKeyboardListener />
-              <HomePage language={language} />
+              <HomePage language={language} onChangeLanguage={changeLanguage} onChangeTheme={changeTheme}/>
           </GlobalStateProvider>
         }></Route>
-        <Route path="/about_me" element={<AboutMePage language={language}/>} />
-        <Route path="/skills" element={<SkillsPage language={language}/>} />
-        <Route path="/projects" element={<ProjectsPage language={language}/>} />
-        <Route path="/work_experience" element={<WorkExperiencePage language={language}/>} />
-        <Route path="/education" element={<EducationPage language={language}/>} />
-        <Route path="/contact" element={<ContactPage language={language}/>} />
+        <Route path="/about_me" element={<AboutMePage language={language} onChangeLanguage={changeLanguage} onChangeTheme={changeTheme}/>} />
+        <Route path="/skills" element={<SkillsPage language={language} onChangeLanguage={changeLanguage} onChangeTheme={changeTheme}/>} />
+        <Route path="/projects" element={<ProjectsPage language={language} onChangeLanguage={changeLanguage} onChangeTheme={changeTheme}/>} />
+        <Route path="/work_experience" element={<WorkExperiencePage language={language} onChangeLanguage={changeLanguage} onChangeTheme={changeTheme}/>} />
+        <Route path="/education" element={<EducationPage language={language} onChangeLanguage={changeLanguage} onChangeTheme={changeTheme}/>} />
+        <Route path="/contact" element={<ContactPage language={language} onChangeLanguage={changeLanguage} onChangeTheme={changeTheme}/>} />
         <Route path='/company/:companyCode' element={
           <GlobalStateProvider>
             <GlobalKeyboardListener />
-              <CompanyPage language={language}/>
+              <CompanyPage language={language} onChangeLanguage={changeLanguage} onChangeTheme={changeTheme}/>
           </GlobalStateProvider>
         } />
-        <Route path="*" element={<NotFoundPage language={language}/>} />
+        <Route path="*" element={<NotFoundPage language={language} onChangeLanguage={changeLanguage} onChangeTheme={changeTheme}/>} />
       </Routes>
     
     </BrowserRouter>

@@ -8,6 +8,7 @@ from .views.education import EducationView
 from .views.contact import ContactView
 from .views.company import CompanyView
 from .views.not_found import NotFoundView
+from .views.menu import MenuView
 
 urlpatterns = [
     path('home/', HomeView.as_view(), name='home'),
@@ -18,5 +19,6 @@ urlpatterns = [
     path('education/', EducationView.as_view(), name='education'),
     path('contact/', ContactView.as_view(), name='contact'),
     path('company/<str:company_code>/', CompanyView.as_view(), name='company'),
-    path('404',  NotFoundView.as_view(), name='404')
+    path('404/',  NotFoundView.as_view(), name='404'),
+    path('menu/', MenuView.as_view(), name='menu')
 ]

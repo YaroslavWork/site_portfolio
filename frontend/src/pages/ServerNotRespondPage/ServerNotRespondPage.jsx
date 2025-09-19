@@ -2,14 +2,15 @@ import { useEffect, useState } from 'react';
 import SparkField from '../../components/SparkField/SparkField'
 import styles from './ServerNotRespondPage.module.css'
 
-export const ServerNotRespondPage = ({language='en'}) => {
+export const ServerNotRespondPage = ({language='en', isInAllPage=true}) => {
     const [data, setData] = useState(null);
+    const mainDivStyle = !isInAllPage ? `${styles.serverNotRespondPage} ${styles.autoHeight}` : `${styles.serverNotRespondPage}`
 
     useEffect(() => {
         fetch('/texts/serverNotRespond.json')
-        .then(response => response.json()) // Automatically parses the JSON
+        .then(response => response.json())
         .then(jsonData => setData(jsonData));
-    }, []); // The empty dependency array ensures this runs only once
+    }, []);
 
     if (!data) {
         return <div>Loading...</div>;
@@ -18,7 +19,7 @@ export const ServerNotRespondPage = ({language='en'}) => {
     console.log(data);
 
     return (
-        <div className={styles.serverNotRespondPage}>
+        <div className={mainDivStyle}>
             <SparkField text={data['spark_server_not_respond'][language]}/>
         </div>
     )

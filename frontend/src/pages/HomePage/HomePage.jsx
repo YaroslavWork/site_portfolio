@@ -18,7 +18,7 @@ import { findTextByTag } from '../../utils/dataUtils';
 import { ServerNotRespondPage } from '../ServerNotRespondPage/ServerNotRespondPage';
 
 
-export const HomePage = ({language}) => {
+export const HomePage = ({language='en', onChangeLanguage, onChangeTheme}) => {
     const navigate = useNavigate()
 
     const { data, isLoading, error } = useHomeData(language);
@@ -32,7 +32,14 @@ export const HomePage = ({language}) => {
     return (
         <div className={styles.homePage}>
             <div className={styles.mainContent}>        
-                <SparkField text={findTextByTag(titles, 'spark_main_page_string1')} onSparkClick={() => navigate('/home')}/>
+                <SparkField
+                    text={findTextByTag(titles, 'spark_main_page_string1')}
+                    onSparkClick={() => navigate('/home')}
+                    navigate={navigate}
+                    onChangeLanguage={onChangeLanguage}
+                    onChangeTheme={onChangeTheme}
+                    language={language}
+                />
                 
 
                 <div className={styles.columns}>

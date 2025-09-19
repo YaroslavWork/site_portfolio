@@ -30,7 +30,7 @@ export const renderSkillField = (data, index, titles) => {
     )
 }
 
-export const SkillsPage = ({language='en'}) => {
+export const SkillsPage = ({language='en', onChangeLanguage, onChangeTheme}) => {
     const navigate = useNavigate()
 
     const [searchText, setSearchText] = useState('');
@@ -70,6 +70,10 @@ export const SkillsPage = ({language='en'}) => {
                             text={findTextByTag(titles, 'spark_skills_string1')}
                             onSparkClick={() => navigate('/home')}
                             onSparkEnergyClick={() => startShakeAnimation()}
+                            navigate={navigate}
+                            onChangeLanguage={onChangeLanguage}
+                            onChangeTheme={onChangeTheme}
+                            language={language}
                         />
                         <Button text={findTextByTag(titles, 'projects_button')} onButtonClick={() => navigate('/projects')}/>
                     </div>

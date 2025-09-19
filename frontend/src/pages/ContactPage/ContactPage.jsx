@@ -7,7 +7,7 @@ import styles from './ContactPage.module.css';
 import ContactField from "../../components/ContactField/ContactField";
 import { ServerNotRespondPage } from "../ServerNotRespondPage/ServerNotRespondPage";
 
-export const ContactPage = ({language='en'}) => {
+export const ContactPage = ({language='en', onChangeLanguage, onChangeTheme}) => {
     const navigate = useNavigate()
 
     const { data, isLoading, error } = useContactData(language);
@@ -21,7 +21,14 @@ export const ContactPage = ({language='en'}) => {
     return (
         <div className={styles.contactPage}>
             <div className={styles.mainContent}>
-                <SparkField text={findTextByTag(titles, 'spark_contact_string1')} onSparkClick={() => navigate('/home')}/>
+                <SparkField
+                    text={findTextByTag(titles, 'spark_contact_string1')}
+                    onSparkClick={() => navigate('/home')}
+                    navigate={navigate}
+                    onChangeLanguage={onChangeLanguage}
+                    onChangeTheme={onChangeTheme}
+                    language={language}
+                />
                 <div className={styles.contactContent}>
                     {contacts.map((data, index) => (
                         <ContactField key={index} identification={data.identification} iconName={data.icon_name} isPrimary={true}/>

@@ -15,7 +15,7 @@ import { GlobalStateContext } from "../../features/hooks/globalStateContext";
 import { useContext } from "react";
 import { ServerNotRespondPage } from "../ServerNotRespondPage/ServerNotRespondPage";
 
-export const CompanyPage = ({language='en'}) => {
+export const CompanyPage = ({language='en', onChangeLanguage, onChangeTheme}) => {
     const navigate = useNavigate()
     const { companyCode } = useParams()
     const { globalString } = useContext(GlobalStateContext);
@@ -31,6 +31,10 @@ export const CompanyPage = ({language='en'}) => {
                     <SparkField
                         text={findTextByTag(titles, 'spark_company_not_found_string1')}
                         onSparkClick={() => navigate('/home')}
+                        navigate={navigate}
+                        onChangeLanguage={onChangeLanguage}
+                        onChangeTheme={onChangeTheme}
+                        language={language}
                     />
                     <CVCode
                         prompt={null}
@@ -56,6 +60,10 @@ export const CompanyPage = ({language='en'}) => {
                 <SparkField
                     text={findTextByTag(titles, 'spark_company_string1')}
                     onSparkClick={() => navigate('/home')}
+                    navigate={navigate}
+                    onChangeLanguage={onChangeLanguage}
+                    onChangeTheme={onChangeTheme}
+                    language={language}
                     allowHTML={true}
                     color={diffInfo['color']}    
                 />

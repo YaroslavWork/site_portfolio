@@ -64,3 +64,10 @@ export const useNotFoundData = (language) => {
     queryFn: () => api.getNotFoundData(language),
   });
 };
+
+export const useMenuData = (language) => {
+  return useQuery({
+    queryKey: ['menu', language],
+    queryFn: () => api.getMenuData(language),
+  });
+};

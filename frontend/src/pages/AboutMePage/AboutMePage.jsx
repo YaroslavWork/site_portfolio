@@ -23,7 +23,7 @@ const downloadFile = (fileUrl, fileName) => {
     document.body.removeChild(link);
 };
 
-export const AboutMePage = ({language='en'}) => {
+export const AboutMePage = ({language='en', onChangeLanguage, onChangeTheme}) => {
     const navigate = useNavigate()
 
     const { data, isLoading, error } = useAboutMeData(language);
@@ -42,7 +42,14 @@ export const AboutMePage = ({language='en'}) => {
     return (
         <div className={styles.aboutMePage}>
             <div className={styles.mainContent}>
-            <SparkField text={findTextByTag(titles, 'spark_about_me_string1')} onSparkClick={() => navigate('/home')}/>
+            <SparkField 
+                text={findTextByTag(titles, 'spark_about_me_string1')}
+                onSparkClick={() => navigate('/home')}
+                navigate={navigate}
+                onChangeLanguage={onChangeLanguage}
+                onChangeTheme={onChangeTheme}
+                language={language}
+            />
             <div className={styles.columns}>
                 <div className={styles.smallColumn}>
                     <CharacterField name={findTextByTag(titles, 'name')}/>

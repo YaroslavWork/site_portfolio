@@ -13,6 +13,8 @@ export default function SkillField({
     color=null
 }) {
 
+  const isUsedInProjectVisible = usedInProjects.length === 0 ? false : true;
+
   return (
     <BorderContainer>
         <div className={skills.technologyTop}>
@@ -20,7 +22,9 @@ export default function SkillField({
             <p className={skills.technologyType}>{technologyType}</p>
         </div>
         <div className={skills.whatField}>
-            <SkillSubComponentProjects title={usedInProjectsTitle} projectsName={usedInProjects} color={color}/>
+            {isUsedInProjectVisible &&
+              <SkillSubComponentProjects title={usedInProjectsTitle} projectsName={usedInProjects} color={color}/>
+            }
             <SkillSubComponent whatType={whatIKnowTitle} text={whatIKnowText} color={color}/>
             <SkillSubComponent whatType={whatImLearningTitle} text={whatImLearningText} color={color}/>
             <SkillSubComponent whatType={whatIPlanTitle} text={whatIPlanText} color={color}/>

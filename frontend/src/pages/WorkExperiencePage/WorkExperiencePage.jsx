@@ -7,7 +7,7 @@ import JobsContainer from "../../components/JobsContainer/JobsContainer";
 import Button from "../../components/Button/Button";
 import { ServerNotRespondPage } from "../ServerNotRespondPage/ServerNotRespondPage";
 
-export const WorkExperiencePage = ({language='en'}) => {
+export const WorkExperiencePage = ({language='en', onChangeLanguage, onChangeTheme}) => {
     const navigate = useNavigate()
 
     const { data, isLoading, error } = useWorkExperienceData(language);
@@ -22,7 +22,14 @@ export const WorkExperiencePage = ({language='en'}) => {
     return (
       <div className={styles.workExperiencePage}>
         <div className={styles.mainContent}>
-            <SparkField text={findTextByTag(titles, 'spark_work_experience_string1')} onSparkClick={() => navigate('/home')}/>
+            <SparkField
+                text={findTextByTag(titles, 'spark_work_experience_string1')}
+                onSparkClick={() => navigate('/home')}
+                navigate={navigate}
+                onChangeLanguage={onChangeLanguage}
+                onChangeTheme={onChangeTheme}
+                language={language}
+            />
             <JobsContainer 
                 title={findTextByTag(titles, 'it_jobs_title')}
                 noWorkDescription={findTextByTag(titles, 'it_job_none_description')}

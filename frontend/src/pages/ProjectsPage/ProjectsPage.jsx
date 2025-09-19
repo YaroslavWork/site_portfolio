@@ -10,7 +10,7 @@ import ProjectField from '../../components/ProjectField/ProjectField';
 import TechnologyPreview from '../../components/TechnologyPreview/TechnologyPreview';
 import { ServerNotRespondPage } from '../ServerNotRespondPage/ServerNotRespondPage';
 
-export const ProjectsPage = ({language='en'}) => {
+export const ProjectsPage = ({language='en', onChangeLanguage, onChangeTheme}) => {
     const navigate = useNavigate()
 
     const { data, isLoading, error } = useProjectsData(language);
@@ -27,6 +27,10 @@ export const ProjectsPage = ({language='en'}) => {
           <SparkField 
             text={findTextByTag(titles, 'spark_projects_string1')}
             onSparkClick={() => navigate('/home')}
+            navigate={navigate}
+            onChangeLanguage={onChangeLanguage}
+            onChangeTheme={onChangeTheme}
+            language={language}
           />
           <div className={styles.projectsContent}>
             {projects.map((data, index) => (

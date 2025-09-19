@@ -6,7 +6,7 @@ import { findTextByTag } from "../../utils/dataUtils"
 import { ServerNotRespondPage } from "../ServerNotRespondPage/ServerNotRespondPage"
 
 
-export const NotFoundPage = ({language='en'}) => {
+export const NotFoundPage = ({language='en', onChangeLanguage, onChangeTheme}) => {
     const navigate = useNavigate()
 
     const { data, isLoading, error } = useNotFoundData(language);
@@ -18,7 +18,14 @@ export const NotFoundPage = ({language='en'}) => {
 
     return (
         <div className={styles.notFoundPage}>
-            <SparkField text={findTextByTag(titles, 'spark_not_found_page_string1')} onSparkClick={() => navigate('/home')}/>
+            <SparkField
+                text={findTextByTag(titles, 'spark_not_found_page_string1')}
+                onSparkClick={() => navigate('/home')}
+                navigate={navigate}
+                onChangeLanguage={onChangeLanguage}
+                onChangeTheme={onChangeTheme}
+                language={language}
+            />
         </div>
     )
 }

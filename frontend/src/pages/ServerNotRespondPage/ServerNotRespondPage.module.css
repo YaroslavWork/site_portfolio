@@ -8,6 +8,11 @@
 
 }
 
+.autoHeihgt {
+    height: 100px;
+    background-color: red;
+}
+
 .serverNotRespondPage > div {
     max-width: 500px;
 }
