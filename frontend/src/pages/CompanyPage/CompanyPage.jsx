@@ -115,7 +115,7 @@ export const CompanyPage = ({language='en', onChangeLanguage, onChangeTheme}) =>
                             text={findTextByTag(titles, 'company_description_title')}
                             color={diffInfo['color']}
                         />
-                        <Title text={findTextByTag(titles, 'company_skills_title')} isPrimary={true} allowHTML={true} color={diffInfo['color']}/>
+                        <Title text={findTextByTag(titles, 'company_skills_title')} isPrimary={true} smallerText={true} allowHTML={true} color={diffInfo['color']}/>
                         {skills.map((data, index) => (
                             renderSkillField(data, index, titles)
                         ))}

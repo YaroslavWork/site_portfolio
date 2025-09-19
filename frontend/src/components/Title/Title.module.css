@@ -5,6 +5,10 @@
     color: var(--secondary);
 }
 
+.smallerText {
+    font-size: var(--font-size-xlarge);
+}
+
 .titleText b {
     color: var(--company-bold-color);
 }
