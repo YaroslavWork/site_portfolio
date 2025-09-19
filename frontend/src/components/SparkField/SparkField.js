@@ -4,6 +4,7 @@ import BorderContainer from '../BorderContainer/BorderContainer';
 
 import { SlEnergy } from "react-icons/sl";
 import { ControlCenter } from '../ControlCenter/ControlCenter';
+import Button from '../Button/Button';
 
 export default function SparkField({
   text,
@@ -42,6 +43,11 @@ export default function SparkField({
     }
   }
 
+  const onCloseMenu = () => {
+    setIsMenuVisible(false);
+    setIsCountAsClick(false);
+  }
+
   return (
     <>
       <BorderContainer style={styleVar} isSpark={true} color={color}>
@@ -55,14 +61,9 @@ export default function SparkField({
           >
             <img src={image_path} alt="Spark" className={styles.sparkImage} />
           </button>
-          {onSparkEnergyClick &&
-            <button
-              onClick={onSparkEnergyClick}
-              className={styles.sparkEnergyButton}
-            >
-              <SlEnergy />
-            </button>
-          }
+          {onSparkEnergyClick && (
+            <Button text={<SlEnergy />} isSmallPadding={true} color={"--warning"} onButtonClick={onSparkEnergyClick}/>
+          )}
         </div>
         { allowHTML ? 
           <div style={styleVar} className={styles.sparkMonolog} dangerouslySetInnerHTML={{ __html: text }}></div> //CONTACT ME PLEASE
@@ -76,6 +77,7 @@ export default function SparkField({
           onChangeLanguage={onChangeLanguage}
           onChangeTheme={onChangeTheme}
           language={language}
+          onCloseMenu={onCloseMenu}
         />
       }
     </>

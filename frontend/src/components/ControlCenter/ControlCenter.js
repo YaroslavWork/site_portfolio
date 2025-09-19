@@ -6,7 +6,9 @@ import { useMenuData } from "../../features/hooks/index.hooks";
 import { ServerNotRespondPage } from "../../pages/ServerNotRespondPage/ServerNotRespondPage";
 import { findTextByTag } from "../../utils/dataUtils";
 
-export const ControlCenter = ({navigate, onChangeLanguage, onChangeTheme, language}) => {
+import { IoClose } from "react-icons/io5";
+
+export const ControlCenter = ({navigate, onChangeLanguage, onChangeTheme, language, onCloseMenu}) => {
     const { data, isLoading, error } = useMenuData(language);
     
     if (isLoading) return <div className={styles.popUpMenu}>Loading...</div>;
@@ -21,6 +23,9 @@ export const ControlCenter = ({navigate, onChangeLanguage, onChangeTheme, langua
     return (
         <div className={styles.popUpMenu}>
             <BorderContainer>
+                <div className={styles.popUpButton}>
+                    <Button text={<IoClose />} color={"--danger"} isSmallPadding={true} onButtonClick={() => onCloseMenu()}/>
+                </div>
                 <h1 className={styles.controlCenterTitle}>{findTextByTag(titles, "control_center_title")}</h1>
                 <h2 className={styles.controlCenterBlockTitle}>{findTextByTag(titles, "paths_title")}</h2>
                 <Buttons buttons={[

@@ -26,3 +26,8 @@
     color: var(--primary);
     font-weight: 400;
 }
+
+.popUpButton {
+    position: fixed;
+    right: 25px;
+}

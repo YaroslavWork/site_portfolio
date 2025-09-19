@@ -25,31 +25,6 @@
     gap: var(--spacing-md);
 }
 
-.sparkEnergyButton {
-    /* Layout */
-    display: flex;
-    align-items: center;
-    justify-content: center; 
-    /* Box model */
-    min-width: 2.4rem;
-    max-width: 3.2rem;
-    aspect-ratio: 1 / 1;
-    /* Visual */
-    background-color: var(--warning);
-    border: none;
-    border-radius: var(--border-radius-md);
-    cursor: pointer;
-
-    font-size: 1.5rem;
-    color: var(--text);
-
-    transition: transform 0.3s ease;
-}
-
-.sparkEnergyButton:hover {
-    transform: scale(1.25);
-}
-
 .sparkImage {
     width: 100%;
     object-fit: contain;
