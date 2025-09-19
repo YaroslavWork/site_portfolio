@@ -12,4 +12,4 @@ export const getCompanyData = async (companyCode, language='en') => {
     return data
 }
 export const getNotFoundData = (language='en') => axios.get(`/404/?language=${language}`)
-export const getMenuData = (language='en') => axios.get(`/menu/?language=${language}`)
+export const getMenuData = (language='en') => axios.get(`/menus/?language=${language}`)
