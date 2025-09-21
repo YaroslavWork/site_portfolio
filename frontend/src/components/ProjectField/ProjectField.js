@@ -19,7 +19,8 @@ export default function ProjectField( {
                 </div>
                 <div className={styles.projectBlock}>
                     <h2 className={styles.projectBlockTitle}>{descriptionTitle}</h2>
-                    <p className={styles.description}>{description}</p>
+                    <p className={styles.description}
+                        dangerouslySetInnerHTML={{ __html: description }}/>
                 </div>
                 <div className={styles.projectBlock}>
                     <h2 className={styles.projectBlockTitle}>{linksTitle}</h2>

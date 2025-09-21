@@ -89,3 +89,19 @@
     }
 
 }
+
+.description ul {
+    width: 100%;
+    list-style-type: disc;
+    padding-left: 20px;
+    color: var(--text);
+    text-align: left;
+}
+
+ul li::marker {
+    color: var(--secondary);
+}
+
+ul b {
+    color: var(--secondary);
+}
