@@ -76,9 +76,9 @@ class SkillsView(APIView):
                     "type": skill['title']['technology_type']['name'][language_key],
                     "hue_color": skill['title']['technology_type']['hue_color'],
                     "used_in_projects": skill['used_in_projects'],
-                    "stuff_i_know": skill['stuff_i_know'][language_key],
-                    "stuff_i_learn": skill['stuff_i_learn'][language_key],
-                    "stuff_i_plan": skill['stuff_i_plan'][language_key],
+                    "stuff_i_know": skill.get('stuff_i_know', {}).get(language_key, ""),
+                    "stuff_i_learn": skill.get('stuff_i_learn', {}).get(language_key, "") if isinstance(skill.get('stuff_i_learn', {}), dict) else "",
+                    "stuff_i_plan": skill.get('stuff_i_plan', {}).get(language_key, "") if isinstance(skill.get('stuff_i_plan', {}), dict) else "",
                 } for skill in skill_serializer.data if skill['title']['name'] in searched_skills_name
             ],
             "skills": [
@@ -87,9 +87,9 @@ class SkillsView(APIView):
                     "type": skill['title']['technology_type']['name'][language_key],
                     "hue_color": skill['title']['technology_type']['hue_color'],
                     "used_in_projects": skill['used_in_projects'],
-                    "stuff_i_know": skill['stuff_i_know'][language_key],
-                    "stuff_i_learn": skill['stuff_i_learn'][language_key],
-                    "stuff_i_plan": skill['stuff_i_plan'][language_key],
+                    "stuff_i_know": skill.get('stuff_i_know', {}).get(language_key, ""),
+                    "stuff_i_learn": skill.get('stuff_i_learn', {}).get(language_key, "") if isinstance(skill.get('stuff_i_learn', {}), dict) else "",
+                    "stuff_i_plan": skill.get('stuff_i_plan', {}).get(language_key, "") if isinstance(skill.get('stuff_i_plan', {}), dict) else "",
                 } for skill in skill_serializer.data if skill['title']['name'] not in searched_skills_name
             ]
         }
