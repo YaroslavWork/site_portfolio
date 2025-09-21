@@ -24,13 +24,17 @@ class Skill(models.Model):
         MultiLanguageString,
         on_delete=models.CASCADE,
         related_name='skills_learn',
-        help_text="The translatable items I am learning related to the skill"
+        help_text="The translatable items I am learning related to the skill",
+        null=True,
+        blank=True
     )
     stuff_i_plan: str = models.ForeignKey(
         MultiLanguageString,
         on_delete=models.CASCADE,
         related_name='skills_plan',
-        help_text="The translatable items I plan to learn related to the skill"
+        help_text="The translatable items I plan to learn related to the skill",
+        null=True,
+        blank=True
     )
 
     def __str__(self):
