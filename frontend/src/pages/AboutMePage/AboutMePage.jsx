@@ -53,38 +53,7 @@ export const AboutMePage = ({language='en', onChangeLanguage, onChangeTheme}) =>
             <div className={styles.columns}>
                 <div className={styles.smallColumn}>
                     <CharacterField name={findTextByTag(titles, 'name')}/>
-                    <TitleWithButtons
-                        title={findTextByTag(titles, 'cv_title')}
-                        buttons={[
-                            <Button 
-                                text={findTextByTag(titles, 'download_pdf_button')}
-                                onButtonClick={() => handleDownloadClick('/documents/cv.pdf', `${findTextByTag(titles, 'name')} CV`)}
-                                isSmallPadding={true}
-                            />,
-                            <Button
-                                text={findTextByTag(titles, 'download_png_button')}
-                                onButtonClick={() => handleDownloadClick('/documents/cv.png', `${findTextByTag(titles, 'name')} CV`)}
-                                isPrimary={false}
-                                isSmallPadding={true}
-                            />,
-                        ]}
-                    />
-                    <TitleWithButtons
-                        title={findTextByTag(titles, 'cover_letter_title')}
-                        buttons={[
-                            <Button 
-                                text={findTextByTag(titles, 'download_pdf_button')}
-                                onButtonClick={() => handleDownloadClick('/documents/cover_letter.pdf', `${findTextByTag(titles, 'name')} Cover Letter`)}
-                                isSmallPadding={true}
-                            />,
-                            <Button
-                                text={findTextByTag(titles, 'download_png_button')}
-                                onButtonClick={() => handleDownloadClick('/documents/cover_letter.png', `${findTextByTag(titles, 'name')} Cover Letter`)}
-                                isPrimary={false}
-                                isSmallPadding={true}
-                            />,
-                        ]}
-                    />
+                    
                 </div>
                 <div className={styles.bigColumn}>
                     <DescriptionWithButtons
@@ -96,6 +65,40 @@ export const AboutMePage = ({language='en', onChangeLanguage, onChangeTheme}) =>
                             <Button text={findTextByTag(titles, 'education_button')} onButtonClick={() => navigate('/education')}/>,
                         ]}
                     />
+                    <div class={styles.rows}>
+                        <TitleWithButtons
+                            title={findTextByTag(titles, 'cv_title')}
+                            buttons={[
+                                <Button 
+                                    text={findTextByTag(titles, 'download_pdf_button')}
+                                    onButtonClick={() => handleDownloadClick('/documents/cv.pdf', `${findTextByTag(titles, 'name')} CV`)}
+                                    isSmallPadding={true}
+                                />,
+                                <Button
+                                    text={findTextByTag(titles, 'download_png_button')}
+                                    onButtonClick={() => handleDownloadClick('/documents/cv.png', `${findTextByTag(titles, 'name')} CV`)}
+                                    isPrimary={false}
+                                    isSmallPadding={true}
+                                />,
+                            ]}
+                        />
+                        <TitleWithButtons
+                            title={findTextByTag(titles, 'cover_letter_title')}
+                            buttons={[
+                                <Button 
+                                    text={findTextByTag(titles, 'download_pdf_button')}
+                                    onButtonClick={() => handleDownloadClick('/documents/cover_letter.pdf', `${findTextByTag(titles, 'name')} Cover Letter`)}
+                                    isSmallPadding={true}
+                                />,
+                                <Button
+                                    text={findTextByTag(titles, 'download_png_button')}
+                                    onButtonClick={() => handleDownloadClick('/documents/cover_letter.png', `${findTextByTag(titles, 'name')} Cover Letter`)}
+                                    isPrimary={false}
+                                    isSmallPadding={true}
+                                />,
+                            ]}
+                        />
+                    </div>
                 </div>
             </div>
             

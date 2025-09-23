@@ -30,6 +30,11 @@
     width: 100%;
 }
 
+.rows {
+    display: flex;
+    flex-direction: row;
+}
+
 @media (max-width: 700px) {
     .columns {
         display: flex;
@@ -42,5 +47,12 @@
 
     .bigColumn {
         max-width: 100%;
+    }    
+}
+
+@media (max-width: 400px) {
+    .rows {
+        flex-direction: column;
     }
 }
+
