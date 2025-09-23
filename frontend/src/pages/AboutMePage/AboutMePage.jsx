@@ -124,7 +124,7 @@ export const AboutMePage = ({language='en', onChangeLanguage, onChangeTheme}) =>
                                 key={index}
                                 title={data.name}
                                 description={data.description}
-                                icon_path={data.icon_path}
+                                images_path={data.images_path}
                             />
                         ))
                     ]}

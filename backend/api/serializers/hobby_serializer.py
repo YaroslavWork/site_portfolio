@@ -12,7 +12,7 @@ class HobbySerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Hobby
-        fields = ['id', 'name', 'description', 'icon_path']
+        fields = ['id', 'name', 'description', 'images_path']
         extra_kwargs = {
             'id': {'read_only': True},
             'name': {'required': True},

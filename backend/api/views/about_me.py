@@ -75,7 +75,9 @@ class AboutMeView(APIView):
                 {
                     'name': hobby['name'][language_key],
                     'description': hobby['description'][language_key],
-                    'icon_path': hobby['icon_path']
+                    'images_path': [
+                        path.strip() for path in hobby['images_path'].split(';') if path.strip()
+                    ] if hobby['images_path'] else []
                 }
                 for hobby in hobby_serializer.data
             ]
