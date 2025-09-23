@@ -14,6 +14,7 @@ import CVCode from "../../components/CVCode/CVCode";
 import { GlobalStateContext } from "../../features/hooks/globalStateContext";
 import { useContext, useState } from "react";
 import { ServerNotRespondPage } from "../ServerNotRespondPage/ServerNotRespondPage";
+import { downloadFile } from '../AboutMePage/AboutMePage';
 
 export const CompanyPage = ({language='en', onChangeLanguage, onChangeTheme}) => {
     const navigate = useNavigate()
@@ -54,12 +55,15 @@ export const CompanyPage = ({language='en', onChangeLanguage, onChangeTheme}) =>
         setIsDefaultStyle(!isDefaultStyle);
     }
 
+    const handleDownloadClick = (url, name) => {
+        downloadFile(url, name);
+    };
+
     const titles = data['data']['titles'];
     const skills = data['data']['skills'];
     const diffInfo = data['data']['other_data'];
 
     const colorHue = isDefaultStyle ? null : diffInfo['color'];
-    
 
     return (
         <div className={styles.companyPage}>
@@ -90,13 +94,21 @@ export const CompanyPage = ({language='en', onChangeLanguage, onChangeTheme}) =>
                         <TitleWithButtons
                             title={findTextByTag(titles, 'cv_title')}
                             buttons={[
-                                <Button text={findTextByTag(titles, 'download_pdf_button')} colorHue={colorHue}/>,
+                                <Button
+                                    text={findTextByTag(titles, 'download_pdf_button')}
+                                    colorHue={colorHue}
+                                    onButtonClick={() => handleDownloadClick(`/companies_cv/${diffInfo['company_name']}/cv.pdf`, `CV`)}
+                                />,
                             ]}
                         />
                         <TitleWithButtons
                             title={findTextByTag(titles, 'cover_letter_title')}
                             buttons={[
-                                <Button text={findTextByTag(titles, 'download_pdf_button')} colorHue={colorHue}/>,
+                                <Button
+                                    text={findTextByTag(titles, 'download_pdf_button')}
+                                    colorHue={colorHue}
+                                    onButtonClick={() => handleDownloadClick(`/companies_cv/${diffInfo['company_name']}/cover_letter.pdf`, `Cover Letter`)}
+                                />,
                             ]}
                         />
                         <TitleWithButtons
@@ -147,13 +159,21 @@ export const CompanyPage = ({language='en', onChangeLanguage, onChangeTheme}) =>
                         <TitleWithButtons
                             title={findTextByTag(titles, 'cv_title')}
                             buttons={[
-                                <Button text={findTextByTag(titles, 'download_pdf_button')} colorHue={colorHue}/>,
+                                <Button
+                                    text={findTextByTag(titles, 'download_pdf_button')}
+                                    colorHue={colorHue}
+                                    onButtonClick={() => handleDownloadClick(`/companies_cv/${diffInfo['company_name']}/cv.pdf`, `CV`)}
+                                />,
                             ]}
                         />
                         <TitleWithButtons
                             title={findTextByTag(titles, 'cover_letter_title')}
                             buttons={[
-                                <Button text={findTextByTag(titles, 'download_pdf_button')} colorHue={colorHue}/>,
+                                <Button
+                                    text={findTextByTag(titles, 'download_pdf_button')}
+                                    colorHue={colorHue}
+                                    onButtonClick={() => handleDownloadClick(`/companies_cv/${diffInfo['company_name']}/cover_letter.pdf`, `Cover Letter`)}
+                                />,
                             ]}
                         />
                         <Title text={findTextByTag(titles, 'company_skills_title')} isPrimary={true} allowHTML={true} colorHue={colorHue}/>

@@ -15,7 +15,7 @@ import HobbiesField from '../../components/HobbiesField/HobbiesField';
 import { ServerNotRespondPage } from '../ServerNotRespondPage/ServerNotRespondPage';
 import LanguageField from '../../components/LanguageField/LanguageField';
 
-const downloadFile = (fileUrl, fileName) => {
+export const downloadFile = (fileUrl, fileName) => {
     const link = document.createElement('a');
     link.href = fileUrl;
     link.download = fileName;
