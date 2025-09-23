@@ -3,8 +3,8 @@ import styles from './DescriptionWithButtons.module.css'
 import BorderContainer from '../BorderContainer/BorderContainer'
 import Buttons from '../Buttons/Buttons';
 
-export default function DescriptionWithButtons( {text, buttons = [], color=null} ) {
-    const styleVar = color ? { '--company-bold-color': `#${color}` } : {};
+export default function DescriptionWithButtons( {text, buttons = [], colorHue=null} ) {
+    const styleVar = colorHue ? { '--company-bold-color': `hsl(${colorHue}, var(--primary-saturation), var(--primary-lightness))` } : {};
     
     return (
         <BorderContainer>

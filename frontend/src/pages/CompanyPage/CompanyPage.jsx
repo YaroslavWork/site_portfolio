@@ -12,7 +12,7 @@ import DescriptionWithButtons from "../../components/DescriptionWithButtons/Desc
 import { renderSkillField } from '../SkillsPage/SkillsPage';
 import CVCode from "../../components/CVCode/CVCode";
 import { GlobalStateContext } from "../../features/hooks/globalStateContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ServerNotRespondPage } from "../ServerNotRespondPage/ServerNotRespondPage";
 
 export const CompanyPage = ({language='en', onChangeLanguage, onChangeTheme}) => {
@@ -21,6 +21,8 @@ export const CompanyPage = ({language='en', onChangeLanguage, onChangeTheme}) =>
     const { globalString } = useContext(GlobalStateContext);
 
     const { data, isLoading, isError, error } = useCompanyData(companyCode, language);
+
+    const [isDefaultStyle, setIsDefaultStyle] = useState(false);
 
     if (isLoading) return <div>Loading...</div>;
     if (isError) {
@@ -48,11 +50,16 @@ export const CompanyPage = ({language='en', onChangeLanguage, onChangeTheme}) =>
         return <ServerNotRespondPage language={language}/>;
     }
 
+    const changePageStyle = () => {
+        setIsDefaultStyle(!isDefaultStyle);
+    }
+
     const titles = data['data']['titles'];
     const skills = data['data']['skills'];
     const diffInfo = data['data']['other_data'];
 
-    //diffInfo['color'] = 'ff5733'
+    const colorHue = isDefaultStyle ? null : diffInfo['color'];
+    
 
     return (
         <div className={styles.companyPage}>
@@ -65,30 +72,31 @@ export const CompanyPage = ({language='en', onChangeLanguage, onChangeTheme}) =>
                     onChangeTheme={onChangeTheme}
                     language={language}
                     allowHTML={true}
-                    color={diffInfo['color']}    
+                    colorHue={colorHue}
+                    onChangeStyle={changePageStyle}
                 />
-                <Title text={findTextByTag(titles, 'company_main_title')} isPrimary={true} allowHTML={true} color={diffInfo['color']}/>
+                <Title text={findTextByTag(titles, 'company_main_title')} isPrimary={true} allowHTML={true} colorHue={colorHue}/>
                 <div className={styles.content}>
                     <div className={styles.mainPanel}>
                         <IconsWithButtonsField 
                             iconsWithLinks={[
-                                { icon: <FiGithub/>, link: findTextByTag(titles, 'github_path'), color: diffInfo['color']},
-                                { icon: <FiLinkedin/>, link: findTextByTag(titles, 'linkedin_path'), color: diffInfo['color']}
+                                { icon: <FiGithub/>, link: findTextByTag(titles, 'github_path'), colorHue: colorHue},
+                                { icon: <FiLinkedin/>, link: findTextByTag(titles, 'linkedin_path'), colorHue: colorHue}
                             ]}
                             buttons={[
-                                <Button text={findTextByTag(titles, 'contact_button')} color={diffInfo['color']} onButtonClick={() => navigate('/contact')}/>
+                                <Button text={findTextByTag(titles, 'contact_button')} colorHue={colorHue} onButtonClick={() => navigate('/contact')}/>
                             ]}
                         />
                         <TitleWithButtons
                             title={findTextByTag(titles, 'cv_title')}
                             buttons={[
-                                <Button text={findTextByTag(titles, 'download_pdf_button')} color={diffInfo['color']}/>,
+                                <Button text={findTextByTag(titles, 'download_pdf_button')} colorHue={colorHue}/>,
                             ]}
                         />
                         <TitleWithButtons
                             title={findTextByTag(titles, 'cover_letter_title')}
                             buttons={[
-                                <Button text={findTextByTag(titles, 'download_pdf_button')} color={diffInfo['color']}/>,
+                                <Button text={findTextByTag(titles, 'download_pdf_button')} colorHue={colorHue}/>,
                             ]}
                         />
                         <TitleWithButtons
@@ -113,9 +121,9 @@ export const CompanyPage = ({language='en', onChangeLanguage, onChangeTheme}) =>
                     <div className={styles.showcase}>
                         <DescriptionWithButtons
                             text={findTextByTag(titles, 'company_description_title')}
-                            color={diffInfo['color']}
+                            colorHue={colorHue}
                         />
-                        <Title text={findTextByTag(titles, 'company_skills_title')} isPrimary={true} smallerText={true} allowHTML={true} color={diffInfo['color']}/>
+                        <Title text={findTextByTag(titles, 'company_skills_title')} isPrimary={true} smallerText={true} allowHTML={true} colorHue={colorHue}/>
                         {skills.map((data, index) => (
                             renderSkillField(data, index, titles)
                         ))}
@@ -125,30 +133,30 @@ export const CompanyPage = ({language='en', onChangeLanguage, onChangeTheme}) =>
                 <div className={styles.contentForSmallerScreen}>
                         <DescriptionWithButtons
                                 text={findTextByTag(titles, 'company_description_title')}
-                                color={diffInfo['color']}
+                                colorHue={colorHue}
                             />
                         <IconsWithButtonsField 
                             iconsWithLinks={[
-                                { icon: <FiGithub/>, link: findTextByTag(titles, 'github_path'), color: diffInfo['color']},
-                                { icon: <FiLinkedin/>, link: findTextByTag(titles, 'linkedin_path'), color: diffInfo['color']}
+                                { icon: <FiGithub/>, link: findTextByTag(titles, 'github_path'), colorHue: colorHue},
+                                { icon: <FiLinkedin/>, link: findTextByTag(titles, 'linkedin_path'), colorHue: colorHue}
                             ]}
                             buttons={[
-                                <Button text={findTextByTag(titles, 'contact_button')} color={diffInfo['color']} onButtonClick={() => navigate('/contact')}/>
+                                <Button text={findTextByTag(titles, 'contact_button')} colorHue={colorHue} onButtonClick={() => navigate('/contact')}/>
                             ]}
                         />
                         <TitleWithButtons
                             title={findTextByTag(titles, 'cv_title')}
                             buttons={[
-                                <Button text={findTextByTag(titles, 'download_pdf_button')} color={diffInfo['color']}/>,
+                                <Button text={findTextByTag(titles, 'download_pdf_button')} colorHue={colorHue}/>,
                             ]}
                         />
                         <TitleWithButtons
                             title={findTextByTag(titles, 'cover_letter_title')}
                             buttons={[
-                                <Button text={findTextByTag(titles, 'download_pdf_button')} color={diffInfo['color']}/>,
+                                <Button text={findTextByTag(titles, 'download_pdf_button')} colorHue={colorHue}/>,
                             ]}
                         />
-                        <Title text={findTextByTag(titles, 'company_skills_title')} isPrimary={true} allowHTML={true} color={diffInfo['color']}/>
+                        <Title text={findTextByTag(titles, 'company_skills_title')} isPrimary={true} allowHTML={true} colorHue={colorHue}/>
                         {skills.map((data, index) => (
                             renderSkillField(data, index, titles)
                         ))}

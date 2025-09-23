@@ -24,7 +24,7 @@ export const ControlCenter = ({navigate, onChangeLanguage, onChangeTheme, langua
         <div className={styles.popUpMenu}>
             <BorderContainer>
                 <div className={styles.popUpButton}>
-                    <Button text={<IoClose />} color={"--danger"} isSmallPadding={true} onButtonClick={() => onCloseMenu()}/>
+                    <Button text={<IoClose />} isPrimary={false} isSmallPadding={true} onButtonClick={() => onCloseMenu()}/>
                 </div>
                 <h1 className={styles.controlCenterTitle}>{findTextByTag(titles, "control_center_title")}</h1>
                 <h2 className={styles.controlCenterBlockTitle}>{findTextByTag(titles, "paths_title")}</h2>

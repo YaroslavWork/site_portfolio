@@ -2,8 +2,8 @@ import React from 'react'
 import styles from './Title.module.css'
 import BorderContainer from '../BorderContainer/BorderContainer';
 
-export default function Title( {text, isPrimary=true, allowHTML=true, color=null, smallerText=false} ) {
-    const styleVar = color ? { '--company-bold-color': `#${color}` } : {};
+export default function Title( {text, isPrimary=true, allowHTML=true, colorHue=null, smallerText=false} ) {
+    const styleVar = colorHue ? { '--company-bold-color': `hsl(${colorHue}, var(--primary-saturation), var(--primary-lightness))` } : {};
     const titleColor = isPrimary ? styles.primary : styles.secondary;
     const smalletTextClass = smallerText ? styles.smallerText : '';
 

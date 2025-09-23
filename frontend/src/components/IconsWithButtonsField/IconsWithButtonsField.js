@@ -8,7 +8,7 @@ export default function IconsWithButtonsField( {iconsWithLinks, buttons = []} ) 
         <BorderContainer>
             <div className={styles.iconContainer}>
                 {iconsWithLinks.map((item, index) => {
-                    const styleVar = item.color ? { '--company-bold-color': `#${item.color}` } : {};
+                    const styleVar = item.colorHue ? { '--company-bold-color': `hsl(${item.colorHue}, var(--primary-saturation), var(--primary-lightness))` } : {};
                     return (
                     <div style={styleVar} key={index} className={styles.icon}>
                         <a

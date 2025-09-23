@@ -6,6 +6,8 @@ import { SlEnergy } from "react-icons/sl";
 import { ControlCenter } from '../ControlCenter/ControlCenter';
 import Button from '../Button/Button';
 
+import { FaDroplet } from "react-icons/fa6";
+
 export default function SparkField({
   text,
   onSparkClick,
@@ -13,15 +15,16 @@ export default function SparkField({
   onChangeTheme,
   onChangeLanguage,
   language,
+  onChangeStyle=null,
   onSparkEnergyClick=null,
-  color=null,
+  colorHue=null,
   allowHTML=false
 }) {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
   const [isCountAsClick, setIsCountAsClick] = useState(false);
   const timerRef = useRef(null);
   
-  const styleVar = color ? { '--company-bold-color': `#${color}` } : {};
+  const styleVar = colorHue ? { '--company-bold-color': `hsl(${colorHue}, var(--primary-saturation), var(--primary-lightness))` } : {};
   const image_path = '/images/Spark.png';
 
   const handleMouseDown = () => {
@@ -50,7 +53,7 @@ export default function SparkField({
 
   return (
     <>
-      <BorderContainer style={styleVar} isSpark={true} color={color}>
+      <BorderContainer style={styleVar} isSpark={true} colorHue={colorHue}>
         <div className={styles.sparkMenu}>
           <button
             onClick={onlyClick}
@@ -62,13 +65,16 @@ export default function SparkField({
             <img src={image_path} alt="Spark" className={styles.sparkImage} />
           </button>
           {onSparkEnergyClick && (
-            <Button text={<SlEnergy />} isSmallPadding={true} color={"--warning"} onButtonClick={onSparkEnergyClick}/>
+            <Button text={<SlEnergy />} isSmallPadding={true} colorHue={"--warning"} onButtonClick={onSparkEnergyClick}/>
           )}
         </div>
         { allowHTML ? 
           <div style={styleVar} className={styles.sparkMonolog} dangerouslySetInnerHTML={{ __html: text }}></div> //CONTACT ME PLEASE
           :
           <div style={styleVar} className={styles.sparkMonolog}>{text}</div> //CONTACT ME PLEASE
+        }
+        { onChangeStyle &&
+          <Button text={<FaDroplet />} onButtonClick={() => onChangeStyle()}/>
         }
       </BorderContainer>
       {isMenuVisible && 
