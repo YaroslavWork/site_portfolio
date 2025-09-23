@@ -6,6 +6,9 @@ export default function ProjectField( {
     name, technologies, description, references, images_path,
     technologiesTitle, descriptionTitle, linksTitle
 } ) {
+
+  const isImageExists = images_path.length === 0 ? false : true;
+
   return (
     <BorderContainer>
         <div className={styles.projectField}>
@@ -30,11 +33,13 @@ export default function ProjectField( {
                 </div>
 
             </div>
-            <div className={styles.projectImages}>
-                {images_path.map((path, index) => (
-                    <img key={index} className={styles.image} src={`${path}.png`} alt={`${name} (${index+1})`}/>
-                ))}
-            </div>
+            {isImageExists && 
+                <div className={styles.projectImages}>
+                    {images_path.map((path, index) => (
+                        <img key={index} className={styles.image} src={`${path}`} alt={`${name} (${index+1})`}/>
+                    ))}
+                </div>
+            }
         </div>
     </BorderContainer>
   )
