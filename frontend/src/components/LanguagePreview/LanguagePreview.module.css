@@ -1,0 +1,15 @@
+.languagePreview{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.languageTitle {
+    width: 100%;
+}
+
+.languageKnowledge {
+    color: var(--primary);
+    
+}

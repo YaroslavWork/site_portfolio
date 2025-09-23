@@ -13,6 +13,7 @@ import BooksField from '../../components/BooksField/BooksField';
 import Hobby from '../../components/Hobby/Hobby';
 import HobbiesField from '../../components/HobbiesField/HobbiesField';
 import { ServerNotRespondPage } from '../ServerNotRespondPage/ServerNotRespondPage';
+import LanguageField from '../../components/LanguageField/LanguageField';
 
 const downloadFile = (fileUrl, fileName) => {
     const link = document.createElement('a');
@@ -32,6 +33,7 @@ export const AboutMePage = ({language='en', onChangeLanguage, onChangeTheme}) =>
     if (error) return <ServerNotRespondPage language={language}/>;
 
     const titles = data['data']['data']['titles'];
+    const languages = data['data']['data']['languages'];
     const books = data['data']['data']['books'];
     const hobbies = data['data']['data']['hobbies'];
 
@@ -53,7 +55,10 @@ export const AboutMePage = ({language='en', onChangeLanguage, onChangeTheme}) =>
             <div className={styles.columns}>
                 <div className={styles.smallColumn}>
                     <CharacterField name={findTextByTag(titles, 'name')}/>
-                    
+                    <LanguageField
+                        title={findTextByTag(titles, 'language_title')}
+                        languages={languages}
+                    />
                 </div>
                 <div className={styles.bigColumn}>
                     <DescriptionWithButtons

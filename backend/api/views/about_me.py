@@ -3,9 +3,11 @@ from rest_framework.response import Response
 from rest_framework import status
 
 from ..serializers.multi_language_string_serializer import MultiLanguageStringSerializer
+from ..serializers.language_serializer import LanguageSerializer
 from ..serializers.book_serializer import BookSerializer
 from ..serializers.hobby_serializer import HobbySerializer
 from ..models.multi_language_string import MultiLanguageString
+from ..models.language import Language
 from ..models.book import Book
 from ..models.hobby import Hobby
 
@@ -39,10 +41,15 @@ class AboutMeView(APIView):
             'education_button',
             'spark_about_me_string1',
             'books_title',
-            'hobbies_title'
+            'hobbies_title',
+            'language_title'
         ]
         multi_language_strings = MultiLanguageString.objects.filter(title__in=about_me_titles)
         serializer = MultiLanguageStringSerializer(multi_language_strings, many=True)
+
+        # Languages
+        languages = Language.objects.all()
+        language_serializer = LanguageSerializer(languages, many=True)
 
         # Books
         books = Book.objects.all()
@@ -62,6 +69,12 @@ class AboutMeView(APIView):
                     'text': item[language_key]
                 }
                 for item in serializer.data
+            ],
+            "languages": [
+                {
+                    'name': language['name'][language_key],
+                    'knowledge': language['knowledge'],
+                } for language in language_serializer.data
             ],
             "books": [
                 {
