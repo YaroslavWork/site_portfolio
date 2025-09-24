@@ -37,6 +37,7 @@ export const WorkExperiencePage = ({language='en', onChangeLanguage, onChangeThe
                 jobs={it_jobs}
                 ContactButton={<Button
                     text={findTextByTag(titles, 'contact_button')}
+                    onButtonClick={() => navigate('/contact')}
                 />}
                 yearInPx={200}
             />
