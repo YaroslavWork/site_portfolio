@@ -60,7 +60,7 @@ export const useCompanyData  = (companyCode, language) => {
 
 export const useCompanyCVData = (companyCode) => {
   return useQuery({
-    queryKey: ['company', companyCode],
+    queryKey: ['company', companyCode, 'cv'],
     queryFn: () => api.getCompanyCVData(companyCode),
     enabled: !!companyCode,
   });
@@ -68,7 +68,7 @@ export const useCompanyCVData = (companyCode) => {
 
 export const useCompanyCoverLetterData = (companyCode) => {
   return useQuery({
-    queryKey: ['company', companyCode],
+    queryKey: ['company', companyCode, 'cover_letter'],
     queryFn: () => api.getCompanyCoverLetterData(companyCode),
     enabled: !!companyCode,
   });

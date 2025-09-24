@@ -58,17 +58,13 @@ export const CompanyPage = ({language='en', onChangeLanguage, onChangeTheme}) =>
     } = useCompanyData(companyCode, language);
 
     if (isCvLoading) {
-        // Render a loading state for the button or component
         return <div>CV is loading...</div>;
     }
-
-    if (isCvError) {
-        // Render an error state
-        return <div>Error: Could not load CV.</div>;
+    if (isCoverLetterLoading) {
+        return <div>Cover Letter is loading...</div>;
     }
-    
-    if (isCompanyDataLoading || isCvLoading || isCoverLetterLoading) {
-        return <div>Loading...</div>;
+    if (isCompanyDataLoading) {
+        return <div>Company Page Loading...</div>;
     }
 
     if (isCompanyDataError) {
