@@ -24,19 +24,11 @@ class Company(models.Model):
         verbose_name="Primary Color",
         help_text="The primary color of the company in HEX format"
     )
-    cv_path: str = models.CharField(
-        max_length=255,
-        blank=True,
-        null=True,
-        verbose_name="CV Path",
-        help_text="The path to the my CV specially for company"
+    cv_file: str = models.FileField(
+       upload_to='documents/pdfs/' 
     )
-    cover_letter_path: str = models.CharField(
-        max_length=255,
-        blank=True,
-        null=True,
-        verbose_name="Cover Letter Path",
-        help_text="The path to the my cover letter specially for company"
+    cover_letter_file: str = models.FileField(
+        upload_to='documents/pdfs/'
     )
     skills: list[Skill] = models.ManyToManyField(
         Skill,

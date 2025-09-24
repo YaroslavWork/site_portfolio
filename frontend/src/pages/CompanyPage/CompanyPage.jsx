@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { useCompanyData } from '../../features/hooks/index.hooks';
+import { useCompanyCoverLetterData, useCompanyCVData, useCompanyData } from '../../features/hooks/index.hooks';
 import styles from './CompanyPage.module.css'
 import SparkField from "../../components/SparkField/SparkField";
 import { findTextByTag } from "../../utils/dataUtils";
@@ -12,23 +12,68 @@ import DescriptionWithButtons from "../../components/DescriptionWithButtons/Desc
 import { renderSkillField } from '../SkillsPage/SkillsPage';
 import CVCode from "../../components/CVCode/CVCode";
 import { GlobalStateContext } from "../../features/hooks/globalStateContext";
-import { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { ServerNotRespondPage } from "../ServerNotRespondPage/ServerNotRespondPage";
-import { downloadFile } from '../AboutMePage/AboutMePage';
+
+
+const downloadBlob = (blob, fileName) => {
+    const url = window.URL.createObjectURL(blob);
+    
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = fileName;
+    document.body.appendChild(link);
+    link.click();
+
+    document.body.removeChild(link);
+    window.URL.revokeObjectURL(url);
+};
 
 export const CompanyPage = ({language='en', onChangeLanguage, onChangeTheme}) => {
     const navigate = useNavigate()
     const { companyCode } = useParams()
     const { globalString } = useContext(GlobalStateContext);
 
-    const { data, isLoading, isError, error } = useCompanyData(companyCode, language);
-
     const [isDefaultStyle, setIsDefaultStyle] = useState(false);
 
-    if (isLoading) return <div>Loading...</div>;
-    if (isError) {
-        if (error.response && error.response.status === 404) {
-            const titles = error.response.data.data.titles
+    const {
+        data: cvData, 
+        isLoading: isCvLoading, 
+        isError: isCvError, 
+        error: cvError 
+    } = useCompanyCVData(companyCode);
+
+    const {
+        data: coverLetterData, 
+        isLoading: isCoverLetterLoading, 
+        isError: isCoverLetterError, 
+        error: coverLetterError 
+    } = useCompanyCoverLetterData(companyCode);
+
+    const { 
+        data: companyData, 
+        isLoading: isCompanyDataLoading, 
+        isError: isCompanyDataError, 
+        error: companyDataError 
+    } = useCompanyData(companyCode, language);
+
+    if (isCvLoading) {
+        // Render a loading state for the button or component
+        return <div>CV is loading...</div>;
+    }
+
+    if (isCvError) {
+        // Render an error state
+        return <div>Error: Could not load CV.</div>;
+    }
+    
+    if (isCompanyDataLoading || isCvLoading || isCoverLetterLoading) {
+        return <div>Loading...</div>;
+    }
+
+    if (isCompanyDataError) {
+        if (companyDataError.response && companyDataError.response.status === 404) {
+            const titles = companyDataError.response.data.data.titles
             return (
                 <div className={styles.companyNotFoundPage}>
                     <SparkField
@@ -56,12 +101,12 @@ export const CompanyPage = ({language='en', onChangeLanguage, onChangeTheme}) =>
     }
 
     const handleDownloadClick = (url, name) => {
-        downloadFile(url, name);
+        downloadBlob(url, name);
     };
 
-    const titles = data['data']['titles'];
-    const skills = data['data']['skills'];
-    const diffInfo = data['data']['other_data'];
+    const titles = companyData['data']['titles'];
+    const skills = companyData['data']['skills'];
+    const diffInfo = companyData['data']['other_data'];
 
     const colorHue = isDefaultStyle ? null : diffInfo['color'];
 
@@ -97,7 +142,7 @@ export const CompanyPage = ({language='en', onChangeLanguage, onChangeTheme}) =>
                                 <Button
                                     text={findTextByTag(titles, 'download_pdf_button')}
                                     colorHue={colorHue}
-                                    onButtonClick={() => handleDownloadClick(`/companies_cv/${diffInfo['company_name']}/cv.pdf`, `CV`)}
+                                    onButtonClick={() => handleDownloadClick(cvData, `CV for ${diffInfo['company_name']}`)}
                                 />,
                             ]}
                         />
@@ -107,7 +152,7 @@ export const CompanyPage = ({language='en', onChangeLanguage, onChangeTheme}) =>
                                 <Button
                                     text={findTextByTag(titles, 'download_pdf_button')}
                                     colorHue={colorHue}
-                                    onButtonClick={() => handleDownloadClick(`/companies_cv/${diffInfo['company_name']}/cover_letter.pdf`, `Cover Letter`)}
+                                    onButtonClick={() => handleDownloadClick(coverLetterData, `Cover Letter for ${diffInfo['company_name']}`)}
                                 />,
                             ]}
                         />
@@ -162,7 +207,7 @@ export const CompanyPage = ({language='en', onChangeLanguage, onChangeTheme}) =>
                                 <Button
                                     text={findTextByTag(titles, 'download_pdf_button')}
                                     colorHue={colorHue}
-                                    onButtonClick={() => handleDownloadClick(`/companies_cv/${diffInfo['company_name']}/cv.pdf`, `CV`)}
+                                    onButtonClick={() => handleDownloadClick(cvData, `CV for ${diffInfo['company_name']}`)}
                                 />,
                             ]}
                         />
@@ -172,7 +217,7 @@ export const CompanyPage = ({language='en', onChangeLanguage, onChangeTheme}) =>
                                 <Button
                                     text={findTextByTag(titles, 'download_pdf_button')}
                                     colorHue={colorHue}
-                                    onButtonClick={() => handleDownloadClick(`/companies_cv/${diffInfo['company_name']}/cover_letter.pdf`, `Cover Letter`)}
+                                    onButtonClick={() => handleDownloadClick(coverLetterData, `Cover Letter for ${diffInfo['company_name']}`)}
                                 />,
                             ]}
                         />

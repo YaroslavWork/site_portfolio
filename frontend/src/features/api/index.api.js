@@ -11,5 +11,18 @@ export const getCompanyData = async (companyCode, language='en') => {
     const { data } = await axios.get(`/company/${companyCode}/?language=${language}`);
     return data
 }
+export const getCompanyCVData = async (companyCode) => {
+    const response = await axios.get(`/company/${companyCode}/?get_file=cv`, {
+        responseType: 'blob',
+    });
+    return response.data;
+}
+export const getCompanyCoverLetterData = async (companyCode) => {
+  const response = await axios.get(`/company/${companyCode}/?get_file=cover_letter`, {
+    responseType: 'blob',
+  });
+  return response.data;
+};
+
 export const getNotFoundData = (language='en') => axios.get(`/404/?language=${language}`)
 export const getMenuData = (language='en') => axios.get(`/menu/?language=${language}`)

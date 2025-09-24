@@ -5,7 +5,7 @@ from ..serializers.skill_serializer import SkillSerializer
 
 class CompanySerializer(serializers.ModelSerializer):
     """
-    Serializer for Skill model.
+    Serializer for Company model.
     """
     skills = SkillSerializer(many=False, read_only=True)
 
@@ -15,7 +15,7 @@ class CompanySerializer(serializers.ModelSerializer):
             'code',
             'name',
             'company_color',
-            'cv_path',
-            'cover_letter_path',
+            'cv_file',
+            'cover_letter_file',
             'skills'
         ]

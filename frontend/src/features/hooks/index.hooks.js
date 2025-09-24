@@ -58,6 +58,22 @@ export const useCompanyData  = (companyCode, language) => {
   });
 };
 
+export const useCompanyCVData = (companyCode) => {
+  return useQuery({
+    queryKey: ['company', companyCode],
+    queryFn: () => api.getCompanyCVData(companyCode),
+    enabled: !!companyCode,
+  });
+};
+
+export const useCompanyCoverLetterData = (companyCode) => {
+  return useQuery({
+    queryKey: ['company', companyCode],
+    queryFn: () => api.getCompanyCoverLetterData(companyCode),
+    enabled: !!companyCode,
+  });
+};
+
 export const useNotFoundData = (language) => {
   return useQuery({
     queryKey: ['not_found', language],

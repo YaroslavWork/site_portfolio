@@ -1,3 +1,6 @@
+from django.http import FileResponse
+import os
+
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -30,9 +33,29 @@ class CompanyView(APIView):
             )
         
         try:
+            get_file = request.query_params.get('get_file', '')
+
             # Convert all in lowercase to avoid case sensitivity issues
             company = Company.objects.get(code__iexact=company_code.lower())
             company_serializer = CompanySerializer(company)
+
+            if get_file == 'cv':
+                cv_file_path = company.cv_file.path
+                if os.path.exists(cv_file_path):
+                    response = FileResponse(open(cv_file_path, 'rb'), content_type='application/pdf')
+                    response['Content-Disposition'] = f'attachment; filename="{os.path.basename(cv_file_path)}"'
+                    return response
+                else:
+                    return Response({"error": "CV file not found."}, status=status.HTTP_404_NOT_FOUND)
+            
+            if get_file == 'cover_letter':
+                cover_letter_file_path = company.cover_letter_file.path
+                if os.path.exists(cover_letter_file_path):
+                    response = FileResponse(open(cover_letter_file_path, 'rb'), content_type='application/pdf')
+                    response['Content-Disposition'] = f'attachment; filename="{os.path.basename(cover_letter_file_path)}"'
+                    return response
+                else:
+                    return Response({"error": "Cover letter file not found."}, status=status.HTTP_404_NOT_FOUND)
 
             companies_titles = [
                 'spark_company_string1',
