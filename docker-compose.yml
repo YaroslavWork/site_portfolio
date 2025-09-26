@@ -3,6 +3,8 @@ version: '3.8'
 services:
   db:
     image: postgres:17
+    env_file:
+      - ./backend/.env
     ports:
       - "${DB_PORT}:${DB_PORT}"
     volumes:
@@ -15,6 +17,8 @@ services:
 
   backend:
     build: ./backend
+    env_file:
+      - ./backend/.env
     command: gunicorn backend.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - static_volume:/app/static
