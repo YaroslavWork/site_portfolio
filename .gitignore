@@ -140,3 +140,5 @@ GitHub.sublime-settings
 # !.vscode/launch.json 
 # !.vscode/extensions.json 
 .history
+/backend/backend/__pycache__/*
+/nginx/nginx.conf

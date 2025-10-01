@@ -2,6 +2,15 @@
     text-align: left;
 }
 
+.header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-sm);
+}
+
 .codeField {
     display: flex;
     flex-direction: row;

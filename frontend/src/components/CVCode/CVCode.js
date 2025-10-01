@@ -3,13 +3,17 @@ import styles from './CVCode.module.css'
 
 import BorderContainer from '../BorderContainer/BorderContainer'
 import Button from '../Button/Button';
+import MobileKeyboardInput from '../MobileKeyboardInput/MobileKeyboardInput';
 
 export default function CVCode( {prompt, code, codeLength=6, checkCompanyCodeText, navigate} ) {
     const codeProvided = code.length === codeLength ? true : false;
 
     return (
         <BorderContainer>
-            <p className={styles.textPrompt}>{prompt}</p>
+            <div className={styles.header}>
+                <p className={styles.textPrompt}>{prompt}</p>
+                <MobileKeyboardInput />
+            </div>
             <div className={styles.codeField}>
                 {Array(codeLength)
                     .fill(null)
