@@ -7,15 +7,16 @@ class CompanySerializer(serializers.ModelSerializer):
     """
     Serializer for Company model.
     """
-    skills = SkillSerializer(many=False, read_only=True)
+
+    skills = SkillSerializer(many=True, read_only=True)
 
     class Meta:
         model = Company
-        fields = [ 
+        fields = [
             'code',
             'name',
             'company_color',
             'cv_file',
             'cover_letter_file',
-            'skills'
+            'skills' 
         ]
