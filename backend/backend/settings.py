@@ -31,9 +31,18 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = {env.bool('DEBUG', default=False)}
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=[])
+CSRF_TRUSTED_ORIGINS = [host.replace('http://', 'https://') for host in ALLOWED_HOSTS if host.startswith('https://')]
+
+# Tells Django to trust the 'X-Forwarded-Proto' header from Nginx
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+# Enforce secure cookies in production
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
