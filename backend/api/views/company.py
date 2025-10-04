@@ -45,11 +45,15 @@ class CompanyView(APIView):
                 'github_path', 'linkedin_path'
             ]
             
-            titles = {}
+            titles = []
             for ml_string in MultiLanguageString.objects.filter(title__in=titles_to_fetch):
                 text = getattr(ml_string, language_key, "")
                 text = text.replace('${company_name}', f'<b>{company.name}</b>')
-                titles[ml_string.title] = text
+
+                titles.append({
+                    'title': ml_string.title,
+                    'text': text
+                })
 
             skill_to_projects_map = defaultdict(list)
             projects = Project.objects.prefetch_related('technologies', 'name')
