@@ -25,7 +25,7 @@ class SkillSerializer(serializers.ModelSerializer):
         if request:
             language_code = request.query_params.get('language', 'en')
             return LANGUAGE_SHORTS.get(language_code, 'english')
-        return 'english' # Default fallback
+        return LANGUAGE_SHORTS.get('english')
 
     def get_stuff_i_know(self, obj):
         language_key = self.get_language_key()
