@@ -1,11 +1,12 @@
 .popUpMenu {
     position: fixed;
-    bottom: 0;
+    top: -2%;
     left: 50%;
     transform: translateX(-50%);
-    width: 80%;
+    width: 95%;
     height: auto;
     z-index: 10;
+    max-width: 525px;
 }
 
 .controlCenterBlockTitle {
@@ -15,9 +16,16 @@
     font-size: var(--font-size-large);
     text-transform: uppercase;
     font-weight: 500;
-    color: var(--secondary);
     padding: var(--spacing-xs) 0;
     margin-top: var(--spacing-sm);
+}
+
+.mainColor {
+    color: var(--primary);
+}
+
+.secondaryColor {
+    color: var(--secondary);
 }
 
 .controlCenterTitle {
@@ -27,7 +35,21 @@
     font-weight: 400;
 }
 
-.popUpButton {
-    position: fixed;
-    right: 25px;
+
+@media (min-width: 975px) {
+    .popUpMenu {
+        max-width: 1080px;
+    }
+
+    .menu {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: center;
+        align-items: center;
+        gap: var(--spacing-md); 
+    }
+
+    .controlCenterBlock {
+        margin: 0 var(--spacing-md);
+    }
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './Button.module.css'
 
-export default function Button( {text, isPrimary=true, onButtonClick, isSmallPadding=false, colorHue=null} ) {
+export default function Button( {text, isPrimary=true, onButtonClick, onMouseEnter=null, onMouseLeave=null, isSmallPadding=false, colorHue=null} ) {
   const styleVar = colorHue !== null ? (colorHue[0] === '-' ? {
       '--company-bold-color': `var(${colorHue})`,
       '--company-color-hover': `var(${colorHue})`
@@ -17,6 +17,8 @@ export default function Button( {text, isPrimary=true, onButtonClick, isSmallPad
       style={styleVar}
       className={`${styles.button} ${buttonColor} ${paddingSize}`}
       onClick={onButtonClick}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
     >
       {text}
     </button>
